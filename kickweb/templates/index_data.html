@@ -1,0 +1,126 @@
+{% extends 'new_base.html' %}
+
+{% block grid %}
+<div class="ui equal width grid" style="margin:5px 0 5px 0;width:70%" >
+        <div class="row">
+          <div class="column">
+            <div class="ui red segment">
+              <div class="ui statistic">
+                <div class="value">
+                  {{ all_count }}
+                </div>
+                <div class="label">
+                  全部项目
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui blue segment">
+              <div class="ui statistic">
+                <div class="value">
+                  {{ successful_count }}
+                </div>
+                <div class="label">
+                  成功项目
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui yellow segment">
+              <div class="ui statistic">
+                <div class="value">
+                  {{ failed_count }}
+                </div>
+                <div class="label">
+                  失败项目
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui green segment">
+              <div class="ui statistic">
+                <div class="value">
+                  {{ live_count }}
+                </div>
+                <div class="label">
+                  进行中的项目
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="ui container segment">
+              <div class="ui divided items">
+              {% for item in ItemInfo %}
+                <div class="item">
+                  <div class="image">
+                         <img src="{{ item.photo }}">
+                    </div>
+                  <div class="content">
+                    <a class="header" href="{{ item.url }}" target="_blank">
+                      {{ item.name }}
+                    </a>
+                    <div class="meta">
+                        <span><i class="icon user"></i>{{ item.author }}</span>
+                    </div>
+                    <div class="description">
+                        <div class=" text container">
+                            {{ item.blurb}}
+                        </div>
+
+                    </div>
+                    <div class="extra">
+                    {% for tag in item.category %}
+                      <div class="ui gray tag label">
+                        {{ tag }}
+                      </div>
+                    {% endfor %}
+                    </div>
+                    <div class="extra">
+                        <div class="ui labeled button" tabindex="0">
+                            <div class="ui green button "><i class="heart"></i>goal</div>
+                            <a  class="ui basic  label">{{ item.goal }}</a>
+                        </div>
+                        <div class="ui labeled button" tabindex="0">
+                            <div class="ui red button "><i class="checkmark"></i>pledged</div>
+                            <a  class="ui basic label">{{ item.pledged }}</a>
+                        </div>
+                        <div class="ui primary button"><i class=""></i>{{ item.state }}</div>
+{#                        <div class="ui button "><i class="checkmark"></i>{{ item.pledged }}</div>#}
+                    </div>
+
+                    </div>
+                </div>
+              {% endfor %}
+              </div>
+            <div class="ui small pagination menu">
+                {% if ItemInfo.has_previous %}
+                <a class="icon item" href="?page={{ ItemInfo.previous_page_number }}">
+                    <i class="left arrow icon"></i>
+                </a>
+                {% endif %}
+
+                <div class="disabled item"> {{ ItemInfo.number }} of {{ ItemInfo.paginator.num_pages }} </div>
+
+                {% if ItemInfo.has_next %}
+                <a class="icon item" href="?page={{ ItemInfo.next_page_number }}">
+                    <i class="right arrow icon"></i>
+                </a>
+                {% endif %}
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+

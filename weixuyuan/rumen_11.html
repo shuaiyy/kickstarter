@@ -1,0 +1,1356 @@
+
+<h1>Java图形界面设计基础</h1>
+<div id="art-body">早先程序使用最简单的输入输出方式，用户在键盘输入数据，程序将信息输出在屏幕上。现代程序要求使用图形用户界面(Graphical User Interface,GUI)，界面中有菜单、按钮等，用户通过鼠标选择菜单中的选项和点击按钮，命令程序功能模块。本章学习如何用Java语言编写GUI科学试验，如何通过GUI实现输入和输出。
+<h2>
+AWT和Swing</h2>
+先前用Java编写GUI程序，是使用抽象窗口工具包AWT(Abstract Window Toolkit).现在多用Swing。Swing可以看作是AWT的改良版，而不是代替AWT，是对AWT的提高和扩展。<span style="color:#b22222;">所以，在写GUI程序时，Swing和AWT都要作用。</span>它们共存于Java基础类(Java Foundation Class,JFC)中。<br>
+<br>
+尽管AWT和Swing都提供了构造图形界面元素的类，但它们的重要方面有所不同：AWT依赖于主平台绘制用户界面组件；而Swing有自己的机制，在主平台提供的窗口中绘制和管理界面组件。<span style="color:#b22222;">Swing与AWT之间的最明显的区别是界面组件的外观，AWT在不同平台上运行相同的程序，界面的外观和风格可能会有一些差异。然而，一个基于Swing的应用程序可能在任何平台上都会有相同的外观和风格。</span><br>
+<br>
+Swing中的类是从AWT继承的，有些Swing类直接扩展AWT中对应的类。例如，JApplet、JDialog、JFrame和JWindow。<br>
+<br>
+使用Swing设计图形界面，主要引入两个包：
+<ul>
+<li>
+javax.swing包：包含Swing的基本类；</li>
+<li>
+java.awt.event包：包含与处理事件相关的接口和类。</li>
+</ul>
+<br>
+由于Swing太丰富，不可能在一本教科书中给出Swing的全面介绍，但本章所介绍的有关Swing的知识，已足以让读者编写相当精美的GUI程序。
+<h2>
+组件和容器</h2>
+<span style="color:#b22222;">组件(component)是图形界面的基本元素，用户可以直接操作，</span>例如按钮。容器(Container)是图形界面的的复合元素，容器可以包含组件，例如面板。<br>
+<br>
+Java语言为每种组件都预定义类，程序通过它们或它们的子类各种组件对象，如，Swing中预定义的按钮类JButton是一种类，程序创建的JButton对象，或JButton子类的对象就是按钮。Java语言也为每种容器预定义类，程序通过它们或它们的子类创建各种容器对象。例如，Swing中预定义的窗口类JFrame是一种容器类，程序创建的JFrame或JFrame子类的对象就是窗口。<br>
+<br>
+为了统一管理组件和容器，为所有组件类定义超类，把组件的共有操作都定义在Component类中。同样，为所有容器类定义超类Container类，把容器的共有操作都定义在Container类中。例如，Container类中定义了add()方法，大多数容器都可以用add()方法向容器添加组件。<br>
+<br>
+Component、Container和Graphics类是AWT库中的关键类。<span style="color:#b22222;">为能层次地构造复杂的图形界面，容器被当作特殊的组件，可以把容器放入另一个容器中。</span>例如，把若干按钮和文本框分放在两个面板中，再把这两个面板和另一些按钮放入窗口中。这种层次地构造界面的方法，能以增量的方式构造复杂的用户界面。
+<h2>
+事件驱动程序设计基础</h2>
+<strong>1.事件、监视器和监视器注册</strong><br>
+图形界面上的事件是指在某个组件上发生用户操作。例如，用户单击了界面上的某个按钮，就说在这个按钮上发生了事件，这个按钮对象就是事件的击发者。<span style="color:#b22222;">对事件作监视的对象称为监视器，监视器提供响应事件的处理方法。为了让监视器与事件对象关联起来，需要对事件对象作监视器注册，告诉系统事件对象的监视器。</span><br>
+<br>
+以程序响应按钮事件为例，程序要创建按钮对象，把它添加到界面中，要为按钮作监视器注册，程序要有响应按钮事件的方法。当“单击按钮”事件发生时，系统就调用已为这个按钮注册的事件处理方法，完成处理按钮事件的工作。<br>
+<br>
+<strong>2.实现事件处理的途征</strong><br>
+<span style="color:#b22222;">java语言编写事件处理程序主要有两种方案：一个是程序重设handleEvent(Eventevt),采用这个方案的程序工作量稍大一些；另一个方案是程序实现一些系统设定的接口。</span>java按事件类型提供多种接口，作为监视器对象的类需要实现相应的接口，即实现响应事件的方法。当事件发生时，系统内设的handleEvent(Event evt)方法就自动调用监视器的类实现的响应事件的方法。<br>
+<br>
+java.awt.event包中用来检测并对事件做出反应的模型包括以下三个组成元素：
+<ul>
+<li>
+源对象：事件“发生”这个组件上，它与一组“侦听”该事件的对象保持着联系。</li>
+<li>
+监视器对象：一个实现预定义的接口的类的一个对象，该对象的类要提供对发生的事件作处理的方法。</li>
+<li>
+事件对象：它包含描述当事件发生时从源传递给监视器的特定事件的信息。</li>
+</ul>
+<br>
+一个事件驱动程序要做的工作除创建源对象和监视器对象之外，还必须安排监视器了解源对象，或向源对象注册监视器。每个源对象有一个已注册的监视器列表，提供一个方法能向该列表添加监视器对象。只有在源对象注册了监视器之后，系统才会将源对象上发生的事件通知监视器对象。<br>
+<br>
+<strong>3.事件类型和监视器接口</strong><br>
+<span style="color:#b22222;">在java语言中，为了便于系统管理事件，也为了便于程序作监视器注册，系统将事件分类，称为事件类型。</span>系统为每个事件类型提供一个接口。要作为监视器对象的类必须实现相应的接口，提供接口规定的响应事件的方法。<br>
+<br>
+再以程序响应按钮事件为例，JButton类对象button可以是一个事件的激发者。当用户点击界面中与button对应的按钮时，button对象就会产生一个ActionEvent类型的事件。如果监视器对象是obj，对象obj的类是Obj,则类Obj必须实现AWT中的ActionListener接口，实现监视按钮事件的actionPerformed方法。button对象必须用addActionListener方法注册它的监视器obj。<br>
+<br>
+程序运行时，当用户点击button对象对应的按钮时，系统就将一个ActionEvent对象从事件激发对象传递到监视器。ActionEvent对象包含的信息包括事件发生在哪一个按钮，以及有关该事件的其他信息。<br>
+<br>
+表 11-1 给出有一定代表性的事件类型和产生这些事件的部分Swing组件。实际事件发生时，通常会产生一系列的事件，例如，用户点击按钮，会产生ChangeEvent事件提示光标到了按钮上，接着又是一个ChangeEvent事件表示鼠标被按下，然后是ActionEvent事件表示鼠标已松开，但光标依旧在按钮上，最后是ChangeEvent事件，表示光标已离开按钮。但是应用程序通常只处理按下按钮的完整动作的单个ActionEvent事件。<br>
+<table>
+<caption>
+表 11-1  组件和事件类型</caption>
+<tbody>
+<tr>
+<th>
+事件类型</th>
+<th>
+组件</th>
+<th>
+描述</th>
+</tr>
+<tr>
+<td>
+ActionEvent</td>
+<td>
+JButton,JCheckBox<br>
+JComboBox,JMenuItem<br>
+JRadioButton</td>
+<td>
+点击、选项或选择</td>
+</tr>
+<tr>
+<td>
+ChangeEvent</td>
+<td>
+JSlider</td>
+<td>
+调整一个可移动元素的位置</td>
+</tr>
+<tr>
+<td>
+AdjustmentEvent</td>
+<td>
+JScrollBar</td>
+<td>
+调整滑块位置</td>
+</tr>
+<tr>
+<td>
+ItemEvent</td>
+<td>
+JComboBox,JCheckBox<br>
+JRadioButton<br>
+JRadioButtonMenuItem<br>
+JCheckBoxMenuItem</td>
+<td>
+从一组可选方案中选择一个项<br>
+目</td>
+</tr>
+<tr>
+<td>
+ListSelectionEvent</td>
+<td>
+JList</td>
+<td>
+选项事件</td>
+</tr>
+<tr>
+<td>
+KeyEvent<br>
+MouseEvent</td>
+<td>
+JComponent 及其派生类</td>
+<td>
+操纵鼠标或键盘</td>
+</tr>
+<tr>
+<td>
+CareEvent</td>
+<td>
+JTextArea,JTextField</td>
+<td>
+选择和编辑文本</td>
+</tr>
+<tr>
+<td>
+WindowEvent</td>
+<td>
+Window 及其派生类 JFrame</td>
+<td>
+对窗口打开、关闭和图标化</td>
+</tr>
+</tbody>
+</table>
+每个事件类型都有一个相应的监视器接口，表11-2列出了每个接口的方法。实现监视器接口的类必须实现所有定义在接口中的方法。<br>
+<table>
+<caption>
+表 11-2 监视器接口方法</caption>
+<tbody>
+<tr>
+<th>
+监视器接口</th>
+<th>
+方法</th>
+<th>
+获取事件源的方法</th>
+</tr>
+<tr>
+<td>
+ActionListener</td>
+<td>
+actionPerformed</td>
+<td>
+getSource,getActionCommand</td>
+</tr>
+<tr>
+<td>
+ChangeListener</td>
+<td>
+stateChanged</td>
+<td>
+getSource</td>
+</tr>
+<tr>
+<td>
+AdjustmentListener</td>
+<td>
+adjustmentValueChanged</td>
+<td>
+getAdjustable</td>
+</tr>
+<tr>
+<td>
+FocusListener</td>
+<td>
+focusGained,<br>
+focusLost</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+ItemListener</td>
+<td>
+itemStateChanged</td>
+<td>
+getItemSelectable(),getSource()</td>
+</tr>
+<tr>
+<td>
+ListSelectionListener</td>
+<td>
+valueChanged</td>
+<td>
+e.getSource().getSelectedValue()</td>
+</tr>
+<tr>
+<td>
+KeyListener</td>
+<td>
+keyPressed,<br>
+keyReleased,<br>
+keyTyped</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+CareListener</td>
+<td>
+careUpdate</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+MouseListener</td>
+<td>
+mouseClicked,<br>
+mouseEntered,<br>
+mouseExited,<br>
+mousePressed,<br>
+mouseReleased</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+MouseMontionListener</td>
+<td>
+mouseDragged,<br>
+mouseMoved</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+WindowListener</td>
+<td>
+windowClosed,<br>
+windowClosing,<br>
+windowDeactivated,<br>
+windowDeiconified,<br>
+windowIconified,<br>
+windowOpened</td>
+<td>
+ </td>
+</tr>
+</tbody>
+</table>
+<br>
+</div>
+
+http://www.weixueyuan.net/view/6056.html
+<h1>Java框架窗口基础</h1>
+<div id="art-body">窗口是GUI编程的基础，小应用程序或图形界面的应用程序的可视组件都放在窗口中，在GUI中，窗口是用户屏幕的一部分，起着在屏幕中一个小屏幕的作用。有以下三种窗口：
+<ol>
+<li>
+Applet窗口：Applet类管理这个窗口，当应用程序程序启动时，由系统创建和处理；</li>
+<li>
+框架窗口(JFrame)：这是通常意义上的窗口，它支持窗口周边的框架、标题栏，以及最小化、最大化和关闭按钮；</li>
+<li>
+一种无边框窗口(JWindow)：没有标题栏，没有框架，只是一个空的矩形。</li>
+</ol>
+<br>
+用Swing中的JFrame类或它的子类创建的对象就是JFrame窗口。<br>
+<br>
+JFrame类的主要构造方法：
+<ol>
+<li>
+JFrame()：创建无标题的窗口对象；</li>
+<li>
+JFrame(String s)：创建一个标题名是字符串s的窗口对象。</li>
+</ol>
+<br>
+JFrame类的其他常用方法：
+<ol>
+<li>
+setBounds(int x,int y,int width,int height)：参数x,y指定窗口出现在屏幕的位置；参数width,height指定窗口的宽度和高度。单位是像素。</li>
+<li>
+setSize(int width,int height)：设置窗口的大小，参数width和height指定窗口的宽度和高度，单位是像素。</li>
+<li>
+setBackground(Color c)：以参数 c设置窗口的背景颜色。</li>
+<li>
+setVisible(boolean b)：参数b设置窗口是可见或不可见。JFrame默认是不可见的。</li>
+<li>
+pack()：用紧凑方式显示窗口。如果不使用该方法，窗口初始出现时可能看不到窗口中的组件，当用户调整窗口的大小时，可能才能看到这些组件。</li>
+<li>
+setTitle(String name)：以参数name设置窗口的名字。</li>
+<li>
+getTitle()：获取窗口的名字。</li>
+<li>
+setResiable(boolean m)：设置当前窗口是否可调整大小(默认可调整大小)。</li>
+</ol>
+<br>
+<span style="color:#b22222;">Swing里的容器都可以添加组件，除了JPanel及其子类(JApplet)之外，其他的Swing容器不允许把组件直接加入。</span>其他容器添加组件有两种方法：
+<ul>
+<li>
+一种是用getContentPane()方法获得内容面板，再将组件加入。例如，例5.1程序中的代码：<br>
+    mw.getContentPane().add(button);<br>
+该代码的意义是获得容器的内容面板，并将按钮button添加到这个内容面板中。</li>
+<li>
+另一种是建立一个JPanel对象的中间容器，把组件添加到这个容器中，再用setContentPane()把这个容器置为内容面板。例如，代码：<br>
+    JPanel contentPane = new JPanel();<br>
+    …<br>
+    mw.setContentPane(contentPane);<br>
+以上代码把contentPane置成内容面板。</li>
+</ul>
+<br>
+【例 11-1】一个用JFrame类创建窗口的Java应用程序。窗口只有一个按钮。<br>
+import javax.swing.*;<br>
+public class Example5_1{<br>
+    public static void main(String args[]){<br>
+        JFrame mw = new JFrame(“我的第一个窗口”);<br>
+        mw.setSize(250,200);<br>
+        JButton button = new JButton(“我是一个按钮”);<br>
+        mw.getContentPane().add(button);<br>
+        mw.setVisible(true);<br>
+    }<br>
+}<br>
+用Swing 编写GUI程序时，通常不直接用JFrame创建窗口对象，而用JFrame派生的子类创建窗口对象，在子类中可以加入窗口的特定要求和特别的内容等。<br>
+<br>
+【例 11-2】定义JFrame派生的子类MyWindowDemo创建JFrame窗口。类MyWindowDemo的构造方法有五个参数：窗口的标题名，加放窗口的组件，窗口的背景颜色以及窗口的高度和宽度。在主方法中，利用类MyWindowDemo创建两个类似的窗口。<br>
+import javax.swing.*;<br>
+import java.awt.*;<br>
+import java.awt.event.*;<br>
+public class Example5_2{<br>
+    public static MyWindowDemo mw1;<br>
+    public static MyWindowDemo mw2;<br>
+    public static void main(String args[]){<br>
+        JButton static butt1 = new JButton(“我是一个按钮”);<br>
+        String name1 = “我的第一个窗口”;<br>
+        String name2 = “我的第二个窗口”;<br>
+        mw1 = new MyWindowDemo(name1,butt1,Color.blue,350,450);<br>
+        mw1.setVisible(true);<br>
+        JButton butt2 = new JButton(“我是另一个按钮”);<br>
+        mw2 = new MyWindowDemo(name2,butt2,Color.magenta,300,400);<br>
+        mw2.setVisible(true);<br>
+    }<br>
+}<br>
+class MyWindowDemo extends JFrame{<br>
+    public MyWindowDemo(String name,JButton button,Color c,int w,int h){<br>
+        super();<br>
+        setTitle(name);<br>
+        setSize(w,h);<br>
+        Container con = getContentPane();<br>
+        con.add(button);<br>
+        con.setBackground(c);<br>
+    }<br>
+}<br>
+显示颜色由java.awt包的Color类管理，在Color类中预定了一些常用的颜色，参见表11-3。JFrame类的部分常用方法参见表11-4。<br>
+<table>
+<caption>
+表11-3 Color 类中定义的常用颜色</caption>
+<tbody>
+<tr>
+<th>
+字段摘要</th>
+<th>
+颜色</th>
+</tr>
+<tr>
+<td>
+static Color black/BLACK</td>
+<td>
+黑色</td>
+</tr>
+<tr>
+<td>
+static Color blue/BLUE</td>
+<td>
+蓝色</td>
+</tr>
+<tr>
+<td>
+static Color cyan/CYAN</td>
+<td>
+青色</td>
+</tr>
+<tr>
+<td>
+static Color darkGray/DARK_GRAY</td>
+<td>
+深灰色</td>
+</tr>
+<tr>
+<td>
+static Color gray/GRAY</td>
+<td>
+灰色</td>
+</tr>
+<tr>
+<td>
+static Color green/GREEN</td>
+<td>
+绿色</td>
+</tr>
+<tr>
+<td>
+static Color lightGray/LIGHTGRAY</td>
+<td>
+浅灰色</td>
+</tr>
+<tr>
+<td>
+static Color magenta/MAGENTA</td>
+<td>
+洋红色</td>
+</tr>
+<tr>
+<td>
+static Color orange/ORANGE</td>
+<td>
+桔黄色</td>
+</tr>
+<tr>
+<td>
+static Color pink/PINK</td>
+<td>
+粉红色</td>
+</tr>
+<tr>
+<td>
+static Color red/RED</td>
+<td>
+红色</td>
+</tr>
+<tr>
+<td>
+static Color white/WHITE</td>
+<td>
+白色</td>
+</tr>
+<tr>
+<td>
+static Color yellow/YELLOW</td>
+<td>
+黄色</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table>
+<caption>
+表 11-4 JFrame 类的部分常用方法</caption>
+<tbody>
+<tr>
+<th>
+方法</th>
+<th>
+意义</th>
+</tr>
+<tr>
+<td>
+JFrame()</td>
+<td>
+构造方法，创建一个 JFrame 对象</td>
+</tr>
+<tr>
+<td>
+JFrame(String title)</td>
+<td>
+创建一个以 title 为标题的 JFrame 对象</td>
+</tr>
+<tr>
+<td>
+add()</td>
+<td>
+从父类继承的方法，向窗口添加窗口元素</td>
+</tr>
+<tr>
+<td>
+void addWindowListener(WindowListener ear)</td>
+<td>
+注册监视器，监听由 JFrame 对象击发的事件</td>
+</tr>
+<tr>
+<td>
+Container getContentPane()</td>
+<td>
+返回 JFrame 对象的内容面板</td>
+</tr>
+<tr>
+<td>
+void setBackground(Color c)</td>
+<td>
+设置背景色为 c</td>
+</tr>
+<tr>
+<td>
+void setForeground(Color c)</td>
+<td>
+设置前景色为 c</td>
+</tr>
+<tr>
+<td>
+void setSize(int w,int h)</td>
+<td>
+设置窗口的宽为 w,高为 h</td>
+</tr>
+<tr>
+<td>
+vid setTitle(String title)</td>
+<td>
+设置窗口中的标题</td>
+</tr>
+<tr>
+<td>
+void setVisible(boolean b)</td>
+<td>
+设置窗口的可见性，true 可见，false 不可见</td>
+</tr>
+</tbody>
+</table>
+<br>
+</div>
+
+http://www.weixueyuan.net/view/6057.html
+<h1>Java标签、按钮和按钮事件简介</h1>
+<div id="art-body">标签和按钮也许是图形界面中最常见的两种组件，按钮又总是与激发动作事件有关。
+<h2>
+标签</h2>
+标签(JLabel)是最简单的Swing组件。标签对象的作用是对位于其后的界面组件作说明。可以设置标签的属性，即前景色，背景色、字体等，<span style="color:#b22222;">但不能动态地编辑标签中的文本</span>。<br>
+<br>
+程序关于标签的基本内容有以下几个方面：
+<ol>
+<li>
+声明一个标签名；</li>
+<li>
+创建一个标签对象；</li>
+<li>
+将标签对象加入到某个容器。</li>
+</ol>
+<br>
+JLabel类的主要构造方法是：
+<ol>
+<li>
+JLabel ()：构造一个无显示文字的标签；</li>
+<li>
+JLabel (String s)：构造一个显示文字为s的标签；</li>
+<li>
+JLabel(String s, int align)：构造一个显示文字为s的标签。align为显示文字的水平方式，对齐方式有三种：
+<ul>
+<li>
+左对齐：JLabel.LEFT</li>
+<li>
+中心对齐：JLabel.CENTER</li>
+<li>
+右对齐：JLabel.RIGHT</li>
+</ul>
+</li>
+</ol>
+<br>
+JLabel类的其他常用方法是：
+<ol>
+<li>
+setText(String s)：设置标签显示文字；</li>
+<li>
+getText()：获取标签显示文字；</li>
+<li>
+setBackground(Color c)：设置标签的背景颜色，默认背景颜色是容器的背景颜色；</li>
+<li>
+setForeground(Color c)：设置标签上的文字的颜色，默认颜色是黑色。</li>
+</ol>
+<h2>
+按钮</h2>
+按钮(JButton)在界面设计中用于激发动作事件。按钮可显示文本，当按钮被激活时，能激发动作事件。<br>
+<br>
+JButton常用构造方法有：
+<ol>
+<li>
+JButton()：创建一个没有标题的按钮对象；</li>
+<li>
+JButton(String s)：创建一个标题为s的按钮对象。</li>
+</ol>
+<br>
+JButton类的其他常用方法有：
+<ol>
+<li>
+setLabel(String s)：设置按钮的标题文字。</li>
+<li>
+getLabel()：获取按钮的标题文字。</li>
+<li>
+setMnemonic(char mnemonic)：设置热键</li>
+<li>
+setToolTipText(String s)：设置提示文字。</li>
+<li>
+setEnabled(boolean b)：设置是否响应事件</li>
+<li>
+setRolloverEnabled(boolean b)：设置是否可滚动。</li>
+<li>
+addActionListener(ActionListener aL)：向按钮添加动作监视器。</li>
+<li>
+removeActionListener(ActionListener aL)：移动按钮的监视器。</li>
+</ol>
+<br>
+按钮处理动作事件的基本内容有以下几个方面：
+<ol>
+<li>
+与按钮动作事件相关的接口是ActionListener，给出实现该接口的类的定义；</li>
+<li>
+声明一个按钮名；</li>
+<li>
+创建一个按钮对象；</li>
+<li>
+将按钮对象加入到某个容器；</li>
+<li>
+为需要控制的按钮对象注册监视器，对在这个按钮上产生的事件实施监听。如果是按钮对象所在的类实现监视接口，注册监视器的代码形式是<br>
+    addActionListener(this);<br>
+参见【例 11-3】，如果是别的类A的对象a作为监视器，类A必须实现ActionListener接口，完成监视器注册需用以下形式的两行代码：<br>
+    A a = new A();  //创建类A的实例a<br>
+    addActionListener(a);  //用对象a作为监视器对事件进行监视。</li>
+<li>
+在实现接口ActionListener的类中，给出处理事件的方法的定义：<br>
+    public void actionPerformed(ActionEvent e);</li>
+</ol>
+<br>
+在处理事件的方法中，用获取事件源信息的方法获得事件源信息，并判断和完成相应处理。<span style="color:#b22222;">获得事件源的方法有：方法 getSource()获得事件源对象；方法getActionCommand()获得事件源按钮的文字信息。</span><br>
+<br>
+【例 11-3】处理按钮事件实例，应用程序定义了一个窗口，窗口内设置两个按钮，当点击Red按钮时，窗口的背景色置成红色；点击Green按钮时，窗口的背景色置成绿色（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-3.txt" target="_blank">查看源代码</a>）。<br>
+<br>
+用鼠标点击按钮产生事件对象，将事件送达对象，这个过程称为激发事件。当一个事件被送到监视器对象时，监视器对象实现的接口方法被调用，调用时系统会提供事件对象的参数。程序中虽然没有调用监视器方法的的代码，但是程序做了两件事：第一，指定哪一个对象是监视器，它将响应由按钮的激发的事件，这个步骤称为监视器注册。第二，必须定义一个方法，当事件送到监视器时，这个方法将被调用。程序中没有调用这个方法的代码，这个调用是系统执行的。<br>
+<br>
+在上面的程序中，代码<br>
+    redBut.addActionListener(this);<br>
+注册this作为redBut按钮的监视器，随后的代码也注册this作为greenBut按钮的监视器。在上述的程序中，this就是当前的ButtonDemo对象myButtonGUI。这样，ButtonDemo类就是监视器对象的类，对象MyButtonGUI作为两个按钮的监视器。在类ButtonDemo中有监视器方法的实现。当一个按钮被点击时，系统以事件的激发者为参数，自动调用方法actionPerformed ()。<br>
+<br>
+组件不同，激发的事件种类也不同，监视器类的种类也不同。按钮激发的事件称为action事件，相应的监视器称为action监视器。一个action监视器对象的类型为ActionListener，类要实现ActionListener接口。程序体现这些内容需要做到两点：
+<ol>
+<li>
+在类定义的首行接上代码implements ActionListener；</li>
+<li>
+类内定义方法actionPerformed ()。</li>
+</ol>
+<br>
+前面程序中的类ButtonDemo正确地做到了这两点。<br>
+<br>
+每个界面元素当激发事件时，都有一个字符串与这个事件相对应，这个字符串称为action命令。用代码 e.getActionCommand()就能获取action事件参数e的命令字符串，据此，方法actionPerformed()就能知道是哪一个按钮激发的事件。在默认情况下，按钮的命令字符串就是按钮上的文字。如有必要可以用方法 setActionCommand()为界面组件设置命令字符串。</div>
+
+http://www.weixueyuan.net/view/6058.html
+<h1>Java面板基础：JPanel和JScrollPane</h1>
+<div id="art-body">面板有两种，一种是<span style="color:#b22222;">普通面板(JPanel)</span>，另一种是<span style="color:#b22222;">滚动面板(JScrollPane)</span>。
+<h2>
+JPanel</h2>
+面板是一种通用容器，JPanel的作用是实现界面的层次结构，在它上面放入一些组件，也可以在上面绘画，将放有组件和有画的JPanel再放入另一个容器里。<span style="color:#b22222;">JPanel的默认布局为FlowLayout。</span><br>
+<br>
+面板处理程序的基本内容有以下几个方面：
+<ol>
+<li>
+通过继承声明JPanel类的子类，子类中有一些组件，并在构造方法中将组件加入面板。</li>
+<li>
+声明JPanel子类对象。</li>
+<li>
+创建JPanel子类对象。</li>
+<li>
+将JPanel子类对象加入到某个容器。</li>
+</ol>
+<br>
+JPanel类的常用构造方法有：
+<ol>
+<li>
+JPanel(),创建一个JPanel对象。</li>
+<li>
+JPanel(LayoutManager layout),创建JPanel对象时指定布局layout。</li>
+</ol>
+<br>
+JPanel对象添加组件的方法：
+<ol>
+<li>
+add(组件)，添加组件。</li>
+<li>
+add(字符串，组件)，当面板采用GardLayout布局时，字符串是引用添加组件的代号。</li>
+</ol>
+<br>
+【例 11-4】小应用程序有两个JPanel子类对象和一个按钮。每个JPanel子类对象又有两个按钮和一个标签。<br>
+import java.applet.*;<br>
+import javax.swing.*;<br>
+class MyPanel extends JPanel{<br>
+    JButton button1,button2;<br>
+    JLabel Label;<br>
+    MyPanel(String s1,String s2,String s3){<br>
+        //Panel对象被初始化为有两个按钮和一个文本框<br>
+        button1=new JButton(s1);button2=new JButton(s2);<br>
+        Label=new JLabel(s3);<br>
+        add(button1);add(button2);add(Label);<br>
+    }<br>
+}<br>
+public class J504 extends Applet{<br>
+    MyPanel panel1,panel2;<br>
+    JButton Button;<br>
+    public void init(){<br>
+        panel1=new MyPanel("确定","取消","标签，我们在面板1中");<br>
+        panel2=new MyPanel("确定","取消","标签，我们在面板2中");<br>
+        Button=new JButton("我是不在面板中的按钮");<br>
+        add(panel1);add(panel2);add(Button);<br>
+        setSize(300,200);<br>
+    }<br>
+}
+<h2>
+JScrollPane</h2>
+当一个容器内放置了许多组件，而容器的显示区域不足以同时显示所有组件时，如果让容器带滚动条，通过移动滚动条的滑块，容器中位置上的组件就能看到。滚动面板JScrollPane能实现这样的要求，JScrollPane是带有滚动条的面板。<span style="color:#b22222;">JScrollPane是Container类的子类，也是一种容器，但是只能添加一个组件。JScrollPane的一般用法是先将一些组件添加到一个JPanel中，然后再把这个JPanel添加到JScrollPane中。</span>这样，从界面上看，在滚动面板上，好像也有多个组件。在Swing中，像JTextArea、JList、JTable等组件都没有自带滚动条，都需要将它们放置于滚动面板，利用滚动面板的滚动条，浏览组件中的内容。<br>
+<br>
+JScrollPane类的构造方法有：
+<ol>
+<li>
+JScrollPane()，先创建JScrollPane对象，然后再用方法setViewportView(Component com)为滚动面板对象放置组件对象。</li>
+<li>
+JScrollPane(Component com),创建JScrollPane对象，参数com是要放置于JScrollPane对象的组件对象。为JScrollPane对象指定了显示对象之后，再用add()方法将JScrollPane对象放置于窗口中。</li>
+</ol>
+<br>
+JScrollPane对象设置滚动条的方法是：
+<ol>
+<li>
+setHorizontalScrollBarPolicy(int policy),policy 取以下列3个值之一：<br>
+    JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS<br>
+    JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEED<br>
+    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER</li>
+<li>
+setVerticalScrollBarPolicy(int policy), policy 取以下列3个值之一：<br>
+    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS<br>
+    JScrollPane.VERTICAL_SCROLLBAR_AS_NEED<br>
+    JScrollPane.VERTICAL_SCROLLBAR_NEVER</li>
+</ol>
+<br>
+以下代码将文本区放置于滚动面板，滑动面板的滚动条能浏览文本区<br>
+    JTextArea textA = new JTextArea(20,30);<br>
+    JScrollPane jsp = new JScrollPane(TextA);<br>
+    getContentPane().add(jsp);//将含文本区的滚动面板加入到当前窗口中。</div>
+
+http://www.weixueyuan.net/view/6059.html
+<h1>Java图形界面之布局设计</h1>
+<div id="art-body">在界面设计中，一个容器要放置许多组件，为了美观，为组件安排在容器中的位置，这就是布局设计。java.awt中定义了多种布局类，每种布局类对应一种布局的策略。常用的有以下布局类：
+<ul>
+<li>
+FlowLayout,依次放置组件。</li>
+<li>
+BoarderLayout,将组件放置在边界上。</li>
+<li>
+CardLayout,将组件像扑克牌一样叠放，而每次只能显示其中一个组件。</li>
+<li>
+GridLayout,将显示区域按行、列划分成一个个相等的格子，组件依次放入这些格子中。</li>
+<li>
+GridBagLayout,将显示区域划分成许多矩形小单元，每个组件可占用一个或多个小单元。</li>
+</ul>
+其中GridBagLayout能进行精细的位置控制，也最复杂，本教程暂不讨论这种布局策略，将在专题文章中进行详细讲解。<br>
+<br>
+每个容器都有一个布局管理器，由它来决定如何安排放入容器内的的组件。布局管理器是实现LayoutManager接口的类。
+<h2>
+一.FlowLayout布局 (JApplet,JPanel,JScrollPane默认布局)</h2>
+FlowLayout布局是将其中的组件按照加入的先后顺序从左到右排列，一行满之后就转到一下行继续从左到右排列，每一行中的组件都居中排列。这是一种最简便的布局策略，一般用于组件不多的情况，当组件较多时，容器中的组件就会显得高低不平，各行长短不一。<br>
+<br>
+FlowLayout是小应用程序和面板默认布局，FlowLayout布局的构造方法有：
+<ol>
+<li>
+FlowLayout(),生成一个默认的FlowLayout布局。默认情况下，组件居中，间隙为5个像素。</li>
+<li>
+FlowLayout(int aligment),设定每珩的组件的对齐方式。alignment取值可以为 FlowLayout.LEFT,FlowLayout.CENTER,FlowLayout.RIGHT。</li>
+<li>
+FlowLayout(int aligment,int horz, int vert),设定对齐方式，并设定组件的水平间距horz和垂直间距vert，用超类Container的方法setLayout()为容器设定布局。例如，代码setLayout(new FlowLayout())为容器设定 FlowLayout布局。将组件加入容器的方法是add(组件名)。</li>
+</ol>
+<h2>
+二.BorderLayout布局(JWindow、JFrame,JDialog的默认布局)</h2>
+<span style="color:#b22222;">BorderLayout布局策略是把容器内的空间简单划分为东“East”,西 “West”,南 “South”,北 “North”，中 “Center”五个区域。</span>加入组件时，都应该指明把组件放在哪一个区域中。一个位置放一个组件。如果某个位置要加入多个组件，应先将要加入该位置的组件放放另一个容器中，然后再将这个容器加入到这个个位置。<br>
+<br>
+BorderLayout布局的构造方法有：<br>
+(1) BorderLayout(),生成一个默认的BorderLayout布局。默认情况下，没有间隙。<br>
+(2) BorderLayout(int horz,int vert),设定组件之间的水平间距和垂直间距。<br>
+<br>
+BorderLayout布局策略的设定方法是setLayout(new BorderLayout())。将组件加入到容器的方法是add(组件名，位置)，如果加入组件时没有指定位置，则默认为“中”位置。<br>
+<br>
+<span style="color:#b22222;">BorderLayout布局是JWindow、JFrame,JDialog的默认布局。</span><br>
+【例 11-5】应用程序设有五个标签、分别放于窗口的东、西、南、北和中五个区域（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-5.txt" target="_blank">查看源文件</a>）。<br>
+<br>
+<h2>
+三.GridLayout布局</h2>
+<span style="color:#b22222;">GridLayout布局是把容器划分成若干行和列的网格状，行数和列数由程序控制，组件放在网格的小格子中。</span>GridLayout布局的特点是组件定位比较精确。由于GridLayout布局中每个网格具有相同形状和大小，要求放入容器的组件也应保持相同的大小。<br>
+<br>
+GridLayout布局的构造方法有：<br>
+(1) GridLayout(),生成一个单列的GridLayout布局。默认情况下，无间隙。<br>
+(2) GridLayout(int row,int col),设定一个有行row和列col的GridLayout布局。<br>
+(3) GridLayout(int row,int col,int horz,int vert),设定布局的行数和列数、组件的水平间距和垂直间距。<br>
+<br>
+GridLayout布局以行为基准，当放置的组件个数超额时，自动增加列；反之，组件太少也会自动减少列，行数不变，组件按行优先顺序排列(根据组件自动增减列)。GridLayout布局的每个网格必须填入组件，如果希望某个网格为空白，可以用一个空白标签(add(new Label()))顶替。<br>
+<br>
+【例 11-6】小应用程序先将若干个按钮和若干个标签放入JPanel中，然后将JPanel放入JScrollPane中，最后，将JScrollPane放入小程序的窗口中，程序所创建的JScrollPane总是带水平和垂直滚动条，滚动面板的可视范围小于面板的实际要求，可以移动滚动条的滑块显示面板原先不在可视范围内的区域（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-6.txt" target="_blank">查看源文件</a>）。<br>
+<br>
+GridLayout布局要求所有组件的大小保持一致，这可能会使用界面外观不够美观。一个补救的办法是让一些小组件合并放在一个容器中，然后把这个容器作为组件，再放入到GridLayout布局中。这就是前面所说的容器嵌套。例如，容器A使用GridLayout布局，将容器均分为网格；另有容器B和C各放入若干组件后，把B和C分别作为组件添加到容器A中。容器B和C也可以设置为GridLayout布局，把自己分为若干网格，也可以设置成其他布局。这样，从外观来看，各组件的大小就有了差异。
+<h2>
+四.CardLayout布局</h2>
+采用CardLayout布局的容器虽可容纳多个组件，但是多个组件拥有同一个显示空间，某一时刻只能显示一个组件。就像一叠扑克牌每次只能显示最上面的一张一样，这个显示的组件将占据容器的全部空间。CardLayout布局设计步骤如下：<br>
+先创建CardLayout布局对象。然后，使用setLayout()方法为容器设置布局。最的，调用容器的add()方法将组件加入容器。CardLayout布局策略加入组件的方法是：<br>
+    add(组件代号，组件);<br>
+其中组件代号是字符串，是另给的，与组件名无关。<br>
+<br>
+例如，以下代码为一个JPanel容器设定CardLayout布局：<br>
+    CardLayout myCard = new CardLayout();//创建CardLayout布局对象<br>
+    JPanel p = new JPanel();//创建Panel对象<br>
+    p.setLayout(myCard);<br>
+<br>
+用CardLayout类提供的方法显示某一组件的方式有两种：<br>
+(1) 使用show(容器名，组件代号)形式的代码，指定某个容器中的某个组件显示。例如，以下代码指定容器p的组件代号k，显示这个组件：<br>
+    myCard.show(p,k);<br>
+(2) 按组件加入容器的顺序显示组件。<br>
+first(容器)：例如，代码myCard.first(p);<br>
+last(容器)：例如 ， myCard.last(p);<br>
+next(容器)：例如，myCard.next(p);<br>
+previous(容器):myCard.previous(p);<br>
+<br>
+【例11-7】小应用程序使用CardLayout布局，面板容器p使用CardLayout布局策略设置10个标签组件。窗口设有4个按钮，分别负责显示p的第一个组件、最后一个组件、当前组件的前一个组件和当前的组件的最后一个组件（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-7.txt" target="_blank">查看源文件</a>）。<br>
+<br>
+<h2>
+五.null布局与setBounds方法</h2>
+<span style="color:#b22222;">空布局就是把一个容器的布局设置为null布局。</span>空布局采用setBounds()方法设置组件本身的大小和在容器中的位置：<br>
+    setBounds(int x,int y,int width,int height)<br>
+组件所占区域是一个矩形，参数x,y是组件的左上角在容器中的位置坐标；参数weight,height是组件的宽和高。空布局安置组件的办法分两个步骤：先使用add()方法身容器添加组件。然后调用setBounds()方法设置组件在容器中的位置和组件本身的大小。与组件相关的其他方法：
+<ol>
+<li>
+getSize().width,</li>
+<li>
+getSize().height</li>
+<li>
+setVgap(ing vgap)</li>
+<li>
+setHgap(int hgap);</li>
+</ol>
+</div>
+
+http://www.weixueyuan.net/view/6060.html
+<h1>Java文本框和文本区</h1>
+<div id="art-body">在图形界面中，文本框和文本区是用于信息输入输出的组件。
+<h2>
+文本框</h2>
+<span style="color:#b22222;">文本框(JTextField)是界面中用于输入和输出一行文本的框。JTextField类用来建立文本框。</span>与文本框相关的接口是ActionListener。<br>
+<br>
+文本框处理程序的基本内容有以下几个方面：
+<ol>
+<li>
+声明一个文本框名。</li>
+<li>
+建立一个文本框对象。</li>
+<li>
+将文本框对象加入到某个容器。</li>
+<li>
+对需要控制的文本框对象注册监视器，监听文本框的输入结束(即输入回车键)事件。</li>
+<li>
+一个处理文本框事件的方法，完成对截获事件进行判断和处理。</li>
+</ol>
+<br>
+JTextField类的主要构造方法：
+<ol>
+<li>
+JTextField()，文本框的字符长度为1。</li>
+<li>
+JTextField(int columns)，文本框初始值为空字符串，文本框的字符长度设为columns.</li>
+<li>
+JTextField(String text),文本框初始值为text的字符串。</li>
+<li>
+JTextField(String text,int columns);文本框初始值为text，文本框的字符长度为columns。</li>
+</ol>
+<br>
+JTextField类的其他方法：
+<ol>
+<li>
+setFont(Font f),设置字体</li>
+<li>
+setText(String text)，在文本框中设置文本</li>
+<li>
+getText()，获取文本框中的文本。</li>
+<li>
+setEditable(boolean)，指定文本框的可编辑性，默认为true，可编辑。</li>
+<li>
+setHorizontalAlignment(int alignment)设置文本对齐方式。对齐方式有：JTextField.LEFT, JTextField.CENTER, JTextField.RIGHT。</li>
+<li>
+requestFocus()，设置焦点。</li>
+<li>
+addActionListener(ActionListener )，为文本框设置动作监视器，指定ActionListener对象接收该文本框上发生的输入结束动作事件。</li>
+<li>
+removeActionListener(ActionListener)移去文本框监视器。</li>
+<li>
+getColumns(),返回文本框的列数。</li>
+<li>
+getMinimumSize(),返回文本框所需的最小尺寸。</li>
+<li>
+getMinimumSize(int), 返回文本框在指定的字符数情况下，所需的最小尺寸。</li>
+<li>
+getPreferredSize(),返回文本框希望具有的尺寸。</li>
+<li>
+getPreferredSize(int),返回文本框在指定字符数情况下，希望具有的尺寸。</li>
+</ol>
+<br>
+【例 11-8】小应用程序有两个文本框。一个文本用于输入一个整数，另一个文本框显示这个整数的平方值。程序用字符串转基本类型的方法Long.parseLong(text1.getText())，读取文本框text1中的字符串，并将它转换成整数。程序用Sqr类的实例作为监视器，但为了让监视器能访问主类的变量，主类中的变量被声明为类变量，并且不设置访问权限（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-8.txt" target="_blank">查看源文件</a>）。<br>
+<br>
+密码框(JPasswordField)是一个单行的输入组件，与JTextField基本类似。密码框多一个屏蔽功能，就是在输入时，都会以一个别的指定的字符(一般是*字符)输出。除了前面介绍的文本框的方法外，另有一些密码框常用的方法：
+<ol>
+<li>
+getEchoChar(),返回密码的回显字符。</li>
+<li>
+setEchoChar(char)，设置密码框的回显字符。</li>
+</ol>
+<h2>
+文本区</h2>
+<span style="color:#b22222;">文本区(JTextArea)是窗体中一个放置文本的区域。</span>文本区与文本框的主要区别是文本区可存放多行文本。javax.swing包中的JTextArea类用来建立文本区。JTextArea组件没有事件。<br>
+<br>
+文本区处理程序的基本内容有以下几个方面：
+<ol>
+<li>
+声明一个文本区名。</li>
+<li>
+建立一个文本区对象。</li>
+<li>
+将文本区对象加入到某个容器。</li>
+</ol>
+<br>
+JTextArea类的主要构造方法：
+<ol>
+<li>
+JTextArea()，以默认的列数和行数，创建一个文本区对象。</li>
+<li>
+JTextArea(String s),以s为初始值，创建一个文本区对象。</li>
+<li>
+JTextArea(Strings ,int x,int y)，以s为初始值，行数为x,列数为y,创建一个文本区对象。</li>
+<li>
+JTextArea(int x,int y)以行数为x,以列数为y，创建一个文本区对象。</li>
+</ol>
+<br>
+JTextArea类的其他常用方法：
+<ol>
+<li>
+setText(String s),设置显示文本，同时清除原有文本。</li>
+<li>
+getText()，获取文本区的文本。</li>
+<li>
+insert(String s,int x),在指定的位置插入指定的文本。</li>
+<li>
+replace(String s,int x,int y),用给定的一替换从x位置开始到y位置结束的文本。</li>
+<li>
+append(String s)，在文本区追加文本。</li>
+<li>
+getCarePosition(),获取文本区中活动光标的位置。</li>
+<li>
+setCarePosition(int n)，设置活动光标的位置。</li>
+<li>
+setLineWrap(boolean b)，设置自动换行，缺省情况，不自动换行。</li>
+</ol>
+<br>
+以下代码创建一个文本区，并设置能自动换行。<br>
+    JTextArea textA = new JTextArea(“我是一个文本区”,10,15);<br>
+    textA.setLineWrap(true);//设置自动换行<br>
+当文本区中的内容较多，不能在文本区全部显示时，可给文本区配上滚动条。给文本区设置滚动条可用以下代码：<br>
+    JTextArea ta = new JTextArea();<br>
+    JScrollPane jsp = new JScrollPane(ta);//给文本区添加滚动条</div>
+
+http://www.weixueyuan.net/view/6061.html
+<h1>Java文本框和文本区的输入输出</h1>
+<div id="art-body">在GUI中，常用文本框和文本区实现数据的输入和输出。如果采用文本区输入，通常另设一个数据输入完成按钮。当数据输入结束时，点击这个按钮。事件处理程序利用<span style="color:#b22222;">getText()方法从文本区中读取字符串信息</span>。对于采用文本框作为输入的情况，最后输入的回车符可以激发输入完成事件，通常不用另设按钮。事件处理程序可以利用单词分析器分析出一个个数，再利用字符串转换数值方法，获得输入的数值。对于输出，程序先将数值转换成字符串，然后通过<span style="color:#b22222;">setText()方法将数据输出到文本框或文本区</span>。<br>
+<br>
+【例 11-9】小应用程序设置一个文本区、一个文本框和两个按钮。用户在文本区中输入整数序列，单击求和按钮，程序对文本区中的整数序列进行求和，并在文本框中输出和。单击第二个按钮，清除文本区和文本框中的内容。<br>
+import java.util.*;import java.applet.*;import java.awt.*;<br>
+import javax.swing.*;import java.awt.event.*;<br>
+public class J509 extends Applet implements ActionListener{<br>
+    JTextArea textA;JTextField textF;JButton b1,b2;<br>
+    public void init(){<br>
+        setSize(250,150);<br>
+        textA=new JTextArea("",5,10);<br>
+        textA.setBackground(Color.cyan);<br>
+        textF=new JTextField("",10);<br>
+        textF.setBackground(Color.pink);<br>
+        b1=new JButton("求 和"); b2=new JButton("重新开始");<br>
+        textF.setEditable(false);<br>
+        b1.addActionListener(this); b2.addActionListener(this);<br>
+        add(textA); add(textF); add(b1);add(b2);<br>
+    }<br>
+    public void actionPerformed(ActionEvent e){<br>
+        if(e.getSource()==b1){<br>
+            String s=textA.getText();<br>
+            StringTokenizer tokens=new StringTokenizer(s);<br>
+            //使用默认的分隔符集合：空格、换行、Tab符合回车作分隔符<br>
+            int n=tokens.countTokens(),sum=0,i;<br>
+            for(i=0;i&lt;=n-1;i++){<br>
+               String temp=tokens.nextToken();//从文本区取下一个数据<br>
+               sum+=Integer.parseInt(temp);<br>
+            } <br>
+            textF.setText(""+sum);<br>
+        }<br>
+        else if(e.getSource()==b2){<br>
+            textA.setText(null);<br>
+            textF.setText(null);<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+【例 11-10】小应用程序计算从起始整数到终止整数中是因子倍数的所有数。小程序容器用GridLayout布局将界面划分为3行列，第一行是标签，第二行和第三行是两个Panel。设计两个Panel容器类Panel1,Panel2,并分别用GridLayout布局划分。Panel1为1行6列，Panel2为1行4列。然后将标签和容器类Panel1,Panel2产生的组件加入到窗口的相应位置中。<br>
+import java.applet.*;import javax.swing.*;<br>
+import java.awt.*;import java.awt.event.*;<br>
+class Panel1 extends JPanel{<br>
+    JTextField text1,text2,text3;<br>
+    Panel1(){//构造方法。当创建Panel对象时，Panel被初始化为有三个标签<br>
+        //三个文本框，布局为GridLayout(1,6)<br>
+        text1=new JTextField(10);text2=new JTextField(10);<br>
+        text3=new JTextField(10);setLayout(new GridLayout(1,6));<br>
+        add(new JLabel("起始数",JLabel.RIGHT));add(text1);<br>
+        add(new JLabel("终止数",JLabel.RIGHT));add(text2);<br>
+        add(new JLabel("因子",JLabel.RIGHT));add(text3);<br>
+    }<br>
+}<br>
+class Panel2 extends JPanel{//扩展Panel类<br>
+    JTextArea text;JButton Button;<br>
+    Panel2(){//构造方法。当创建Panel对象时，Panel被初始化为有一个标签<br>
+        //一个文本框，布局为GridLayout(1,4)<br>
+        text=new JTextArea(4,10);text.setLineWrap(true);<br>
+        JScrollPane jsp=new JScrollPane(text);<br>
+        Button=new JButton("开始计算");<br>
+        setLayout(new GridLayout(1,4));<br>
+        add(new JLabel("计算结果：",JLabel.RIGHT));<br>
+        add(jsp);<br>
+        add(new Label());add(Button);<br>
+    }<br>
+}<br>
+public class J510 extends Applet implements ActionListener{<br>
+    Panel1 panel1;Panel2 panel2;<br>
+    public void init(){<br>
+        setLayout(new GridLayout(3,1));<br>
+        setSize(400,200);panel1=new Panel1();panel2=new Panel2();<br>
+        add(new JLabel("计算从起始数到终止数是因子倍数的数",JLabel.CENTER));<br>
+        add(panel1);add(panel2);<br>
+        (panel2.Button).addActionListener(this);<br>
+    }<br>
+    public void actionPerformed(ActionEvent e){<br>
+        if(e.getSource()==(panel2.Button)){<br>
+            long n1,n2,f,count=0;<br>
+            n1=Long.parseLong(panel1.text1.getText());<br>
+            n2=Long.parseLong(panel1.text2.getText());<br>
+            f=Long.parseLong(panel1.text3.getText());<br>
+            for(long i=n1;i&lt;=n2;i++){<br>
+                if(i%f==0)<br>
+                panel2.text.append(String.valueOf(i)+"");<br>
+           }<br>
+        }<br>
+    }<br>
+}</div>
+
+http://www.weixueyuan.net/view/6062.html
+<h1>Java选择框和单选按钮</h1>
+<div id="art-body">选择框、单选框和单选按钮都是选择组件，选择组件有两种状态，<span style="color:#b22222;">一种是选中(on)，另一种是未选中(off)</span>，它们提供一种简单的 “on/off”选择功能，让用户在一组选择项目中作选择。
+<h2>
+选择框</h2>
+选择框(JCheckBox)的选中与否开状是一个小方框，被选中则在框中打勾。当在一个容器中有多个选择框，同时可以有多个选择框被选中，这样的选择框也称复选框。与选择框相关的接口是ItemListener，事件类是ItemEvent。<br>
+<br>
+JCheckBox类常用的构造方法有以下3个：
+<ol>
+<li>
+JCheckBox()：用空标题构造选择框。</li>
+<li>
+JCheckBox(String s)：用给定的标题s构造选择框。</li>
+<li>
+JCheckBox(String s, boolean b)：用给定的标题s构造选择框，参数b设置选中与否的初始状态。</li>
+</ol>
+<br>
+JCheckBox类的其他常用方法如下：
+<ol>
+<li>
+getState()：获取选择框的状态。</li>
+<li>
+setState(boolean b)：设置选择框的状态</li>
+<li>
+getLabel()：获取选择框的标题。</li>
+<li>
+setLabel(String s)：设置选择框的标题。</li>
+<li>
+isSelected()：获取选择框是否被选中的状态。</li>
+<li>
+itemStateChanged(ItemEvent e)：处理选择框事件的接口方法。</li>
+<li>
+getItemSelectable()：获取可选项，获取事件源。</li>
+<li>
+addItemListener(ItemListener l)：为选择框设定监视器。</li>
+<li>
+removeItemListener(ItemListener l)：移去选择框的监视器。</li>
+</ol>
+<br>
+【例 11-11】声明一个面板子类，面板子类对象有3个选择框。<br>
+class Panel1 extends JPanel{<br>
+    JCheckBox box1,box2,box3;<br>
+    Panel1(){<br>
+        box1 = new JCheckBox(“足球”);<br>
+        box2 = new JCheckBox(“排球”);<br>
+        box2 = new JCheckBox(“篮球”);<br>
+    }<br>
+}<br>
+<h2>
+单选框</h2>
+当在一个容器中放入多个选择框，且没有ButtonGroup对象将它们分组，则可以同时选中多个选择框。如果使用ButtonGroup对象将选择框分组，同一时刻组内的多个选择框只允许有一个被选中，称同一组内的选择框为单选框。单选框分组的方法是先创建ButtonGroup对象，然后将希望为同组的选择框添加到同一个ButtonGroup对象中。参见例6.2程序的面板子类Panel2的声明，组内有3个单选框。
+<h2>
+单选按钮</h2>
+单选按钮(JRadioButton)的功能与单选框相似。使用单选按钮的方法是将一些单选按钮用ButtonGroup对象分组，使同一组的单选按钮只允许有一个被选中。单选按钮与单选框的差异是显示的样式不同，单选按钮是一个圆形的按钮，单选框是一个小方框。<br>
+<br>
+JRadioButton类的常用构造方法有以下几个：
+<ol>
+<li>
+JRadioButton()：用空标题构造单选按钮。</li>
+<li>
+JRadioButton(String s)：用给定的标题s构造单选按钮。</li>
+<li>
+JRadioButton(String s,boolean b)：用给定的标题s构造单选按钮,参数b设置选中与否的初始状态。</li>
+</ol>
+单选按钮使用时需要使用ButtonGroup将单选按钮分组，单选按钮的分组方法是先创建对象，然后将同组的单选按钮添加到同一个ButtonGroup对象中。参见例6.2程序的子类panel1的声明，组内有3个单选按钮。
+<h2>
+选择项目事件处理</h2>
+用户对选择框或单选按钮做出选择后，程序应对这个选择作出必要的响应，程序为此要处理选择项目事件。选择项目处理程序的基本内容有：
+<ol>
+<li>
+监视选择项目对象的类要实现接口ItemListener,</li>
+<li>
+程序要声明和建立选择对象，</li>
+<li>
+为选择对象注册监视器，</li>
+<li>
+编写处理选择项目事件的接口方法itemStateChanged(ItemEvent e),在该方法内用getItemSelectable()方法获取事件源，并作相应处理。</li>
+</ol>
+<br>
+【例 11-12】处理选择项目事件的小应用程序。一个由3个单选按钮组成的产品选择组，当选中某个产品时，文本区将显示该产品的信息。一个由3个选择框组成的购买产品数量选择框组，当选择了购买数量后，在另一个文本框显示每台价格（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-12.txt" target="_blank">查看源文件</a>）。<br>
+</div>
+
+http://www.weixueyuan.net/view/6063.html
+<h1>Java列表和组合框</h1>
+<div id="art-body">列表和组合框是又一类供用户选择的界面组件，用于在一组选择项目选择，组合框还可以输入新的选择。
+<h2>
+列表</h2>
+列表(JList)在界面中表现为列表框，是JList类或它的子类的对象。程序可以在列表框中加入多个文本选择项条目。列表事件的事件源有两种：
+<ul>
+<li>
+一是鼠标双击某个选项：双击选项是动作事件，与该事件相关的接口是ActionListener，注册监视器的方法是addActionListener()，接口方法是actionPerformed(ActionEvent e)。</li>
+<li>
+二是鼠标单击某个选项：单击选项是选项事件，与选项事件相关的接口是ListSelectionListener,注册监视器的方法是addListSelectionListener,接口方法是valueChanged(ListSelectionEvent e)。</li>
+</ul>
+<br>
+JList 类的常用构造方法：
+<ol>
+<li>
+JList()：建立一个列表。</li>
+<li>
+JList(String list[])：建立列表，list是字符串数组，数组元素是列表的选择条目。</li>
+</ol>
+<br>
+JList类的常用方法：
+<ol>
+<li>
+getSelectedIndex()：获取选项的索引。返回最小的选择单元索引；只选择了列表中单个项时，返回该选择。</li>
+<li>
+getSelectedValue()：获取选项的值。</li>
+<li>
+getSelectedIndices()：返回所选的全部索引的数组（按升序排列）。</li>
+<li>
+getSelectedValues(),：返回所有选择值的数组，根据其列表中的索引顺序按升序排序。</li>
+<li>
+getItemCount()：获取列表中的条数。</li>
+<li>
+setVisibleRowCount(int n)：设置列表可见行数。</li>
+<li>
+setSelectionMode(int seleMode)：设置列表选择模型。选择模型有单选和多选两种。
+<ul>
+<li>
+单选：ListSelectionModel.SINGLE_SELECTION.</li>
+<li>
+多选：ListSelectionModel.MULTIPLE.INTERVAL_SELECTION.</li>
+</ul>
+</li>
+<li>
+remove(int n)：从列表的选项菜单中删除指定索引的选项。</li>
+<li>
+removeAll()：删除列表中的全部选项。</li>
+</ol>
+<br>
+列表可以添加滚动条，列表添加滚动条的方法是先创建列表，然后再创建一个JScrollPane滚动面板对象，在创建滚动面板对象时指定列表。以下代码示意为列表list2添加滚动条：<br>
+    JScrollPane jsp = new JScrollPane(list2);<br>
+<br>
+【例 11-13】小应用程序有两个列表，第一个列表只允许单选，第二个列表允许多选（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-13.txt" target="_blank">查看源文件</a>）。<br>
+<h2>
+组合框</h2>
+组合框(JComboBox)是文本框和列表的组合，可以在文本框中输入选项，也可以单击下拉按钮从显示的列表中进行选择。<br>
+<br>
+组合框的常用构造方法：
+<ol>
+<li>
+JComboBox()：建立一个没有选项的JComboBox对象。</li>
+<li>
+JComboBox(JComboBoxModel aModel)：用数据模型建立一个JComboBox对象。</li>
+<li>
+JComboBox(Object[]items)：利用数组对象建立一个JComboBox对象。</li>
+</ol>
+<br>
+组合框的其他常用方法有以下几个：
+<ol>
+<li>
+addItem(Object obj)：向组合框加选项。</li>
+<li>
+getItemCount()：获取组合框的条目总数。</li>
+<li>
+removeItem(Object ob)：删除指定选项。</li>
+<li>
+removeItemAt(int index)：删除指定索引的选项。</li>
+<li>
+insertItemAt(Object ob,int index)：在指定的索引处插入选项。</li>
+<li>
+getSelectedIndex()：获取所选项的索引值(从0开始)。</li>
+<li>
+getSelectedItem()：获得所选项的内容。</li>
+<li>
+setEditable(boolean b)：设为可编辑。组合框的默认状态是不可编辑的，需要调用本方法设定为可编辑，才能响应选择输入事件。</li>
+</ol>
+<br>
+在JComboBox对象上发生事件分为两类。一是用户选定项目，事件响应程序获取用户所选的项目。二是用户输入项目后按回车键，事件响应程序读取用户的输入。第一类事件的接口是ItemListener;第二类事件是输入事件，接口是ActionListener。<br>
+<br>
+【例 11-14】一个说明组合框用法的应用程序。程序中声明的组合框子类实现ItemLister接口和ActionListener接口。组合框子类的窗口中设置了一个文本框和一个组合框，组合框中有三个选择。实现接口的监视方法将组合框的选择结果在文本框中显示（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-14.txt" target="_blank">查看源文件</a>）。<br>
+</div>
+
+http://www.weixueyuan.net/view/6064.html
+<h1>Java菜单（菜单条、菜单和菜单项）</h1>
+<div id="art-body"><span style="color:#b22222;">有两种类型的菜单：下拉式菜单和弹出式菜单。</span>本章只讨论下拉式菜单编程方法。菜单与JComboBox和JCheckBox不同，它们在界面中是一直可见的。菜单与JComboBox的相同之处是每次只可选择一个项目。<br>
+<br>
+在下拉式菜单或弹出式菜单中选择一个选项就产生一个ActionEvent事件。该事件被发送给那个选项的监视器，事件的意义由监视器解释。
+<h2>
+菜单条、菜单和菜单项</h2>
+下拉式菜单通过出现在菜单条上的名字可视化表示，菜单条(JMenuBar)通常出现在JFrame的顶部，一个菜单条显示多个下拉式菜单的名字。可以用两种方式来激活下拉式菜单。一种是按下鼠标的按钮，并保持按下状态，移动鼠标，直至释放鼠标完成选择，高亮度显示的菜单项即为所选择的。另一种方式是当光标位于菜单条中的菜单名上时，点击鼠标，在这种情况下，菜单会展开，且高亮度显示菜单项。<br>
+<br>
+<span style="color:#b22222;">一个菜单条可以放多个菜单(JMenu)，每个菜单又可以有许多菜单项(JMenuItem)。</span>例如，Eclipse环境的菜单条有File、Edit、Source、Refactor等菜单，每个菜单又有许多菜单项。例如，File菜单有New、Open File、Close 、Close All等菜单项。<br>
+<br>
+向窗口增设菜单的方法是：先创建一个菜单条对象，然后再创建若干菜单对象，把这些菜单对象放在菜单条里，再按要求为每个菜单对象添加菜单项。<br>
+菜单中的菜单项也可以是一个完整的菜单。由于菜单项又可以是另一个完整菜单，因此可以构造一个层次状菜单结构。<br>
+<br>
+<strong>1.菜单条</strong><br>
+类JMenuBar的实例就是菜单条。例如，以下代码创建菜单条对象menubar：<br>
+    JMenuBar menubar = new JMenuBar();<br>
+在窗口中增设菜单条，必须使用JFrame类中的setJMenuBar()方法。例如，代码：<br>
+    setJMenuBar(menubar);<br>
+<br>
+类JMenuBar的常用方法有：
+<ol>
+<li>
+add(JMenu m)：将菜单m加入到菜单条中。</li>
+<li>
+countJMenus()：获得菜单条中菜单条数。</li>
+<li>
+getJMenu(int p)：取得菜单条中的菜单。</li>
+<li>
+remove(JMenu m)：删除菜单条中的菜单m。</li>
+</ol>
+<br>
+<strong>2. 菜单</strong><br>
+由类JMenu创建的对象就是菜单。类JMenu的常用方法如下：
+<ol>
+<li>
+JMenu()：建立一个空标题的菜单。</li>
+<li>
+JMenu(String s)：建立一个标题为s的菜单。</li>
+<li>
+add(JMenuItem item)：向菜单增加由参数item指定的菜单选项。</li>
+<li>
+add(JMenu menu)：向菜单增加由参数menu指定的菜单。实现在菜单嵌入子菜单。</li>
+<li>
+addSeparator()：在菜单选项之间画一条分隔线。</li>
+<li>
+getItem(int n)：得到指定索引处的菜单项。</li>
+<li>
+getItemCount()：得到菜单项数目。</li>
+<li>
+insert(JMenuItem item,int n)：在菜单的位置n插入菜单项item.</li>
+<li>
+remove(int n)：删除菜单位置n的菜单项</li>
+<li>
+removeAll()：删除菜单的所有菜单项。</li>
+</ol>
+<br>
+<strong>3.菜单项</strong><br>
+类JMenuItem 的实例就是菜单项。类JMenuItem的常用方法如下：
+<ol>
+<li>
+JMenuItem()：构造无标题的菜单项。</li>
+<li>
+JMenuItem(String s)：构造有标题的菜单项。</li>
+<li>
+setEnabled(boolean b)：设置当前单项是否可被选择。</li>
+<li>
+isEnabled()：返回当前菜单项是否可被用户选择。</li>
+<li>
+getLabel()：得到菜单项的名称。</li>
+<li>
+setLabel()：设置菜单选项的名称。</li>
+<li>
+addActionListener(ActionListener e)：为菜单项设置监视器。监视器接受点击某个菜单的动作事件。</li>
+</ol>
+<br>
+<strong>4. 处理菜单事件</strong><br>
+菜单的事件源是用鼠标点击某个菜单项。处理该事件的接口是ActionListener,要实现的接口方法是actionPerformed(ActionEvent e),获得事件源的方法getSource(). <br>
+<br>
+【例 11-15】小应用程序示意窗口有菜单条的实现方法。设有一个按钮，当按钮处于打开窗口状态时，单击按钮将打开一个窗口，窗口设有一个菜单条，有两个菜单，每个菜单又各有三个菜单项。当一个菜单项被选中时，菜单项监视方法在文本框中显示相应菜单项被选中字样（<a href="http://www.weixueyuan.net/uploads/code/java/rumen/11-15.txt" target="_blank">查看源文件</a>）。<br>
+<br>
+<strong>5. 嵌入子菜单</strong><br>
+创建了一个菜单，并创建多个菜单项，其中某个菜单项又是一个(含其他菜单项的)菜单，这就构成菜单嵌套。例如，将上述程序中的有关代码改成如下：<br>
+    Menu menu1,menu2,item4;<br>
+    MenuItem item3,item5,item6,item41,item42;<br>
+另插入以下代码创建item41和item42菜单项，并把它们加入到item4菜单中：<br>
+    item41= new MenuItem(“东方红”);<br>
+    item42 = new MenuItem(“牡丹”);<br>
+    item4.add(item41);<br>
+    item4.add(item42);<br>
+则点击item4菜单时，又会打开两个菜单项供选择。<br>
+<br>
+<strong>6. 向菜单增加退出项</strong><br>
+增设一个新的菜单项，对该菜单项加入监视，对应的监视方法中使用System.exit()方法，就能实现单击该菜单项时退出Java运行环境。例如，以下示意代码：<br>
+…<br>
+item7 = new MenuItem(“退出”);<br>
+item7.addActionListener(this);<br>
+…<br>
+public void actionPerformed(ActionEvent e){<br>
+    if(e.getSource()==item7){<br>
+        System.exit(0);<br>
+    }<br>
+}<br>
+<br>
+<strong>7.设置菜单项的快捷键</strong><br>
+用MenuShortcut类为菜单项设置快捷键。构造方法是MenuShortcut(int key)。其中key可以取值KeyEvent.VK_A至KenEvent.VK_Z,也可以取 ‘a’到 ‘z’键码值。菜单项使用setShortcut(MenuShortcut k)方法来设置快捷键。例如，以下代码设置字母e为快捷键。<br>
+class Herwindow extends Frame implements ActionListener{<br>
+    MenuBar menbar;<br>
+    Menu menu;<br>
+    MenuItem item;<br>
+    MenuShortcut shortcut = new MenuShortcut(KeyEvent.VK_E);<br>
+    …<br>
+    item.setShortcut(shortcut);<br>
+    …<br>
+}
+<h2>
+选择框菜单项</h2>
+菜单也可以包含具有持久的选择状态的选项，这种特殊的菜单可由JCheckBoxMenuItem类来定义。JCheckBoxMenuItem对象像选择框一样，能表示一个选项被选中与否，也可以作为一个菜单项加到下拉菜单中。点击JCheckBoxMenuItem菜单时，就会在它的左边出现打勾符号或清除打勾符号。例如，在例6.5程序的类MenuWindow中，将代码<br>
+    addItem(menu1,“跑步”,this);addItem(menu1,”跳绳”,this);<br>
+改写成以下代码，就将两个普通菜单项“跑步“和“跳绳”改成两个选择框菜单项：<br>
+    JCheckBoxMenuItem item1 = new JCheckBoxMenuItem(“跑步”)；<br>
+    JCheckBoxMenuItem item2 = new JCheckBoxMenuItem(“跳绳”);<br>
+    item1.setActionCommand(“跑步”);<br>
+    item1.addActionListener(this);<br>
+    menu1.add(item1);<br>
+    item2.setActionCommand(“跳绳”);<br>
+    item2.addActionListener(this);<br>
+    menu1.add(item2);</div>
+
+http://www.weixueyuan.net/view/6065.html

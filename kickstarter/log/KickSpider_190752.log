@@ -1,0 +1,842 @@
+2018-01-19 07:53:39 [scrapy] INFO: Scrapy 1.1.1 started (bot: kickstarter)
+2018-01-19 07:53:39 [scrapy] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'kickstarter.spiders', 'ROBOTSTXT_OBEY': True, 'LOG_LEVEL': 'INFO', 'SPIDER_MODULES': ['kickstarter.spiders'], 'BOT_NAME': 'kickstarter', 'LOG_STDOUT': True, 'LOG_FILE': 'log/KickSpider_190752.log'}
+2018-01-19 07:53:39 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2018-01-19 07:53:40 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-01-19 07:53:40 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-01-19 07:53:40 [scrapy] INFO: Enabled item pipelines:
+['kickstarter.pipelines.MongodbPipeline']
+2018-01-19 07:53:40 [scrapy] INFO: Spider opened
+2018-01-19 07:53:40 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-01-19 07:53:42 [scrapy] ERROR: Spider error processing <GET https://www.kickstarter.com/projects/jpoprevolution/j-pop-revolution/rewards> (referer: None)
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\spiders\reward_spider.py", line 21, in parse
+    cp = json.loads(current_project)
+  File "D:\ProgramData\Anaconda2\lib\json\__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "D:\ProgramData\Anaconda2\lib\json\decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\ProgramData\Anaconda2\lib\json\decoder.py", line 380, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Expecting ',' delimiter: line 1 column 14407 (char 14406)
+2018-01-19 07:53:47 [scrapy] ERROR: Spider error processing <GET https://www.kickstarter.com/projects/snckpck/raddddd-a-poetry-short-story-illustration-book/rewards> (referer: None)
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\spiders\reward_spider.py", line 21, in parse
+    cp = json.loads(current_project)
+  File "D:\ProgramData\Anaconda2\lib\json\__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "D:\ProgramData\Anaconda2\lib\json\decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\ProgramData\Anaconda2\lib\json\decoder.py", line 380, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Expecting ',' delimiter: line 1 column 6400 (char 6399)
+2018-01-19 07:55:00 [scrapy] INFO: Crawled 17 pages (at 17 pages/min), scraped 10 items (at 10 items/min)
+2018-01-19 07:55:04 [scrapy] ERROR: Spider error processing <GET https://www.kickstarter.com/login?then=%2Fprojects%2Fisyana%2F69489148%2Frewards> (referer: None)
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\spiders\reward_spider.py", line 16, in parse
+    current_project = response.css('script').re(r'window\.current_project.+?"(\{.+?\})";')[0]
+IndexError: list index out of range
+2018-01-19 07:55:23 [scrapy] ERROR: Spider error processing <GET https://www.kickstarter.com/login?then=%2Fprojects%2FPaulHartner%2F1384087152%2Frewards> (referer: None)
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\spiders\reward_spider.py", line 16, in parse
+    current_project = response.css('script').re(r'window\.current_project.+?"(\{.+?\})";')[0]
+IndexError: list index out of range
+2018-01-19 07:55:48 [scrapy] INFO: Crawled 27 pages (at 10 pages/min), scraped 20 items (at 10 items/min)
+2018-01-19 07:56:55 [scrapy] INFO: Crawled 37 pages (at 10 pages/min), scraped 30 items (at 10 items/min)
+2018-01-19 07:57:57 [scrapy] INFO: Crawled 45 pages (at 8 pages/min), scraped 38 items (at 8 items/min)
+2018-01-19 07:58:45 [scrapy] INFO: Crawled 51 pages (at 6 pages/min), scraped 44 items (at 6 items/min)
+2018-01-19 07:59:54 [scrapy] INFO: Crawled 61 pages (at 10 pages/min), scraped 54 items (at 10 items/min)
+2018-01-19 08:00:41 [scrapy] INFO: Crawled 71 pages (at 10 pages/min), scraped 64 items (at 10 items/min)
+2018-01-19 08:01:41 [scrapy] INFO: Crawled 81 pages (at 10 pages/min), scraped 74 items (at 10 items/min)
+2018-01-19 08:02:47 [scrapy] INFO: Crawled 93 pages (at 12 pages/min), scraped 86 items (at 12 items/min)
+2018-01-19 08:03:49 [scrapy] INFO: Crawled 101 pages (at 8 pages/min), scraped 94 items (at 8 items/min)
+2018-01-19 08:04:45 [scrapy] INFO: Crawled 111 pages (at 10 pages/min), scraped 104 items (at 10 items/min)
+2018-01-19 08:05:46 [scrapy] INFO: Crawled 120 pages (at 9 pages/min), scraped 112 items (at 8 items/min)
+2018-01-19 08:06:41 [scrapy] INFO: Crawled 127 pages (at 7 pages/min), scraped 120 items (at 8 items/min)
+2018-01-19 08:07:45 [scrapy] INFO: Crawled 135 pages (at 8 pages/min), scraped 128 items (at 8 items/min)
+2018-01-19 08:09:20 [scrapy] INFO: Crawled 145 pages (at 10 pages/min), scraped 138 items (at 10 items/min)
+2018-01-19 08:09:41 [scrapy] INFO: Crawled 149 pages (at 4 pages/min), scraped 142 items (at 4 items/min)
+2018-01-19 08:10:49 [scrapy] INFO: Crawled 163 pages (at 14 pages/min), scraped 156 items (at 14 items/min)
+2018-01-19 08:11:40 [scrapy] INFO: Crawled 169 pages (at 6 pages/min), scraped 162 items (at 6 items/min)
+2018-01-19 08:12:53 [scrapy] INFO: Crawled 175 pages (at 6 pages/min), scraped 168 items (at 6 items/min)
+2018-01-19 08:13:51 [scrapy] INFO: Crawled 181 pages (at 6 pages/min), scraped 174 items (at 6 items/min)
+2018-01-19 08:14:42 [scrapy] INFO: Crawled 190 pages (at 9 pages/min), scraped 182 items (at 8 items/min)
+2018-01-19 08:16:22 [scrapy] INFO: Crawled 199 pages (at 9 pages/min), scraped 192 items (at 10 items/min)
+2018-01-19 08:16:42 [scrapy] INFO: Crawled 203 pages (at 4 pages/min), scraped 196 items (at 4 items/min)
+2018-01-19 08:17:41 [scrapy] INFO: Crawled 211 pages (at 8 pages/min), scraped 204 items (at 8 items/min)
+2018-01-19 08:18:47 [scrapy] INFO: Crawled 223 pages (at 12 pages/min), scraped 216 items (at 12 items/min)
+2018-01-19 08:19:44 [scrapy] INFO: Crawled 231 pages (at 8 pages/min), scraped 224 items (at 8 items/min)
+2018-01-19 08:20:54 [scrapy] INFO: Crawled 243 pages (at 12 pages/min), scraped 236 items (at 12 items/min)
+2018-01-19 08:21:53 [scrapy] INFO: Crawled 249 pages (at 6 pages/min), scraped 242 items (at 6 items/min)
+2018-01-19 08:22:53 [scrapy] INFO: Crawled 259 pages (at 10 pages/min), scraped 252 items (at 10 items/min)
+2018-01-19 08:23:53 [scrapy] INFO: Crawled 267 pages (at 8 pages/min), scraped 260 items (at 8 items/min)
+2018-01-19 08:24:40 [scrapy] INFO: Crawled 277 pages (at 10 pages/min), scraped 270 items (at 10 items/min)
+2018-01-19 08:26:55 [scrapy] INFO: Crawled 289 pages (at 12 pages/min), scraped 282 items (at 12 items/min)
+2018-01-19 08:27:54 [scrapy] INFO: Crawled 295 pages (at 6 pages/min), scraped 288 items (at 6 items/min)
+2018-01-19 08:28:42 [scrapy] INFO: Crawled 303 pages (at 8 pages/min), scraped 296 items (at 8 items/min)
+2018-01-19 08:29:57 [scrapy] INFO: Crawled 315 pages (at 12 pages/min), scraped 308 items (at 12 items/min)
+2018-01-19 08:31:06 [scrapy] INFO: Crawled 323 pages (at 8 pages/min), scraped 316 items (at 8 items/min)
+2018-01-19 08:31:47 [scrapy] INFO: Crawled 331 pages (at 8 pages/min), scraped 324 items (at 8 items/min)
+2018-01-19 08:32:42 [scrapy] INFO: Crawled 341 pages (at 10 pages/min), scraped 334 items (at 10 items/min)
+2018-01-19 08:33:42 [scrapy] INFO: Crawled 351 pages (at 10 pages/min), scraped 344 items (at 10 items/min)
+2018-01-19 08:34:23 [scrapy] ERROR: Error processing {'comments_count': 0,
+ 'id': 595940979,
+ 'is_first_creator': True,
+ 'rewards': [{u'description': u'No Reward',
+              u'id': 0,
+              u'minimum': 1,
+              u'reward': u'No Reward'},
+             {u'backers_count': 0,
+              u'description': u'NEWSLETTER\\r\\nYou get our newsletter and we list you in our hall of fame as a big thank you for helping us get started on Kickstarter',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1441065600,
+              u'id': 4197241,
+              u'minimum': 1.0,
+              u'project_id': 595940979,
+              u'reward': u'NEWSLETTER\\r\\nYou get our newsletter and we list you in our hall of fame as a big thank you for helping us get started on Kickstarter',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'\xa31 reward',
+              u'updated_at': 1435912415,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/595940979/rewards/4197241?signature=1516408411.a4754e879315b96ab31dfcf14777dad194727ab9'}}},
+             {u'backers_count': 0,
+              u'description': u"BETA PACK\\r\\n\\r\\nYou'll receive our Brand Radar BETA product and join our community of BETA users.",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1441065600,
+              u'id': 4197242,
+              u'minimum': 30.0,
+              u'project_id': 595940979,
+              u'reward': u"BETA PACK\\r\\n\\r\\nYou'll receive our Brand Radar BETA product and join our community of BETA users.",
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'\xa330 reward',
+              u'updated_at': 1438866393,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/595940979/rewards/4197242?signature=1516408411.d86d7d84ba71de5012131e457421078cca4a0532'}}},
+             {u'backers_count': 2,
+              u'description': u'LIMITED QUANTITY\\r\\nBETA PACK + FIRST PRODUCT\\r\\n\\r\\nThe Next generation Brand Radar product will retail at over \xa3100, but the first 200 Kickstarter supports can get it for just \xa345 as well as enjoy the use of the BETA. Includes a series of free upgrades.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1443657600,
+              u'id': 4197243,
+              u'limit': 200,
+              u'minimum': 45.0,
+              u'project_id': 595940979,
+              u'remaining': 198,
+              u'reward': u'LIMITED QUANTITY\\r\\nBETA PACK + FIRST PRODUCT\\r\\n\\r\\nThe Next generation Brand Radar product will retail at over \xa3100, but the first 200 Kickstarter supports can get it for just \xa345 as well as enjoy the use of the BETA. Includes a series of free upgrades.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'\xa345 reward',
+              u'updated_at': 1486937726,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/595940979/rewards/4197243?signature=1516408411.4b60594d705812d59427ef1d2e33e6db6bb5fd31'}}},
+             {u'backers_count': 0,
+              u'description': u'*BEST VALUE\\r\\nBETA + FIRST PRODUCT+ FREE UPGRADES.\\r\\n\\r\\nGet full access to the Brand Radar product as well as the BETA pack. Includes a series of valuable upgrades.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1443657600,
+              u'id': 4197244,
+              u'minimum': 65.0,
+              u'project_id': 595940979,
+              u'reward': u'*BEST VALUE\\r\\nBETA + FIRST PRODUCT+ FREE UPGRADES.\\r\\n\\r\\nGet full access to the Brand Radar product as well as the BETA pack. Includes a series of valuable upgrades.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'\xa365 reward',
+              u'updated_at': 1438866336,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/595940979/rewards/4197244?signature=1516408411.73ab6db88627840e523480a61ba323a39fa6b507'}}},
+             {u'backers_count': 0,
+              u'description': u'CUSTOM SUBSCRIPTION \\r\\n for \xa3965 you can choose any 50 tech. companies - ones which you might well be tracking in your own portfolio, and we will make a Brand Radar product that tracks only them in particular.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1446336000,
+              u'id': 4197245,
+              u'minimum': 965.0,
+              u'project_id': 595940979,
+              u'reward': u'CUSTOM SUBSCRIPTION \\r\\n for \xa3965 you can choose any 50 tech. companies - ones which you might well be tracking in your own portfolio, and we will make a Brand Radar product that tracks only them in particular.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'\xa3965 reward',
+              u'updated_at': 1438866336,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/595940979/rewards/4197245?signature=1516408411.13acb8c4bf31e10d42f1da265f7942e4f996064d'}}},
+             {u'backers_count': 0,
+              u'description': u'CUSTOM SUBSCRIPTION\\r\\n\\r\\nFor \xa35000 you get all of the above and you can choose any 300 companies and we will  make a Brand Radar product that tracks them in particular. This will be a product uniquely tailored to your order. We will also give you some advice about likely results once we look carefully at your choices, and it is completely up to you whether you take our advice or stick with your choice.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1448928000,
+              u'id': 4197246,
+              u'minimum': 5000.0,
+              u'project_id': 595940979,
+              u'reward': u'CUSTOM SUBSCRIPTION\\r\\n\\r\\nFor \xa35000 you get all of the above and you can choose any 300 companies and we will  make a Brand Radar product that tracks them in particular. This will be a product uniquely tailored to your order. We will also give you some advice about likely results once we look carefully at your choices, and it is completely up to you whether you take our advice or stick with your choice.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'\xa35,000 reward',
+              u'updated_at': 1438866336,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/595940979/rewards/4197246?signature=1516408411.332f1a0f8dc1b741a070a663a4ff30efe78c0e6a'}}}],
+ 'rewards_level': 6,
+ 'updates_count': 1,
+ 'video': {u'base': u'https://ksr-video.imgix.net/projects/1953956/video-570027-h264_base.mp4',
+           u'frame': u'https://d15chbti7ht62o.cloudfront.net/projects/1953956/video-570027-h264_high.jpg?2015',
+           u'height': 360,
+           u'high': u'https://ksr-video.imgix.net/projects/1953956/video-570027-h264_high.mp4',
+           u'id': 570027,
+           u'status': u'successful',
+           u'webm': u'https://ksr-video.imgix.net/projects/1953956/video-570027-webm.webm',
+           u'width': 640}}
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\twisted\internet\defer.py", line 649, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\pipelines.py", line 16, in process_item
+    item.insert_to_mongodb()
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\items.py", line 80, in insert_to_mongodb
+    collection.update_one({'id': self['id']}, {'$set': dict(self)})
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\collection.py", line 841, in update_one
+    bypass_doc_val=bypass_document_validation)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\collection.py", line 715, in _update
+    codec_options=self.__write_response_codec_options).copy()
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\pool.py", line 244, in command
+    self._raise_connection_failure(error)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\pool.py", line 370, in _raise_connection_failure
+    _raise_connection_failure(self.address, error)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\pool.py", line 65, in _raise_connection_failure
+    raise AutoReconnect(msg)
+AutoReconnect: 182.254.229.194:27017: [Errno 10060] 
+2018-01-19 08:34:56 [scrapy] ERROR: Error processing {'comments_count': 0,
+ 'id': 2037846612,
+ 'is_first_creator': True,
+ 'rewards': [{u'description': u'No Reward',
+              u'id': 0,
+              u'minimum': 1,
+              u'reward': u'No Reward'},
+             {u'backers_count': 0,
+              u'description': u'Letterpress printed interpretation of a poem by Ian Hamilton Finley as a limited edition broadside.',
+              u'ends_at': 0,
+              u'id': 209662,
+              u'minimum': 5.0,
+              u'project_id': 2037846612,
+              u'reward': u'Letterpress printed interpretation of a poem by Ian Hamilton Finley as a limited edition broadside.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$5 reward',
+              u'updated_at': 1306966391,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/2037846612/rewards/209662?signature=1516408424.dff0050c627b4441c363e4a6ee32ee1f91f6275f'}}},
+             {u'backers_count': 0,
+              u'description': u'Antique reed with painted paperwings in a slip-case to use as a bookmark, and the broadside.',
+              u'ends_at': 0,
+              u'id': 209776,
+              u'minimum': 50.0,
+              u'project_id': 2037846612,
+              u'reward': u'Antique reed with painted paperwings in a slip-case to use as a bookmark, and the broadside.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$50 reward',
+              u'updated_at': 1307026424,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/2037846612/rewards/209776?signature=1516408424.88ffd1a6de28b4dadc909fe32f1fda10fadafa6f'}}},
+             {u'backers_count': 0,
+              u'description': u'Geode keychain in a handmade box with letterpress printed label (limited to two), antique reed, and broadside.',
+              u'ends_at': 0,
+              u'id': 209777,
+              u'minimum': 200.0,
+              u'project_id': 2037846612,
+              u'reward': u'Geode keychain in a handmade box with letterpress printed label (limited to two), antique reed, and broadside.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$200 reward',
+              u'updated_at': 1306975011,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/2037846612/rewards/209777?signature=1516408424.7da09cf150b7d98e32a23d6665b4dbaa90d1cf4c'}}}],
+ 'rewards_level': 3,
+ 'updates_count': 2,
+ 'video': {u'base': u'https://ksr-video.imgix.net/projects/36078/video-39000-h264_base.mp4',
+           u'frame': u'https://d15chbti7ht62o.cloudfront.net/projects/36078/video-39000-h264_high.jpg?2011',
+           u'height': 314,
+           u'high': u'https://ksr-video.imgix.net/projects/36078/video-39000-h264_high.mp4',
+           u'id': 39000,
+           u'status': u'successful',
+           u'webm': None,
+           u'width': 560}}
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\twisted\internet\defer.py", line 649, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\pipelines.py", line 16, in process_item
+    item.insert_to_mongodb()
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\items.py", line 80, in insert_to_mongodb
+    collection.update_one({'id': self['id']}, {'$set': dict(self)})
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\collection.py", line 838, in update_one
+    with self._socket_for_writes() as sock_info:
+  File "D:\ProgramData\Anaconda2\lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\mongo_client.py", line 762, in _get_socket
+    server = self._get_topology().select_server(selector)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 210, in select_server
+    address))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 186, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: 182.254.229.194:27017: [Errno 10054] 
+2018-01-19 08:35:31 [scrapy] ERROR: Error processing {'comments_count': 0,
+ 'id': 2031037788,
+ 'is_first_creator': False,
+ 'rewards': [{u'description': u'No Reward',
+              u'id': 0,
+              u'minimum': 1,
+              u'reward': u'No Reward'},
+             {u'backers_count': 0,
+              u'description': u"Mp3's of 5 songs sent directly to your e-mail address. Oh, and a warm hug and thank you!",
+              u'ends_at': 0,
+              u'id': 42836,
+              u'limit': 14,
+              u'minimum': 5.0,
+              u'project_id': 2031037788,
+              u'remaining': 14,
+              u'reward': u"Mp3's of 5 songs sent directly to your e-mail address. Oh, and a warm hug and thank you!",
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$5 reward',
+              u'updated_at': 1276694030,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/2031037788/rewards/42836?signature=1516408424.c41d2536a6b0a9bfb1b5df1aa9a94ca1613f5197'}}},
+             {u'backers_count': 0,
+              u'description': u'Autographed c.d. as soon as the project is completed.',
+              u'ends_at': 0,
+              u'id': 42577,
+              u'minimum': 15.0,
+              u'project_id': 2031037788,
+              u'reward': u'Autographed c.d. as soon as the project is completed.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$15 reward',
+              u'updated_at': 1276632352,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/2031037788/rewards/42577?signature=1516408424.8094f1623ee6ef283259946446fbad4b1f9c0c76'}}},
+             {u'backers_count': 0,
+              u'description': u'An autographed c.d. and your name (or the name of your favorite charity) will be scrolled across the end of the mp3 video at the close of the song you choose.',
+              u'ends_at': 0,
+              u'id': 42598,
+              u'limit': 350,
+              u'minimum': 75.0,
+              u'project_id': 2031037788,
+              u'remaining': 350,
+              u'reward': u'An autographed c.d. and your name (or the name of your favorite charity) will be scrolled across the end of the mp3 video at the close of the song you choose.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$75 reward',
+              u'updated_at': 1276637269,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/2031037788/rewards/42598?signature=1516408424.f425f828d318a3343df13f1fab2efff8d51583ce'}}},
+             {u'backers_count': 0,
+              u'description': u'Combine the above rewards and also use a copy of the song you choose to back for public showing free of charge simply by notifying Laura Larkins for authorization for a full year at public religious events or political events. (Laura reserves the right to deny this reward if the spirit of the public use being promoted is anti-Christian.)',
+              u'ends_at': 0,
+              u'id': 42599,
+              u'minimum': 351.0,
+              u'project_id': 2031037788,
+              u'reward': u'Combine the above rewards and also use a copy of the song you choose to back for public showing free of charge simply by notifying Laura Larkins for authorization for a full year at public religious events or political events. (Laura reserves the right to deny this reward if the spirit of the public use being promoted is anti-Christian.)',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$351 reward',
+              u'updated_at': 1276655598,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/2031037788/rewards/42599?signature=1516408424.7bfe35652ce106a5368b9541a09c16b4055e7ad1'}}}],
+ 'rewards_level': 4,
+ 'updates_count': 0,
+ 'video': None}
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\twisted\internet\defer.py", line 649, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\pipelines.py", line 16, in process_item
+    item.insert_to_mongodb()
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\items.py", line 80, in insert_to_mongodb
+    collection.update_one({'id': self['id']}, {'$set': dict(self)})
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\collection.py", line 838, in update_one
+    with self._socket_for_writes() as sock_info:
+  File "D:\ProgramData\Anaconda2\lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\mongo_client.py", line 762, in _get_socket
+    server = self._get_topology().select_server(selector)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 210, in select_server
+    address))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 186, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: 182.254.229.194:27017: timed out
+2018-01-19 08:35:31 [scrapy] INFO: Crawled 357 pages (at 6 pages/min), scraped 347 items (at 3 items/min)
+2018-01-19 08:36:11 [scrapy] ERROR: Error processing {'comments_count': 5,
+ 'id': 800362594,
+ 'is_first_creator': True,
+ 'rewards': [{u'description': u'No Reward',
+              u'id': 0,
+              u'minimum': 1,
+              u'reward': u'No Reward'},
+             {u'backers_count': 4,
+              u'description': u"PURE LOVE: \\r\\nYou'll receive the undying gratitude & 'Thank You For Your Support' email will be sent to you. Thank you. Join our mission today!\\r\\n($2 NZD = $1.30 USD, approx)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1456790400,
+              u'id': 4672699,
+              u'minimum': 2.0,
+              u'project_id': 800362594,
+              u'reward': u"PURE LOVE: \\r\\nYou'll receive the undying gratitude & 'Thank You For Your Support' email will be sent to you. Thank you. Join our mission today!\\r\\n($2 NZD = $1.30 USD, approx)",
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 2 reward',
+              u'updated_at': 1487241571,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4672699?signature=1516408439.e80d01de4c40d5df2d751452116d7fd81377e2ce'}}},
+             {u'backers_count': 0,
+              u'description': u"RESPECTFUL RECOGNITION: SPONSOR\\r\\nYour name on our 'Sponsors' list at the end of the documentary; along with 'Thank You' email (Reward # 1), This will symbolize a permanent place you will hold in our hearts and works. Thank you. Join our mission today! \\r\\n($8 NZD = $5.22 USD, approx)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1456790400,
+              u'id': 4672700,
+              u'minimum': 8.0,
+              u'project_id': 800362594,
+              u'reward': u"RESPECTFUL RECOGNITION: SPONSOR\\r\\nYour name on our 'Sponsors' list at the end of the documentary; along with 'Thank You' email (Reward # 1), This will symbolize a permanent place you will hold in our hearts and works. Thank you. Join our mission today! \\r\\n($8 NZD = $5.22 USD, approx)",
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 8 reward',
+              u'updated_at': 1453624805,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4672700?signature=1516408439.92bc682ac839b335e4caec81421931871f09ce52'}}},
+             {u'backers_count': 1,
+              u'description': u"EXCLUSIVE TO SPONSORS - LIMITED EDITION WILDLIFE  E-BOOK : \\r\\nYou'll receive this Limited Collectors\u2019 Edition digital book with selection of all the great Photos that will be taken during this expedition. This will add to your coffee table book collections that you will be proud to show off as a sponsor; along with 'Thank You' email and name in 'Sponsors' list (Reward # 1 & #2). Thank you. Join our mission today!\\r\\n($20 NZD = $13 USD, roughly)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1456790400,
+              u'id': 4672701,
+              u'minimum': 20.0,
+              u'project_id': 800362594,
+              u'reward': u"EXCLUSIVE TO SPONSORS - LIMITED EDITION WILDLIFE  E-BOOK : \\r\\nYou'll receive this Limited Collectors\u2019 Edition digital book with selection of all the great Photos that will be taken during this expedition. This will add to your coffee table book collections that you will be proud to show off as a sponsor; along with 'Thank You' email and name in 'Sponsors' list (Reward # 1 & #2). Thank you. Join our mission today!\\r\\n($20 NZD = $13 USD, roughly)",
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 20 reward',
+              u'updated_at': 1487209162,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4672701?signature=1516408439.61c693d508410f1fe6bf2292c622f8277dc5b281'}}},
+             {u'backers_count': 0,
+              u'description': u"EXCLUSIVE TO SPONSORS - WILDLIFE PRINTED T-SHIRTS: \\r\\nYou'll receive this great Limited Collectors\u2019 Edition T-Shirt with Best photo that will be taken during this extreme expedition, that you will be proud to show off as a sponsor; along with 'Thank You' email, name in 'Sponsors' list & the E-book (Reward # 1, #2 & # 3). Thank you. Join our mission today!\\r\\n($60 NZD = $39 USD, approx)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4752369,
+              u'minimum': 60.0,
+              u'project_id': 800362594,
+              u'reward': u"EXCLUSIVE TO SPONSORS - WILDLIFE PRINTED T-SHIRTS: \\r\\nYou'll receive this great Limited Collectors\u2019 Edition T-Shirt with Best photo that will be taken during this extreme expedition, that you will be proud to show off as a sponsor; along with 'Thank You' email, name in 'Sponsors' list & the E-book (Reward # 1, #2 & # 3). Thank you. Join our mission today!\\r\\n($60 NZD = $39 USD, approx)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 60 reward',
+              u'updated_at': 1453628491,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4752369?signature=1516408439.542ad1ba356219f51c12b7b1d0de5849fca85117'}}},
+             {u'backers_count': 1,
+              u'description': u"TITLE - ASSISTANT PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($100 NZD = $65 USD, approx)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4752551,
+              u'minimum': 100.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - ASSISTANT PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($100 NZD = $65 USD, approx)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 100 reward',
+              u'updated_at': 1487237353,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4752551?signature=1516408439.c3ac5f9dde7b96c414a17ba80b3c22c1d805c28b'}}},
+             {u'backers_count': 0,
+              u'description': u"TITLE - ASSOCIATE PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($250 NZD = $162 USD, roughly)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4752556,
+              u'minimum': 250.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - ASSOCIATE PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($250 NZD = $162 USD, roughly)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 250 reward',
+              u'updated_at': 1453625196,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4752556?signature=1516408439.153898a3e3b84c4d01c66bbf3d323cbbdc1903b7'}}},
+             {u'backers_count': 0,
+              u'description': u"TITLE - CONSULTING PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($500 NZD = $324 USD, approx)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4752567,
+              u'minimum': 500.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - CONSULTING PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($500 NZD = $324 USD, approx)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 500 reward',
+              u'updated_at': 1453629489,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4752567?signature=1516408439.95d559a1fdc2e8ee92513da3d79988a419c1481d'}}},
+             {u'backers_count': 0,
+              u'description': u"TITLE - CO-PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($1,000 NZD = $649 USD, roughly)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4752569,
+              u'minimum': 1000.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - CO-PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($1,000 NZD = $649 USD, roughly)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 1,000 reward',
+              u'updated_at': 1453629489,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4752569?signature=1516408439.b5f84817dfc8c0bb90fca5a02ea6b3a59af12cea'}}},
+             {u'backers_count': 0,
+              u'description': u"TITLE - PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($2,000 NZD = $1,298 USD, roughly)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4779309,
+              u'minimum': 2000.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($2,000 NZD = $1,298 USD, roughly)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 2,000 reward',
+              u'updated_at': 1453629489,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4779309?signature=1516408439.536276e8c572640183e8f79d8df974c8b7030a42'}}},
+             {u'backers_count': 0,
+              u'description': u"TITLE - CO-EXECUTIVE PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($4,000 NZD = $2,595 USD, roughly)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4779310,
+              u'minimum': 4000.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - CO-EXECUTIVE PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($4,000 NZD = $2,595 USD, roughly)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 4,000 reward',
+              u'updated_at': 1453629489,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4779310?signature=1516408439.4f97d65b86a9e99f181a7fcc57e91b94f560736c'}}},
+             {u'backers_count': 0,
+              u'description': u"TITLE - EXECUTIVE PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($6,000 NZD = $3,893 USD, roughly)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4779311,
+              u'minimum': 6000.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - EXECUTIVE PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($6,000 NZD = $3,893 USD, roughly)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 6,000 reward',
+              u'updated_at': 1453629489,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4779311?signature=1516408439.010e89a628c9921c75afb92e8b410080f961e8cf'}}},
+             {u'backers_count': 0,
+              u'description': u"TITLE - CHIEF PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($8,000 NZD = $5,191 USD, roughly)",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1459468800,
+              u'id': 4779312,
+              u'minimum': 8000.0,
+              u'project_id': 800362594,
+              u'reward': u"TITLE - CHIEF PRODUCER\\r\\n\\r\\nYou'll receive this great honorary title at end of  the documentary that you will be proud to show off as a sponsor; along with 'Thank You' email, the E-book & the T-shirt (Reward # 1, # 3 & #4). Thank you. Join our mission today!\\r\\n($8,000 NZD = $5,191 USD, roughly)",
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'NZ$ 8,000 reward',
+              u'updated_at': 1453629516,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/800362594/rewards/4779312?signature=1516408439.b37370141c1c7b30544575319eae6f1fca0b7040'}}}],
+ 'rewards_level': 12,
+ 'updates_count': 3,
+ 'video': {u'base': u'https://ksr-video.imgix.net/projects/2218649/video-617711-h264_base.mp4',
+           u'frame': u'https://d15chbti7ht62o.cloudfront.net/projects/2218649/video-617711-h264_high.jpg?2015',
+           u'height': 360,
+           u'high': u'https://ksr-video.imgix.net/projects/2218649/video-617711-h264_high.mp4',
+           u'id': 617711,
+           u'status': u'successful',
+           u'webm': u'https://ksr-video.imgix.net/projects/2218649/video-617711-webm.webm',
+           u'width': 640}}
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\twisted\internet\defer.py", line 649, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\pipelines.py", line 16, in process_item
+    item.insert_to_mongodb()
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\items.py", line 80, in insert_to_mongodb
+    collection.update_one({'id': self['id']}, {'$set': dict(self)})
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\collection.py", line 838, in update_one
+    with self._socket_for_writes() as sock_info:
+  File "D:\ProgramData\Anaconda2\lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\mongo_client.py", line 762, in _get_socket
+    server = self._get_topology().select_server(selector)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 210, in select_server
+    address))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 186, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: 182.254.229.194:27017: timed out
+2018-01-19 08:36:46 [scrapy] ERROR: Error processing {'comments_count': 0,
+ 'id': 934362965,
+ 'is_first_creator': True,
+ 'rewards': [{u'description': u'No Reward',
+              u'id': 0,
+              u'minimum': 1,
+              u'reward': u'No Reward'},
+             {u'backers_count': 0,
+              u'description': u'A BIG THANK YOU!  You have gone out of your way to support a worthwhile project, and we are EXTREMELY GRATEFUL!',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1438387200,
+              u'id': 4319217,
+              u'minimum': 1.0,
+              u'project_id': 934362965,
+              u'reward': u'A BIG THANK YOU!  You have gone out of your way to support a worthwhile project, and we are EXTREMELY GRATEFUL!',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$1 reward',
+              u'updated_at': 1439398722,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4319217?signature=1516408439.98cd991ed7610d3f30d54cf52fcfb15392ac221b'}}},
+             {u'backers_count': 0,
+              u'description': u"Give us a 'HIGH FIVE', and join us on our incredible journey, and you will be added to our email list to receive ongoing project updates.  For this level of support, you will also receive our eternal gratitude.",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1438387200,
+              u'id': 4319224,
+              u'minimum': 5.0,
+              u'project_id': 934362965,
+              u'reward': u"Give us a 'HIGH FIVE', and join us on our incredible journey, and you will be added to our email list to receive ongoing project updates.  For this level of support, you will also receive our eternal gratitude.",
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$5 reward',
+              u'updated_at': 1439398954,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4319224?signature=1516408439.f396e8d0166953da2e766486da61e0929462c1f1'}}},
+             {u'backers_count': 0,
+              u'description': u"You will receive a social media 'shout out' from the cast and/or crew.",
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1448928000,
+              u'id': 4319228,
+              u'minimum': 15.0,
+              u'project_id': 934362965,
+              u'reward': u"You will receive a social media 'shout out' from the cast and/or crew.",
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$15 reward',
+              u'updated_at': 1439399091,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4319228?signature=1516408439.1cfe845e67a430b06b618c0effb7c8bc2c10cb84'}}},
+             {u'backers_count': 1,
+              u'description': u'Your name (or name of your choosing - up to 12 characters) on a leaf of the tree in the opening animation sequence for the film!',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1451606400,
+              u'id': 4264535,
+              u'minimum': 25.0,
+              u'project_id': 934362965,
+              u'reward': u'Your name (or name of your choosing - up to 12 characters) on a leaf of the tree in the opening animation sequence for the film!',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$25 reward',
+              u'updated_at': 1486884519,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4264535?signature=1516408439.23e7554bccdc6c796453a25186b8c074842b9de4'}}},
+             {u'backers_count': 0,
+              u'description': u'Your name (or name of your choosing - up to 24 characters) on a branch of the tree in the opening animation sequence for the film!  You will also receive a limited-edition Blu-Ray/DVD of the completed project.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1451606400,
+              u'id': 4264536,
+              u'minimum': 100.0,
+              u'project_id': 934362965,
+              u'reward': u'Your name (or name of your choosing - up to 24 characters) on a branch of the tree in the opening animation sequence for the film!  You will also receive a limited-edition Blu-Ray/DVD of the completed project.',
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$100 reward',
+              u'updated_at': 1437837266,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4264536?signature=1516408439.5bf9007e67310bbba19acab30fafaf3ac5ca1ffc'}}},
+             {u'backers_count': 0,
+              u'description': u'Your name (or name of your choosing) - on the nest in the opening animation sequence for the film!  You will get a special thanks in the closing credits of the film.  You will also receive a limited-edition Blu-Ray/DVD of the completed project.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1451606400,
+              u'id': 4264537,
+              u'limit': 5,
+              u'minimum': 1000.0,
+              u'project_id': 934362965,
+              u'remaining': 5,
+              u'reward': u'Your name (or name of your choosing) - on the nest in the opening animation sequence for the film!  You will get a special thanks in the closing credits of the film.  You will also receive a limited-edition Blu-Ray/DVD of the completed project.',
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$1,000 reward',
+              u'updated_at': 1437837266,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4264537?signature=1516408439.f3338cfd0ee0d663c58c82aa4c5f62ae61f3b04c'}}},
+             {u'backers_count': 0,
+              u'description': u'Your name (or name of your choosing) - on the sparrow in the opening animation sequence for the film!  You will get a special thanks in the closing credits of the film.  You will also receive a limited-edition Blu-Ray/DVD of the completed project.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1451606400,
+              u'id': 4264538,
+              u'limit': 1,
+              u'minimum': 2500.0,
+              u'project_id': 934362965,
+              u'remaining': 1,
+              u'reward': u'Your name (or name of your choosing) - on the sparrow in the opening animation sequence for the film!  You will get a special thanks in the closing credits of the film.  You will also receive a limited-edition Blu-Ray/DVD of the completed project.',
+              u'rewards_items': [],
+              u'shipping_enabled': True,
+              u'shipping_preference': u'unrestricted',
+              u'shipping_summary': u'Anywhere in the world',
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$2,500 reward',
+              u'updated_at': 1437837266,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4264538?signature=1516408439.2c834d1b97099c752e3d546e8967e3c701a8a379'}}},
+             {u'backers_count': 0,
+              u'description': u'We will use your original song in our film or closing credits.  Placement/inclusion will be subject to approval of the film producers.',
+              u'ends_at': 0,
+              u'estimated_delivery_on': 1451606400,
+              u'id': 4269748,
+              u'minimum': 10000.0,
+              u'project_id': 934362965,
+              u'reward': u'We will use your original song in our film or closing credits.  Placement/inclusion will be subject to approval of the film producers.',
+              u'rewards_items': [],
+              u'shipping_enabled': False,
+              u'starts_at': 0,
+              u'title_for_backing_tier': u'$10,000 reward',
+              u'updated_at': 1438001892,
+              u'urls': {u'api': {u'reward': u'https://api.kickstarter.com/v1/projects/934362965/rewards/4269748?signature=1516408439.c5a029e7df8b108b3afe2fa0c064f11777133438'}}}],
+ 'rewards_level': 8,
+ 'updates_count': 1,
+ 'video': {u'base': u'https://ksr-video.imgix.net/projects/1993727/video-566370-h264_base.mp4',
+           u'frame': u'https://d15chbti7ht62o.cloudfront.net/projects/1993727/video-566370-h264_high.jpg?2015',
+           u'height': 360,
+           u'high': u'https://ksr-video.imgix.net/projects/1993727/video-566370-h264_high.mp4',
+           u'id': 566370,
+           u'status': u'successful',
+           u'webm': u'https://ksr-video.imgix.net/projects/1993727/video-566370-webm.webm',
+           u'width': 640}}
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\twisted\internet\defer.py", line 649, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\pipelines.py", line 16, in process_item
+    item.insert_to_mongodb()
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\items.py", line 80, in insert_to_mongodb
+    collection.update_one({'id': self['id']}, {'$set': dict(self)})
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\collection.py", line 838, in update_one
+    with self._socket_for_writes() as sock_info:
+  File "D:\ProgramData\Anaconda2\lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\mongo_client.py", line 762, in _get_socket
+    server = self._get_topology().select_server(selector)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 210, in select_server
+    address))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\pymongo\topology.py", line 186, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: 182.254.229.194:27017: timed out
+2018-01-19 08:36:47 [scrapy] INFO: Crawled 357 pages (at 0 pages/min), scraped 347 items (at 0 items/min)
+2018-01-19 08:37:40 [scrapy] INFO: Crawled 357 pages (at 0 pages/min), scraped 347 items (at 0 items/min)
+2018-01-19 08:38:40 [scrapy] INFO: Crawled 357 pages (at 0 pages/min), scraped 347 items (at 0 items/min)
+2018-01-19 08:39:40 [scrapy] INFO: Crawled 357 pages (at 0 pages/min), scraped 347 items (at 0 items/min)
+2018-01-19 08:40:53 [scrapy] INFO: Crawled 365 pages (at 8 pages/min), scraped 351 items (at 4 items/min)
+2018-01-19 08:41:52 [scrapy] INFO: Crawled 375 pages (at 10 pages/min), scraped 363 items (at 12 items/min)
+2018-01-19 08:42:41 [scrapy] INFO: Crawled 383 pages (at 8 pages/min), scraped 372 items (at 9 items/min)
+2018-01-19 08:43:46 [scrapy] INFO: Crawled 394 pages (at 11 pages/min), scraped 382 items (at 10 items/min)
+2018-01-19 08:44:40 [scrapy] INFO: Crawled 402 pages (at 8 pages/min), scraped 390 items (at 8 items/min)
+2018-01-19 08:46:00 [scrapy] INFO: Crawled 414 pages (at 12 pages/min), scraped 402 items (at 12 items/min)
+2018-01-19 08:47:18 [scrapy] INFO: Crawled 420 pages (at 6 pages/min), scraped 408 items (at 6 items/min)
+2018-01-19 08:47:58 [scrapy] INFO: Crawled 422 pages (at 2 pages/min), scraped 410 items (at 2 items/min)
+2018-01-19 08:49:46 [scrapy] INFO: Crawled 428 pages (at 6 pages/min), scraped 416 items (at 6 items/min)
+2018-01-19 08:50:45 [scrapy] INFO: Crawled 432 pages (at 4 pages/min), scraped 420 items (at 4 items/min)
+2018-01-19 08:51:48 [scrapy] INFO: Crawled 444 pages (at 12 pages/min), scraped 432 items (at 12 items/min)
+2018-01-19 08:52:52 [scrapy] INFO: Crawled 454 pages (at 10 pages/min), scraped 442 items (at 10 items/min)
+2018-01-19 08:53:44 [scrapy] INFO: Crawled 462 pages (at 8 pages/min), scraped 450 items (at 8 items/min)
+2018-01-19 08:54:52 [scrapy] INFO: Crawled 472 pages (at 10 pages/min), scraped 460 items (at 10 items/min)
+2018-01-19 08:55:52 [scrapy] INFO: Crawled 480 pages (at 8 pages/min), scraped 468 items (at 8 items/min)
+2018-01-19 08:56:31 [scrapy] INFO: Closing spider (finished)
+2018-01-19 08:56:31 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/exception_count': 78,
+ 'downloader/exception_type_count/twisted.internet.error.TCPTimedOutError': 78,
+ 'downloader/request_bytes': 472865,
+ 'downloader/request_count': 563,
+ 'downloader/request_method_count/GET': 563,
+ 'downloader/response_bytes': 36601080,
+ 'downloader/response_count': 485,
+ 'downloader/response_status_count/200': 483,
+ 'downloader/response_status_count/302': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 1, 19, 0, 56, 31, 858000),
+ 'item_scraped_count': 473,
+ 'log_count/ERROR': 27,
+ 'log_count/INFO': 66,
+ 'response_received_count': 483,
+ 'scheduler/dequeued': 562,
+ 'scheduler/dequeued/memory': 562,
+ 'scheduler/enqueued': 562,
+ 'scheduler/enqueued/memory': 562,
+ 'spider_exceptions/IndexError': 2,
+ 'spider_exceptions/ValueError': 2,
+ 'start_time': datetime.datetime(2018, 1, 18, 23, 53, 40, 224000)}
+2018-01-19 08:56:31 [scrapy] INFO: Spider closed (finished)

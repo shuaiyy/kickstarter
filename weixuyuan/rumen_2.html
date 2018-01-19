@@ -1,0 +1,1113 @@
+
+<h1>Java数据类型以及变量的定义</h1>
+<div id="art-body">Java 是一种<span style="color:#b22222;">强类型</span>的语言，声明变量时必须指明数据类型。变量(variable)的值占据一定的内存空间。不同类型的变量占据不同的大小。<br>
+<br>
+Java中共有8种基本数据类型，包括4 种整型、2 种浮点型、1 种字符型、1 种布尔型，请见下表。<br>
+<table>
+<caption>
+Java基本数据类型</caption>
+<tbody>
+<tr>
+<th width="80">
+数据类型</th>
+<th width="90">
+说明</th>
+<th width="80">
+所占内存</th>
+<th>
+举例</th>
+<th>
+备注</th>
+</tr>
+<tr>
+<td>
+byte</td>
+<td>
+字节型</td>
+<td>
+1 byte</td>
+<td>
+3, 127</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+short</td>
+<td>
+短整型</td>
+<td>
+2 bytes</td>
+<td>
+3, 32767</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+int</td>
+<td>
+整型</td>
+<td>
+4 bytes</td>
+<td>
+3, 21474836</td>
+<td>
+ </td>
+</tr>
+<tr>
+<td>
+long</td>
+<td>
+长整型</td>
+<td>
+8 bytes</td>
+<td>
+3L, 92233720368L</td>
+<td>
+long最后要有一个L字母（大小写无所谓）。</td>
+</tr>
+<tr>
+<td>
+float</td>
+<td>
+单精度浮点型</td>
+<td>
+4 bytes</td>
+<td>
+1.2F, 223.56F</td>
+<td>
+float最后要有一个F字母（大小写无所谓）。</td>
+</tr>
+<tr>
+<td>
+double</td>
+<td>
+双精度浮点型</td>
+<td>
+8 bytes</td>
+<td>
+1.2, 1.2D, 223.56, 223.56D</td>
+<td>
+double最后最好有一个D字母（大小写无所谓）。</td>
+</tr>
+<tr>
+<td>
+char</td>
+<td>
+字符型</td>
+<td>
+2 bytes</td>
+<td>
+'a', ‘A’</td>
+<td>
+字符型数据只能是一个字符，由单引号包围。</td>
+</tr>
+<tr>
+<td>
+boolean</td>
+<td>
+布尔型</td>
+<td>
+1 bit</td>
+<td>
+true, false</td>
+<td>
+ </td>
+</tr>
+</tbody>
+</table>
+<br>
+对于整型数据，通常情况下使用 int 类型。但如果表示投放广岛长崎的原子弹释放出的能量，就需要使用 long 类型了。byte 和 short 类型主要用于特定的应用场合，例如，底层的文件处理或者需要控制占用存储空间量的大数组。<br>
+<br>
+在Java中，整型数据的长度与平台无关，这就解决了软件从一个平台移植到另一个平台时给程序员带来的诸多问题。与此相反，C/C++ 整型数据的长度是与平台相关的，程序员需要针对不同平台选择合适的整型，这就可能导致在64位系统上稳定运行的程序在32位系统上发生整型溢出。<br>
+<br>
+八进制有一个前缀 0，例如 010 对应十进制中的 8；十六进制有一个前缀 0x，例如 0xCAFE；从 Java 7 开始，可以使用前缀 0b 来表示二进制数据，例如 0b1001 对应十进制中的 9。同样从 Java 7 开始，可以使用下划线来分隔数字，类似英文数字写法，例如 1_000_000 表示 1,000,000，也就是一百万。下划线只是为了让代码更加易读，编译器会删除这些下划线。<br>
+<br>
+另外，不像 C/C++，Java 不支持无符号类型(unsigned)。<br>
+<br>
+float 类型有效数字最长为 7 位，有效数字长度包括了整数部分和小数部分。例如：
+<pre class="java">
+float x = 223.56F;
+float y = 100.00f;</pre>
+注意：每个float类型后面都有一个标志“F”或“f”，有这个标志就代表是float类型。<br>
+<br>
+double 类型有效数字最长为 15 位。与 float 类型一样，double 后面也带有标志“D”或“d”。例如：
+<pre class="java">
+double x = 23.45D;
+double y = 422.22d;
+double z = 562.234;</pre>
+<span style="color:#b22222;">注意：不带任何标志的浮点型数据，系统默认是 double 类型。</span><br>
+<br>
+大多数情况下都是用 double 类型，float 的精度很难满足需求。<br>
+<br>
+不同数据类型应用举例：
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        // 字符型
+        char webName1 = '微';
+        char webName2 = '学';
+        char webName3 = '苑';
+        System.out.println("网站的名字是：" + webName1 + webName2 + webName3);
+       
+        // 整型
+        short x=22;  // 十进制
+        int y=022;  // 八进制
+        long z=0x22L;  // 十六进制
+        System.out.println("转化成十进制：x = " + x + ", y = " + y + ", z = " + z);
+       
+        // 浮点型
+        float m = 22.45f;
+        double n = 10;
+        System.out.println("计算乘积：" + m + " * " + n + "=" + m*n);
+    }
+}</pre>
+运行结果：<br>
+网站的名字是：微学苑<br>
+转化成十进制：x = 22, y = 18, z = 34<br>
+计算乘积：22.45 * 10.0=224.50000762939453<br>
+<br>
+从运行结果可以看出，即使浮点型数据只有整数没有小数，在控制台上输出时系统也会自动加上小数点，并且小数位全部置为 0。
+<h2>
+对布尔型的说明</h2>
+如果你有编程经验，了解布尔型，请跳过下面的教程，下面的教程针对只有C语言基础的读者（C语言没有布尔型）。<br>
+<br>
+在C语言中，如果判断条件成立，会返回1，否则返回0，例如：
+<pre class="c">
+#include &lt;stdio.h&gt;
+
+int main(){
+    int x = 100&gt;10;
+    int y = 100&lt;10;
+    printf("100&gt;10 = %d\n", x);
+    printf("100&lt;10 = %d\n", y);
+
+    return 0;
+}</pre>
+运行结果：<br>
+100&gt;10 = 1<br>
+100&lt;10 = 0<br>
+<br>
+但是在Java中不一样，条件成立返回 true，否则返回 false，即布尔类型。例如：
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        // 字符型
+        boolean a = 100&gt;10;
+        boolean b = 100&lt;10;
+        System.out.println("100&gt;10 = " + a);
+        System.out.println("100&lt;10 = " + b);
+       
+        if(a){
+            System.out.println("100&lt;10是对的");
+        }else{
+            System.out.println("100&lt;10是错的");
+        }
+    }
+}</pre>
+运行结果：<br>
+100&gt;10 = true<br>
+100&lt;10 = false<br>
+100&lt;10是对的<br>
+<br>
+实际上，true 等同于1，false 等同于0，只不过换了个名称，并单独地成为一种数据类型。</div>
+
+http://www.weixueyuan.net/view/5950.html
+<h1>Java数据类型转换（自动转换和强制转换）</h1>
+<div id="art-body">数据类型的转换，分为自动转换和强制转换。自动转换是程序在执行过程中“悄然”进行的转换，不需要用户提前声明，一般是从位数低的类型向位数高的类型转换；强制类型转换则必须在代码中声明，转换顺序不受限制。
+<h2>
+自动数据类型转换</h2>
+自动转换按从低到高的顺序转换。不同类型数据间的优先关系如下：<br>
+    低---------------------------------------------&gt;高<br>
+    byte,short,char-&gt; int -&gt; long -&gt; float -&gt; double<br>
+<br>
+运算中，不同类型的数据先转化为同一类型，然后进行运算，转换规则如下：
+<table>
+<tbody>
+<tr>
+<th>
+操作数1类型</th>
+<th>
+操作数2类型</th>
+<th>
+转换后的类型</th>
+</tr>
+<tr>
+<td>
+byte、short、char</td>
+<td>
+int</td>
+<td>
+int</td>
+</tr>
+<tr>
+<td>
+byte、short、char、int</td>
+<td>
+long</td>
+<td>
+long</td>
+</tr>
+<tr>
+<td>
+byte、short、char、int、long</td>
+<td>
+float</td>
+<td>
+float</td>
+</tr>
+<tr>
+<td>
+byte、short、char、int、long、float</td>
+<td>
+double</td>
+<td>
+double</td>
+</tr>
+</tbody>
+</table>
+<h2>
+强制数据类型转换</h2>
+强制转换的格式是在需要转型的数据前加上“( )”，然后在括号内加入需要转化的数据类型。有的数据经过转型运算后，精度会丢失，而有的会更加精确，下面的例子可以说明这个问题。
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        int x;
+        double y;
+        x = (int)34.56 + (int)11.2;  // 丢失精度
+        y = (double)x + (double)10 + 1;  // 提高精度
+        System.out.println("x=" + x);
+        System.out.println("y=" + y);
+    }
+}</pre>
+运行结果：<br>
+x=45<br>
+y=56.0<br>
+<br>
+仔细分析上面程序段：由于在 34.56 前有一个 int 的强制类型转化，所以 34.56 就变成了 34。同样 11.2 就变成了 11 了，所以 x 的结果就是 45。在 x 前有一个 double 类型的强制转换，所以 x 的值变为 45.0，而 10 的前面也被强制成 double 类型，所以也变成 10.0，所以最后 y 的值变为 56。<br>
+</div>
+
+http://www.weixueyuan.net/view/5957.html
+<h1>强调一下编程风格</h1>
+<div id="art-body">讲完了Java的基础语法，大家就可以编写简单的程序代码了，这里有必要强调一下编程风格。<br>
+<br>
+代码风格虽然不影响程序的运行，但对程序的可读性却非常重要。自己编写的程序要让别人看懂，首先在排版方面要非常注意。<br>
+<br>
+其实每个人的编程风格、每个软件开发公司的编程风格都不一样。一个人编写的程序代码，就应该能让别人看懂，甚至是过了很长时间，自己也要看的懂，否则这个程序就成了一个死程序。<br>
+<br>
+编程风格是指编程时的格式，让程序看上去就很有层次感。下面通过一些例子，说明编程风格的重要性：
+<pre class="java">
+public class math{
+    public static void main(String[] args){
+        int x=12;
+        double y=12.3d;
+        void print(){
+            char a='a';
+            System.out.println(a);
+        }
+        System.out.println(x+y);
+    }
+}</pre>
+上面程序段的整个排版看起来是否很舒服，并且层次感很强？是否一眼看上去就知道整个程序架构？这里的关键在于缩进，缩进也可以称为跳格。<br>
+<br>
+上面的代码采用的缩进："public class math" 是顶格的，接着 mian() 方法缩进 4 个空格，在 mian() 方法里面的代码一律缩进 8 个空格，而 print() 方法的主体代码又多缩进 4 个空格。这样整个程序的所属关系就很明显了。mian() 方法属于 math 类，其余的都属于main() 方法，而在 print() 方法内的代码段又属于此方法。规律就是空格多的代码从属于空格少的代码。<br>
+<br>
+我推荐大家使用 tab 键缩进，大部分编辑器（如Eclipse）都支持自定义 tab 键的空格数，一般为 4 个空格。<br>
+<br>
+除了缩进，空行也是必要的，先看下列程序代码：
+<pre class="java">
+public class math{
+    public static void main(String[] args){
+        int x=12;
+        int y=23;
+        void print(){
+            // .................
+        }
+
+        void view(){
+            // ....................
+        }
+    }
+}</pre>
+上面的程序段，在 print() 方法与 view() 方法之间有空行，用来区分不同的模块。print() 方法与 view() 方法所完成的功能不一样，所以使用空行将它们分开，这样更增加了程序的可读性。<br>
+<br>
+另外，需要注意的是方法或属性的命名。这些名字应该有含义，最好有规律，不要只使用"a"、"b"这种通用变量，适当可以根据变量或函数的功能为其命名。上面的"print"，其他程序员一看就知道这个方法，是有关打印或输出的函数。再如：变量名"name"，一看就知道是有关名字的变量。所以，一定要命名的有意义，否则程序的可读性不强。<br>
+<br>
+还有一点是有关注释的。在每个方法的方法名旁边，应该添加一些注释，同时在一段程序完成之后，也要对程序的功能及如何操作，做个简单的描述。<br>
+<br>
+只要做到以上几点，这个程序他人来读就很容易。即使自己在很长时间后，再来读程序也会一目了然。<br>
+</div>
+
+http://www.weixueyuan.net/view/5964.html
+<h1>Java运算符</h1>
+<div id="art-body">Java中的运算符和C/C++相差无几。
+<h4>
+数学运算符</h4>
+数学运算，结果为一个数值。见下表：<br>
+<table>
+<tbody>
+<tr>
+<th>
+运算符</th>
+<th>
+说明</th>
+<th>
+举例</th>
+</tr>
+<tr>
+<td>
++</td>
+<td>
+加法</td>
+<td>
+1 + 2</td>
+</tr>
+<tr>
+<td>
+-</td>
+<td>
+减法</td>
+<td>
+4 - 3.4</td>
+</tr>
+<tr>
+<td>
+*</td>
+<td>
+乘法</td>
+<td>
+7 * 1.5</td>
+</tr>
+<tr>
+<td>
+/</td>
+<td>
+除法</td>
+<td>
+3.5 / 7</td>
+</tr>
+<tr>
+<td>
+%</td>
+<td>
+取余</td>
+<td>
+7 % 2</td>
+</tr>
+<tr>
+<td>
+++</td>
+<td>
+自增</td>
+<td>
+3++</td>
+</tr>
+<tr>
+<td>
+--</td>
+<td>
+自减</td>
+<td>
+3--</td>
+</tr>
+</tbody>
+</table>
+<h4>
+关系运算符</h4>
+关系运算符，结果为一个布尔值。见下表：<br>
+<table>
+<tbody>
+<tr>
+<th>
+运算符</th>
+<th>
+说明</th>
+<th>
+举例</th>
+</tr>
+<tr>
+<td>
+&gt;</td>
+<td>
+大于</td>
+<td>
+a &gt; 4.2</td>
+</tr>
+<tr>
+<td>
+&gt;=</td>
+<td>
+大于等于</td>
+<td>
+3.4 &gt;= b</td>
+</tr>
+<tr>
+<td>
+&lt;</td>
+<td>
+小于</td>
+<td>
+1.5 &lt; 9</td>
+</tr>
+<tr>
+<td>
+&lt;=</td>
+<td>
+小于等于</td>
+<td>
+6 &lt;= 1</td>
+</tr>
+<tr>
+<td>
+==</td>
+<td>
+等于</td>
+<td>
+2 == 2</td>
+</tr>
+<tr>
+<td>
+!=</td>
+<td>
+不等于</td>
+<td>
+2 != 2</td>
+</tr>
+<tr>
+<td>
+&amp;&amp;</td>
+<td>
+与</td>
+<td>
+true &amp;&amp; false</td>
+</tr>
+<tr>
+<td>
+||</td>
+<td>
+或</td>
+<td>
+(3 &gt; 1) || (2 == 1)</td>
+</tr>
+<tr>
+<td>
+!</td>
+<td>
+非</td>
+<td>
+!true</td>
+</tr>
+</tbody>
+</table>
+<h4>
+位运算符</h4>
+位运算符对整数的二进制形式逐位进行逻辑运算，得到一个整数。见下表：<br>
+<table>
+<tbody>
+<tr>
+<th>
+运算符</th>
+<th>
+说明</th>
+<th>
+举例</th>
+</tr>
+<tr>
+<td>
+&amp;</td>
+<td>
+与</td>
+<td>
+1 &amp; 4</td>
+</tr>
+<tr>
+<td>
+|</td>
+<td>
+或</td>
+<td>
+2 | 5</td>
+</tr>
+<tr>
+<td>
+^</td>
+<td>
+异或</td>
+<td>
+2 ^ 3</td>
+</tr>
+<tr>
+<td>
+~</td>
+<td>
+非</td>
+<td>
+~5</td>
+</tr>
+<tr>
+<td>
+&lt;&lt;</td>
+<td>
+左移</td>
+<td>
+5 &lt;&lt; 3</td>
+</tr>
+<tr>
+<td>
+&gt;&gt;</td>
+<td>
+右移</td>
+<td>
+6 &gt;&gt; 1</td>
+</tr>
+</tbody>
+</table>
+<h4>
+条件运算符</h4>
+Java中也有一个条件运算符（三目运算符）：<br>
+    condition ? x1 : x2<br>
+condition为一个boolean值。根据condition，取x1或x2的值。<br>
+<br>
+下面是关于运算符的一个综合举例：
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        int a=10;
+        int b=10;
+       
+        int x=10;
+        int y=21;
+        int z=10;
+       
+        System.out.println("后自加 a=" + (a++));
+        System.out.println("a的值 a=" + a);
+        System.out.println("前自加 b=" + (++b));
+       
+        System.out.println("---------------------");
+        System.out.println("说 x&gt;y,对吗？" + (x&gt;y));
+        System.out.println("认为 x&gt;y 并且 x&lt;y,对吗？" + ( (x&gt;y) &amp;&amp; (x&lt;y) ));
+        System.out.println("认为 x&gt;=y 或者 x==y,对吗？" + ( (x&gt;=y) || (x==y) ));
+        System.out.println("认为 x&lt;y 或者 x=z,对吗？" + ( (x&lt;y) || (x==z) ));
+
+        System.out.println("---------------------");
+        System.out.println("a&amp;x 的结果是：" + (a&amp;x));
+        System.out.println("a|x 的结果是：" + (a|x));
+        System.out.println("y^z 的结果是：" + (y^z));
+       
+        System.out.println("---------------------");
+        System.out.println("a 左移2位的结果是：" + (a&lt;&lt;2));
+        System.out.println("y 右移3位的结果是：" + (y&gt;&gt;3));
+    }
+}</pre>
+运行结果：<br>
+后自加 a=10<br>
+a的值 a=11<br>
+前自加 b=11<br>
+---------------------<br>
+说 x&gt;y,对吗？false<br>
+认为 x&gt;y 并且 x&lt;y,对吗？false<br>
+认为 x&gt;=y 或者 x==y,对吗？false<br>
+认为 x&lt;y 或者 x=z,对吗？true<br>
+---------------------<br>
+a&amp;x 的结果是：10<br>
+a|x 的结果是：11<br>
+y^z 的结果是：31<br>
+---------------------<br>
+a 左移2位的结果是：44<br>
+y 右移3位的结果是：2<br>
+</div>
+
+http://www.weixueyuan.net/view/6314.html
+<h1>Java流程控制</h1>
+<div id="art-body">Java流程控制的语法与 C/C++ 类似，也有 if...else、while、do...while、for、switch...case等，这里不再讲述具体语法，仅举例说明。<br>
+<br>
+输出九九乘法表（右上三角）：
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        int i, j;
+        for(i=1; i&lt;=9; i++){
+            for(j=1; j&lt;=9; j++){
+                if(j&lt;i){
+                    //打印八个空格，去掉空格就是左上三角形
+                    System.out.print("        ");
+                }else{
+                    System.out.printf("%d*%d=%2d  ", i, j, i*j);
+                }
+            }
+            System.out.print("\n"); 
+        }
+    }
+}</pre>
+运行结果：
+<pre>
+1*1= 1  1*2= 2  1*3= 3  1*4= 4  1*5= 5  1*6= 6  1*7= 7  1*8= 8  1*9= 9 
+        2*2= 4  2*3= 6  2*4= 8  2*5=10  2*6=12  2*7=14  2*8=16  2*9=18 
+                3*3= 9  3*4=12  3*5=15  3*6=18  3*7=21  3*8=24  3*9=27 
+                        4*4=16  4*5=20  4*6=24  4*7=28  4*8=32  4*9=36 
+                                5*5=25  5*6=30  5*7=35  5*8=40  5*9=45 
+                                        6*6=36  6*7=42  6*8=48  6*9=54 
+                                                7*7=49  7*8=56  7*9=63 
+                                                        8*8=64  8*9=72 
+                                                                9*9=81</pre>
+Java中也有 printf() 语句，用来控制输出格式，不过实际开发中不常用，因为输出到控制台的数据很少要求严格的格式，一般 println() 和 print() 就够了。<br>
+<br>
+println() 输出内容后换行，print() 不换行。<br>
+<br>
+又如，求某一年的某一月有多少天：
+<pre class="java">
+import java.util.*;
+public class Demo {
+    public static void main(String[] args){
+        int days = 0;
+
+        // 获取用户输入
+        Scanner sc = new Scanner(System.in);
+        System.out.print("输入年份：");
+        int year = sc.nextInt();
+        System.out.print("输入月份：");
+        int month = sc.nextInt();
+       
+        switch(month){
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                days=31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                days=30;
+                break;
+            case 2:
+                // 判断闰年
+                if(year%4==0 &amp;&amp; year%100!=0 || year%400==0)
+                    days=29;
+                else
+                    days=28;
+                break;
+            default:
+                System.out.println("月份输入错误！");
+                System.exit(0);  // 强制结束程序
+        }
+        System.out.printf("天数：%d\n", days);
+    }
+}</pre>
+运行结果：<br>
+输入年份：2014<br>
+输入月份：02<br>
+天数：28<br>
+<br>
+Java中没有像C语言中的scanf()语句，从控制台获取输入有点麻烦，我推荐使用 Scanner 类，具体语法请大家自行查看API。</div>
+
+http://www.weixueyuan.net/view/6315.html
+<h1>Java数组的定义和使用</h1>
+<div id="art-body">如果希望保存一组有相同类型的数据，可以使用数组。
+<h2>
+数组的定义和内存分配</h2>
+Java 中定义数组的语法有两种：<br>
+    type arrayName[];<br>
+    type[] arrayName;<br>
+type 为Java中的任意数据类型，包括基本类型和组合类型，arrayName为数组名，必须是一个合法的标识符，[ ] 指明该变量是一个数组类型变量。例如：
+<pre class="java">
+int demoArray[];
+int[] demoArray;</pre>
+这两种形式没有区别，使用效果完全一样，读者可根据自己的编程习惯选择。<br>
+<br>
+与C、C++不同，Java在定义数组时并不为数组元素分配内存，因此[ ]中无需指定数组元素的个数，即数组长度。而且对于如上定义的一个数组是不能访问它的任何元素的，我们必须要为它分配内存空间，这时要用到运算符new，其格式如下：<br>
+    arrayName=new type[arraySize];<br>
+其中，arraySize 为数组的长度，type 为数组的类型。如：
+<pre class="java">
+demoArray=new int[3];</pre>
+为一个整型数组分配3个int 型整数所占据的内存空间。<br>
+<br>
+通常，你可以在定义的同时分配空间，语法为：<br>
+    type arrayName[] = new type[arraySize];<br>
+例如：
+<pre class="java">
+int demoArray[] = new int[3];</pre>
+<h2>
+数组的初始化</h2>
+你可以在声明数组的同时进行初始化（静态初始化），也可以在声明以后进行初始化（动态初始化）。例如：
+<pre class="java">
+// 静态初始化
+// 静态初始化的同时就为数组元素分配空间并赋值
+int intArray[] = {1,2,3,4};
+String stringArray[] = {"微学苑", "http://www.weixueyuan.net", "一切编程语言都是纸老虎"};
+
+// 动态初始化
+float floatArray[] = new float[3];
+floatArray[0] = 1.0f;
+floatArray[1] = 132.63f;
+floatArray[2] = 100F;</pre>
+<h2>
+数组引用</h2>
+可以通过下标来引用数组：<br>
+    arrayName[index];<br>
+与C、C++不同，Java对数组元素要进行越界检查以保证安全性。<br>
+<br>
+每个数组都有一个length属性来指明它的长度，例如 intArray.length 指明数组 intArray 的长度。<br>
+<br>
+【示例】写一段代码，要求输入任意5个整数，输出它们的和。
+<pre class="java">
+import java.util.*;
+public class Demo {
+    public static void main(String[] args){
+        int intArray[] = new int[5];
+        long total = 0;
+        int len = intArray.length;
+       
+        // 给数组元素赋值
+        System.out.print("请输入" + len + "个整数，以空格为分隔：");
+        Scanner sc = new Scanner(System.in);
+        for(int i=0; i&lt;len; i++){
+            intArray[i] = sc.nextInt();
+        }
+       
+        // 计算数组元素的和
+        for(int i=0; i&lt;len; i++){
+            total += intArray[i];
+        }
+       
+        System.out.println("所有数组元素的和为：" + total);
+    }
+}</pre>
+运行结果：<br>
+请输入5个整数，以空格为分隔：10 20 15 25 50<br>
+所有数组元素的和为：120
+<h2>
+数组的遍历</h2>
+实际开发中，经常需要遍历数组以获取数组中的每一个元素。最容易想到的方法是for循环，例如：
+<pre class="java">
+int arrayDemo[] = {1, 2, 4, 7, 9, 192, 100};
+for(int i=0,len=arrayDemo.length; i&lt;len; i++){
+    System.out.println(arrayDemo[i] + ", ");
+} </pre>
+输出结果：<br>
+1, 2, 4, 7, 9, 192, 100,<br>
+<br>
+不过，Java提供了”增强版“的for循环，专门用来遍历数组，语法为：
+<pre class="java">
+for( arrayType varName: arrayName ){
+    // Some Code
+}</pre>
+arrayType 为数组类型（也是数组元素的类型）；varName 是用来保存当前元素的变量，每次循环它的值都会改变；arrayName 为数组名称。<br>
+<br>
+每循环一次，就会获取数组中下一个元素的值，保存到 varName 变量，直到数组结束。即，第一次循环 varName 的值为第0个元素，第二次循环为第1个元素......例如：
+<pre class="java">
+int arrayDemo[] = {1, 2, 4, 7, 9, 192, 100};
+for(int x: arrayDemo){
+    System.out.println(x + ", ");
+}</pre>
+输出结果与上面相同。<br>
+<br>
+这种增强版的for循环也被称为”foreach循环“，它是普通for循环语句的特殊简化版。所有的foreach循环都可以被改写成for循环。<br>
+<br>
+但是，如果你希望使用数组的索引，那么增强版的 for 循环无法做到。<br>
+<h2>
+二维数组</h2>
+二维数组的声明、初始化和引用与一维数组相似：
+<pre class="java">
+int intArray[ ][ ] = { {1,2}, {2,3}, {4,5} };
+int a[ ][ ] = new int[2][3];
+a[0][0] = 12;
+a[0][1] = 34;
+// ......
+a[1][2] = 93;</pre>
+Java语言中，由于把二维数组看作是数组的数组，数组空间不是连续分配的，所以不要求二维数组每一维的大小相同。例如：
+<pre class="java">
+int intArray[ ][ ] = { {1,2}, {2,3}, {3,4,5} };
+int a[ ][ ] = new int[2][ ];
+a[0] = new int[3];
+a[1] = new int[5];</pre>
+<br>
+【示例】通过二维数组计算两个矩阵的乘积。
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        // 第一个矩阵（动态初始化一个二维数组）
+        int a[][] = new int[2][3];
+        // 第二个矩阵（静态初始化一个二维数组）
+        int b[][] = { {1,5,2,8}, {5,9,10,-3}, {2,7,-5,-18} };
+        // 结果矩阵
+        int c[][] = new int[2][4];
+       
+        // 初始化第一个矩阵
+        for(int i=0; i&lt;2; i++)
+            for(int j=0; j&lt;3 ;j++)
+                a[i][j] = (i+1) * (j+2);
+       
+        // 计算矩阵乘积
+        for (int i=0; i&lt;2; i++){
+            for (int j=0; j&lt;4; j++){
+                c[i][j]=0;
+                for(int k=0; k&lt;3; k++)
+                    c[i][j] += a[i][k] * b[k][j];
+            }
+        }
+
+        // 输出结算结果
+        for(int i=0; i&lt;2; i++){
+            for (int j=0; j&lt;4; j++)
+                System.out.printf("%-5d", c[i][j]);
+            System.out.println();
+        }
+    }
+}</pre>
+运行结果：<br>
+25   65   14   -65 <br>
+50   130  28   -130<br>
+<br>
+几点说明：
+<ul>
+<li>
+上面讲的是静态数组。静态数组一旦被声明，它的容量就固定了，不容改变。所以在声明数组时，一定要考虑数组的最大容量，防止容量不够的现象。</li>
+<li>
+如果想在运行程序时改变容量，就需要用到数组列表(ArrayList，也称动态数组)或向量(Vector)。</li>
+<li>
+正是由于静态数组容量固定的缺点，实际开发中使用频率不高，被 ArrayList 或 Vector 代替，因为实际开发中经常需要向数组中添加或删除元素，而它的容量不好预估。</li>
+</ul>
+</div>
+
+http://www.weixueyuan.net/view/6316.html
+<h1>Java字符串(String)</h1>
+<div id="art-body">从表面上看，字符串就是双引号之间的数据，例如“微学苑”、“http://www.weixueyuan.net”等。在Java中，可以使用下面的方法定义字符串：<br>
+    String stringName = "string content";<br>
+例如：
+<pre class="java">
+String url = "http://www.weixueyuan.net";
+String webName = "微学苑";</pre>
+<br>
+字符串可以通过“+”连接，基本数据类型与字符串进行“+”操作一般也会自动转换为字符串，例如：
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        String stuName = "小明";
+        int stuAge = 17;
+        float stuScore = 92.5f;
+       
+        String info = stuName + "的年龄是 " + stuAge + "，成绩是 " + stuScore;
+        System.out.println(info);
+    }
+}</pre>
+运行结果：<br>
+小明的年龄是 17，成绩是 92.5<br>
+<br>
+String字符串与数组有一个共同点，就是它们被初始化后，长度是不变的，并且内容也不变。如果要改变它的值，就会产生一个新的字符串，如下所示：
+<pre class="java">
+String str = "Hello ";
+str += "World!";</pre>
+这个赋值表达式看起来有点像简单的接龙，在str后面直接加上一个“World!”字符串，形成最后的字符串“Hello World!”。其运行原理是这样的：程序首先产生了str1字符串，并在内存中申请了一段空间。此时要追加新的字符串是不可能的，因为字符串被初始化后，长度是固定的。如果要改变它，只有放弃原来的空间，重新申请能够容纳“Hello World!”字符串的内存空间，然后将“Hello World!”字符串放到内存中。<br>
+<br>
+实际上，String 是java.lang包下的一个类，按照标准的面向对象的语法，其格式应该为：
+<pre class="java">
+String stringName = new String("string content");</pre>
+例如：
+<pre class="java">
+String url = new String("http://www.weixueyuan.net");</pre>
+但是由于String特别常用，所以Java提供了一种简化的语法。<br>
+<br>
+使用简化语法的另外一个原因是，按照标准的面向对象的语法，在内存使用上存在比较大的浪费。例如String str = new String(“abc”);实际上创建了两个String对象，一个是”abc”对象，存储在常量空间中，一个是使用new关键字为对象str申请的空间。
+<h2>
+字符串操作</h2>
+String对象有很多方法，可以方便的操作字符串。
+<h4>
+1) length() 方法</h4>
+length() 返回字符串的长度，例如：
+<pre class="java">
+String str1 = "微学苑";
+String str2 = "weixueyuan";
+System.out.println("The lenght of str1 is " + str1.length());
+System.out.println("The lenght of str2 is " + str2.length());</pre>
+输出结果：<br>
+The lenght of str1 is 3<br>
+The lenght of str2 is 10<br>
+<br>
+可见，无论是字母、数字，还是汉字，每个字符的长度都是1。
+<h4>
+2) charAt() 方法</h4>
+charAt() 方法的作用是按照索引值获得字符串中的指定字符。Java规定，字符串中第一个字符的索引值是0，第二个字符的索引值是1，依次类推。例如：
+<pre class="java">
+String str = "123456789";
+System.out.println(str.charAt(0) + "    " + str.charAt(5) + "    " + str.charAt(8));</pre>
+输出结果：<br>
+1    6    9
+<h4>
+3) contains() 方法</h4>
+contains() 方法用来检测字符串是否包含某个子串，例如：
+<pre class="java">
+String str = "weixueyuan";
+System.out.println(str.contains("yuan"));</pre>
+输出结果：<br>
+true
+<h4>
+4) replace() 方法</h4>
+字符串替换，用来替换字符串中所有指定的子串，例如：
+<pre class="java">
+String str1 = "The url of weixueyuan is www.weixueyuan.net!";
+String str2 = str1.replace("weixueyuan", "微学苑");
+System.out.println(str1);
+System.out.println(str2);</pre>
+输出结果：<br>
+The url of weixueyuan is www.weixueyuan.net!<br>
+The url of 微学苑 is www.微学苑.net!<br>
+<br>
+注意：replace() 方法不会改变原来的字符串，而是生成一个新的字符串。
+<h4>
+5) split() 方法</h4>
+以指定字符串作为分隔符，对当前字符串进行分割，分割的结果是一个数组，例如：
+<pre class="java">
+import java.util.*;
+public class Demo {
+    public static void main(String[] args){
+        String str = "wei_xue_yuan_is_good";
+        String strArr[] = str.split("_");
+        System.out.println(Arrays.toString(strArr));
+    }
+}</pre>
+运行结果：<br>
+[wei, xue, yuan, is, good]<br>
+<br>
+以上仅仅列举了几个常用的String对象的方法，更多方法和详细解释请参考API文档。</div>
+
+http://www.weixueyuan.net/view/6317.html
+<h1>Java StringBuffer与StringBuider</h1>
+<div id="art-body">String 的值是不可变的，每次对String的操作都会生成新的String对象，不仅效率低，而且耗费大量内存空间。<br>
+<br>
+StringBuffer类和String类一样，也用来表示字符串，但是StringBuffer的内部实现方式和String不同，在进行字符串处理时，不生成新的对象，在内存使用上要优于String。<br>
+<br>
+StringBuffer 默认分配16字节长度的缓冲区，当字符串超过该大小时，会自动增加缓冲区长度，而不是生成新的对象。<br>
+<br>
+StringBuffer不像String，只能通过 new 来创建对象，不支持简写方式，例如：
+<pre class="java">
+StringBuffer str1 = new StringBuffer();  // 分配16个字节长度的缓冲区
+StringBuffer str2 = =new StringBuffer(512);  // 分配512个字节长度的缓冲区
+// 在缓冲区中存放了字符串，并在后面预留了16个字节长度的空缓冲区
+StringBuffer str3 = new StringBuffer("www.weixueyuan.net");</pre>
+<h2>
+StringBuffer类的主要方法</h2>
+StringBuffer类中的方法主要偏重于对于字符串的操作，例如追加、插入和删除等，这个也是StringBuffer类和String类的主要区别。实际开发中，如果需要对一个字符串进行频繁的修改，建议使用 StringBuffer。
+<h4>
+1) append() 方法</h4>
+append() 方法用于向当前字符串的末尾追加内容，类似于字符串的连接。调用该方法以后，StringBuffer对象的内容也发生改变，例如：
+<pre class="java">
+StringBuffer str = new StringBuffer(“biancheng100”);
+str.append(true);</pre>
+则对象str的值将变成”biancheng100true”。注意是str指向的内容变了，不是str的指向变了。<br>
+<br>
+字符串的”+“操作实际上也是先创建一个StringBuffer对象，然后调用append()方法将字符串片段拼接起来，最后调用toString()方法转换为字符串。<br>
+<br>
+这样看来，String的连接操作就比StringBuffer多出了一些附加操作，效率上必然会打折扣。<br>
+<br>
+但是，对于长度较小的字符串，”+“操作更加直观，更具可读性，有些时候可以稍微牺牲一下效率。
+<h4>
+2)  deleteCharAt()</h4>
+deleteCharAt() 方法用来删除指定位置的字符，并将剩余的字符形成新的字符串。例如：
+<pre class="java">
+StringBuffer str = new StringBuffer("abcdef");
+str. deleteCharAt(3);</pre>
+该代码将会删除索引值为3的字符，即”d“字符。<br>
+<br>
+你也可以通过delete()方法一次性删除多个字符，例如：
+<pre class="java">
+StringBuffer str = new StringBuffer("abcdef");
+str.delete(1, 4);</pre>
+该代码会删除索引值为1~4之间的字符，包括索引值1，但不包括4。
+<h4>
+3) insert() 方法</h4>
+insert() 用来在指定位置插入字符串，可以认为是append()的升级版。例如：
+<pre class="java">
+StringBuffer str = new StringBuffer("abcdef");
+str.insert(3, "xyz");</pre>
+最后str所指向的字符串为 abcdxyzef。
+<h4>
+4) setCharAt() 方法</h4>
+setCharAt() 方法用来修改指定位置的字符。例如：
+<pre class="java">
+StringBuffer str = new StringBuffer("abcdef");
+str.setCharAt(3, 'z');</pre>
+该代码将把索引值为3的字符修改为 z，最后str所指向的字符串为 abczef。<br>
+<br>
+以上仅仅是部分常用方法的简单说明，更多方法和解释请查阅API文档。
+<h2>
+String和StringBuffer的效率对比</h2>
+为了更加明显地看出它们的执行效率，下面的代码，将26个英文字母加了10000次。
+<pre class="java">
+public class Demo {
+    public static void main(String[] args){
+        String fragment = "abcdefghijklmnopqrstuvwxyz";
+        int times = 10000;
+       
+        // 通过String对象
+        long timeStart1 = System.currentTimeMillis();
+        String str1 = "";
+        for (int i=0; i&lt;times; i++) {
+            str1 += fragment;
+        }
+        long timeEnd1 = System.currentTimeMillis();
+        System.out.println("String: " + (timeEnd1 - timeStart1) + "ms");
+       
+        // 通过StringBuffer
+        long timeStart2 = System.currentTimeMillis();
+        StringBuffer str2 = new StringBuffer();
+        for (int i=0; i&lt;times; i++) {
+            str2.append(fragment);
+        }
+        long timeEnd2 = System.currentTimeMillis();
+        System.out.println("StringBuffer: " + (timeEnd2 - timeStart2) + "ms");
+    }
+}</pre>
+运行结果：<br>
+String: 5287ms<br>
+StringBuffer: 3ms<br>
+<br>
+结论很明显，StringBuffer的执行效率比String快上千倍，这个差异随着叠加次数的增加越来越明显，当叠加次数达到30000次的时候，运行结果为：<br>
+String: 35923ms<br>
+StringBuffer: 8ms<br>
+<br>
+所以，强烈建议在涉及大量字符串操作时使用StringBuffer。
+<h2>
+StringBuilder类</h2>
+StringBuilder类和StringBuffer类功能基本相似，方法也差不多，主要区别在于StringBuffer类的方法是多线程安全的，而StringBuilder不是线程安全的，相比而言，StringBuilder类会略微快一点。<br>
+<br>
+StringBuffer、StringBuilder、String中都实现了CharSequence接口。<br>
+<br>
+CharSequence是一个定义字符串操作的接口，它只包括length()、charAt(int index)、subSequence(int start, int end) 这几个API。<br>
+<br>
+StringBuffer、StringBuilder、String对CharSequence接口的实现过程不一样，如下图所示：
+<div style="text-align: center;">
+<img alt="" src="http://www.weixueyuan.net/uploads/allimg/141129/1-141129111JTX.png" style="width: 404px; height: 213px;"><br>
+图1  对CharSequence接口的实现</div>
+<br>
+可见，String直接实现了CharSequence接口；StringBuilder 和 StringBuffer都是可变的字符序列，它们都继承于AbstractStringBuilder，实现了CharSequence接口。
+<h2>
+总结</h2>
+<strong>线程安全：</strong>
+<ul>
+<li>
+StringBuffer：线程安全</li>
+<li>
+StringBuilder：线程不安全</li>
+</ul>
+<br>
+<strong>速度：</strong><br>
+一般情况下，速度从快到慢为 StringBuilder &gt; StringBuffer &gt; String，当然这是相对的，不是绝对的。<br>
+<br>
+<strong>使用环境：</strong>
+<ul>
+<li>
+操作少量的数据使用 String；</li>
+<li>
+单线程操作大量数据使用 StringBuilder；</li>
+<li>
+多线程操作大量数据使用 StringBuffer。</li>
+</ul>
+</div>
+
+http://www.weixueyuan.net/view/6318.html

@@ -1,0 +1,158 @@
+2018-01-18 18:27:55 [scrapy] INFO: Scrapy 1.1.1 started (bot: kickstarter)
+2018-01-18 18:27:55 [scrapy] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'kickstarter.spiders', 'ROBOTSTXT_OBEY': True, 'LOG_LEVEL': 'INFO', 'SPIDER_MODULES': ['kickstarter.spiders'], 'BOT_NAME': 'kickstarter', 'LOG_STDOUT': True, 'LOG_FILE': 'log/KickSpider_181826.log'}
+2018-01-18 18:27:56 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2018-01-18 18:27:56 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-01-18 18:27:56 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-01-18 18:27:56 [scrapy] INFO: Enabled item pipelines:
+['kickstarter.pipelines.MongodbPipeline']
+2018-01-18 18:27:56 [scrapy] INFO: Spider opened
+2018-01-18 18:27:56 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-01-18 18:27:59 [scrapy] ERROR: Spider error processing <GET https://www.kickstarter.com/projects/jpoprevolution/j-pop-revolution/rewards> (referer: None)
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\spiders\reward_spider.py", line 21, in parse
+    cp = json.loads(current_project)
+  File "D:\ProgramData\Anaconda2\lib\json\__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "D:\ProgramData\Anaconda2\lib\json\decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\ProgramData\Anaconda2\lib\json\decoder.py", line 380, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Expecting ',' delimiter: line 1 column 14407 (char 14406)
+2018-01-18 18:28:59 [scrapy] INFO: Crawled 17 pages (at 17 pages/min), scraped 10 items (at 10 items/min)
+2018-01-18 18:29:12 [scrapy] ERROR: Spider error processing <GET https://www.kickstarter.com/login?then=%2Fprojects%2Fisyana%2F69489148%2Frewards> (referer: None)
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\spiders\reward_spider.py", line 16, in parse
+    current_project = response.css('script').re(r'window\.current_project.+?"(\{.+?\})";')[0]
+IndexError: list index out of range
+2018-01-18 18:29:22 [scrapy] ERROR: Spider error processing <GET https://www.kickstarter.com/login?then=%2Fprojects%2FPaulHartner%2F1384087152%2Frewards> (referer: None)
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\ProgramData\Anaconda2\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "d:\mypy\kickstarter\kickstarter\kickstarter\spiders\reward_spider.py", line 16, in parse
+    current_project = response.css('script').re(r'window\.current_project.+?"(\{.+?\})";')[0]
+IndexError: list index out of range
+2018-01-18 18:30:00 [scrapy] INFO: Crawled 26 pages (at 9 pages/min), scraped 20 items (at 10 items/min)
+2018-01-18 18:31:11 [scrapy] INFO: Crawled 32 pages (at 6 pages/min), scraped 26 items (at 6 items/min)
+2018-01-18 18:31:57 [scrapy] INFO: Crawled 40 pages (at 8 pages/min), scraped 34 items (at 8 items/min)
+2018-01-18 18:33:01 [scrapy] INFO: Crawled 50 pages (at 10 pages/min), scraped 44 items (at 10 items/min)
+2018-01-18 18:34:03 [scrapy] INFO: Crawled 60 pages (at 10 pages/min), scraped 54 items (at 10 items/min)
+2018-01-18 18:35:05 [scrapy] INFO: Crawled 68 pages (at 8 pages/min), scraped 62 items (at 8 items/min)
+2018-01-18 18:35:58 [scrapy] INFO: Crawled 76 pages (at 8 pages/min), scraped 70 items (at 8 items/min)
+2018-01-18 18:37:07 [scrapy] INFO: Crawled 88 pages (at 12 pages/min), scraped 82 items (at 12 items/min)
+2018-01-18 18:38:01 [scrapy] INFO: Crawled 98 pages (at 10 pages/min), scraped 92 items (at 10 items/min)
+2018-01-18 18:39:13 [scrapy] INFO: Crawled 108 pages (at 10 pages/min), scraped 102 items (at 10 items/min)
+2018-01-18 18:40:04 [scrapy] INFO: Crawled 118 pages (at 10 pages/min), scraped 112 items (at 10 items/min)
+2018-01-18 18:41:04 [scrapy] INFO: Crawled 130 pages (at 12 pages/min), scraped 124 items (at 12 items/min)
+2018-01-18 18:42:07 [scrapy] INFO: Crawled 138 pages (at 8 pages/min), scraped 132 items (at 8 items/min)
+2018-01-18 18:43:09 [scrapy] INFO: Crawled 146 pages (at 8 pages/min), scraped 140 items (at 8 items/min)
+2018-01-18 18:44:00 [scrapy] INFO: Crawled 152 pages (at 6 pages/min), scraped 146 items (at 6 items/min)
+2018-01-18 18:44:58 [scrapy] INFO: Crawled 164 pages (at 12 pages/min), scraped 158 items (at 12 items/min)
+2018-01-18 18:46:15 [scrapy] INFO: Crawled 176 pages (at 12 pages/min), scraped 170 items (at 12 items/min)
+2018-01-18 18:46:59 [scrapy] INFO: Crawled 182 pages (at 6 pages/min), scraped 176 items (at 6 items/min)
+2018-01-18 18:48:01 [scrapy] INFO: Crawled 194 pages (at 12 pages/min), scraped 188 items (at 12 items/min)
+2018-01-18 18:49:01 [scrapy] INFO: Crawled 205 pages (at 11 pages/min), scraped 198 items (at 10 items/min)
+2018-01-18 18:50:00 [scrapy] INFO: Crawled 216 pages (at 11 pages/min), scraped 210 items (at 12 items/min)
+2018-01-18 18:50:59 [scrapy] INFO: Crawled 226 pages (at 10 pages/min), scraped 220 items (at 10 items/min)
+2018-01-18 18:51:58 [scrapy] INFO: Crawled 236 pages (at 10 pages/min), scraped 230 items (at 10 items/min)
+2018-01-18 18:53:27 [scrapy] INFO: Crawled 246 pages (at 10 pages/min), scraped 240 items (at 10 items/min)
+2018-01-18 18:53:58 [scrapy] INFO: Crawled 250 pages (at 4 pages/min), scraped 244 items (at 4 items/min)
+2018-01-18 18:55:23 [scrapy] INFO: Crawled 256 pages (at 6 pages/min), scraped 250 items (at 6 items/min)
+2018-01-18 18:55:57 [scrapy] INFO: Crawled 260 pages (at 4 pages/min), scraped 254 items (at 4 items/min)
+2018-01-18 18:57:04 [scrapy] INFO: Crawled 272 pages (at 12 pages/min), scraped 266 items (at 12 items/min)
+2018-01-18 18:58:23 [scrapy] INFO: Crawled 282 pages (at 10 pages/min), scraped 276 items (at 10 items/min)
+2018-01-18 18:58:56 [scrapy] INFO: Crawled 290 pages (at 8 pages/min), scraped 284 items (at 8 items/min)
+2018-01-18 18:59:57 [scrapy] INFO: Crawled 300 pages (at 10 pages/min), scraped 294 items (at 10 items/min)
+2018-01-18 19:01:02 [scrapy] INFO: Crawled 310 pages (at 10 pages/min), scraped 304 items (at 10 items/min)
+2018-01-18 19:01:59 [scrapy] INFO: Crawled 318 pages (at 8 pages/min), scraped 312 items (at 8 items/min)
+2018-01-18 19:03:10 [scrapy] INFO: Crawled 328 pages (at 10 pages/min), scraped 322 items (at 10 items/min)
+2018-01-18 19:04:10 [scrapy] INFO: Crawled 338 pages (at 10 pages/min), scraped 332 items (at 10 items/min)
+2018-01-18 19:05:19 [scrapy] INFO: Crawled 344 pages (at 6 pages/min), scraped 338 items (at 6 items/min)
+2018-01-18 19:06:03 [scrapy] INFO: Crawled 350 pages (at 6 pages/min), scraped 344 items (at 6 items/min)
+2018-01-18 19:07:00 [scrapy] INFO: Crawled 358 pages (at 8 pages/min), scraped 352 items (at 8 items/min)
+2018-01-18 19:07:59 [scrapy] INFO: Crawled 366 pages (at 8 pages/min), scraped 360 items (at 8 items/min)
+2018-01-18 19:09:05 [scrapy] INFO: Crawled 376 pages (at 10 pages/min), scraped 370 items (at 10 items/min)
+2018-01-18 19:10:07 [scrapy] INFO: Crawled 384 pages (at 8 pages/min), scraped 378 items (at 8 items/min)
+2018-01-18 19:11:01 [scrapy] INFO: Crawled 397 pages (at 13 pages/min), scraped 390 items (at 12 items/min)
+2018-01-18 19:12:20 [scrapy] INFO: Crawled 408 pages (at 11 pages/min), scraped 402 items (at 12 items/min)
+2018-01-18 19:13:49 [scrapy] INFO: Crawled 413 pages (at 5 pages/min), scraped 406 items (at 4 items/min)
+2018-01-18 19:14:12 [scrapy] INFO: Crawled 414 pages (at 1 pages/min), scraped 408 items (at 2 items/min)
+2018-01-18 19:15:04 [scrapy] INFO: Crawled 424 pages (at 10 pages/min), scraped 418 items (at 10 items/min)
+2018-01-18 19:16:11 [scrapy] INFO: Crawled 432 pages (at 8 pages/min), scraped 426 items (at 8 items/min)
+2018-01-18 19:17:08 [scrapy] INFO: Crawled 444 pages (at 12 pages/min), scraped 438 items (at 12 items/min)
+2018-01-18 19:18:01 [scrapy] INFO: Crawled 454 pages (at 10 pages/min), scraped 448 items (at 10 items/min)
+2018-01-18 19:19:11 [scrapy] INFO: Crawled 463 pages (at 9 pages/min), scraped 456 items (at 8 items/min)
+2018-01-18 19:19:57 [scrapy] INFO: Crawled 470 pages (at 7 pages/min), scraped 464 items (at 8 items/min)
+2018-01-18 19:20:59 [scrapy] INFO: Crawled 480 pages (at 10 pages/min), scraped 474 items (at 10 items/min)
+2018-01-18 19:22:05 [scrapy] INFO: Crawled 492 pages (at 12 pages/min), scraped 486 items (at 12 items/min)
+2018-01-18 19:23:05 [scrapy] INFO: Crawled 500 pages (at 8 pages/min), scraped 494 items (at 8 items/min)
+2018-01-18 19:23:22 [scrapy] INFO: Closing spider (finished)
+2018-01-18 19:23:22 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 423743,
+ 'downloader/request_count': 503,
+ 'downloader/request_method_count/GET': 503,
+ 'downloader/response_bytes': 37367530,
+ 'downloader/response_count': 503,
+ 'downloader/response_status_count/200': 501,
+ 'downloader/response_status_count/302': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 1, 18, 11, 23, 22, 273000),
+ 'item_scraped_count': 497,
+ 'log_count/ERROR': 3,
+ 'log_count/INFO': 62,
+ 'response_received_count': 501,
+ 'scheduler/dequeued': 502,
+ 'scheduler/dequeued/memory': 502,
+ 'scheduler/enqueued': 502,
+ 'scheduler/enqueued/memory': 502,
+ 'spider_exceptions/IndexError': 2,
+ 'spider_exceptions/ValueError': 1,
+ 'start_time': datetime.datetime(2018, 1, 18, 10, 27, 56, 728000)}
+2018-01-18 19:23:22 [scrapy] INFO: Spider closed (finished)

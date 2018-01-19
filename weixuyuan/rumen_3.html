@@ -1,0 +1,431 @@
+
+<h1>Java分支结构-if语句</h1>
+<div id="art-body">在Java程序设计中，分支结构由条件语句（if语句）来完成。if语句既可以单独使用，也可以与else一起使用。以下是使用方法：
+<ul>
+<li>
+if语句单独使用<br>
+if(条件表达式){<br>
+    目的;    //这里是一段代码<br>
+}</li>
+<li>
+与else一起使用<br>
+if(条件表达式){<br>
+    目的一;   //这里是一段代码<br>
+}<br>
+else{<br>
+    目的二;    这里是一段代码<br>
+}</li>
+</ul>
+<br>
+<span style="color:#b22222;">注意：条件表达式是一个关系表达式，其结果是布尔型数据。</span>请看如下代码：<br>
+public class control1{<br>
+    public static void main(String[] args){<br>
+        int salary=10000;<br>
+        if ((salary&gt;500)&amp;&amp;salary){<br>
+            System.out.println("要想请吃饭！");<br>
+            System.out.println("想请唱歌！");<br>
+            System.out.println("想请喝酒！");<br>
+        }<br>
+    }<br>
+}<br>
+运行结果：<br>
+想请吃饭！<br>
+想请唱歌！<br>
+想请喝酒！<br>
+<br>
+分析：条件语句(salary&gt;500)&amp;&amp;salary中，salary&gt;500的运算结果为true，salary的值为10000，进行"与"运算时转换为true，true&amp;&amp;true的结果为true，条件匹配。<br>
+<br>
+使用好条件语句需要注意以下几点：
+<ol>
+<li>
+应该绘制流程图，使编程时思路更加清晰。</li>
+<li>
+编程时，在最简单形式的条件语句中，可以不使用大括号，因为它不会产生混淆，但建议无论是哪种形式的条件语句，都应该使用大括号。</li>
+</ol>
+</div>
+
+http://www.weixueyuan.net/view/5959.html
+<h1>Java循环结构-for语句、while语句详解</h1>
+<div id="art-body">Java程序设计中引入了循环语句。循环语句总共有三种常见的形式：<span style="color:#b22222;">for 语句、while 语句、do/while语句</span>。下面将逐个进行详细的介绍。
+<h2>
+一.for 语句</h2>
+for 语句的基本结构如下所示：<br>
+<span style="color:#b22222;">for(初始化表达式;判断表达式;递增（递减）表达式){<br>
+    执行语句;   //一段代码<br>
+}</span>
+<ul>
+<li>
+初始化表达式：初始化表达式的意义，在于定义循环之前变量的值是多少，如果没有这一项，就不知道该从哪个值开始循环。</li>
+<li>
+判断表达式：判断表达式的作用在于规定循环的终点。如果没有判断表达式，那么此循环就成了死循环。</li>
+<li>
+递增（递减）表达式：这一项规定每执行一次程序，变量以多少增量或减量进行变化。</li>
+</ul>
+<br>
+示例：计算1+2+3+4......+100的结果。<br>
+public class control5{<br>
+    public static void main(String[] args){<br>
+        int result=0;<br>
+        for(int i=1;i&lt;=100;i++){<br>
+            result+=i;<br>
+        }<br>
+        System.out.println(result);<br>
+    }<br>
+}<br>
+输出结果：<br>
+5050
+<h2>
+二.while 循环</h2>
+在英文中“while”这个词的意思是“当”，而在 Java 程序设计中，也可以将其理解为“当”，其语法结构是：<br>
+<span style="color:#b22222;">while (条件){<br>
+    目的;    //一段代码<br>
+}</span><br>
+当条件为真时，进入循环。<br>
+<br>
+示例：计算1+2+3+4......+100的结果。<br>
+public class control5{<br>
+    public static void main(String[] args){<br>
+        int a=1,result=0;<br>
+        while(a&lt;=100){<br>
+            result+=a++;<br>
+        }<br>
+        System.out.println(result);<br>
+    }<br>
+}<br>
+输出结果：<br>
+5050
+<h2>
+三.do/while 语句</h2>
+在学习 do/while 语句之前，先清楚 while 语句是如何工作的。while 语句是先进行条件判断，再执行大括号内的循环体。<br>
+<br>
+do/while 语句与 while 语句不同的是，它先执行大括号内的循环体，再判断条件，如果条件不满足，下次不在执行循环体。也就是说，在判断条件之前，就已经执行大括号内的循环体。<br>
+示例：计算1+2+3+4......+100的结果。<br>
+public class control5{<br>
+    public static void main(String[] args){<br>
+        int a=1,result=0;<br>
+        do{<br>
+            result+=a++;<br>
+        }while(a&lt;=100);<br>
+        System.out.println(result);<br>
+    }<br>
+}<br>
+输出结果：<br>
+5050<br>
+<br>
+<span style="color:#b22222;">注意：其实在实际程序开发中，不经常使用 do/while 循环语句。因为这种语句是先执行循环体再检测条件，所以会有一些危险数据不经检测，就会被执行。建议使用 while 语句或者 for循环语句来编写代码。</span><br>
+</div>
+
+http://www.weixueyuan.net/view/5960.html
+<h1>Java跳出循环-break和continue语句</h1>
+<div id="art-body">在实际编程中，有时需要在条件语句匹配的时候跳出循环。在Java里，由break和continue语句控制。
+<h2>
+“break”语句</h2>
+<span style="color:#b22222;">“break”语句用来结束循环，即不再执行后边的所有循环。</span><br>
+<br>
+示例：计算1+2+3+4......+100的结果。<br>
+public class example1{<br>
+    public static void main(String[] args){<br>
+        int result=0;<br>
+        for(int i=1;i&lt;=100;i++){<br>
+            if(i&gt;50) break;<br>
+            result+=i;<br>
+        }<br>
+        System.out.println(result);<br>
+    }<br>
+}<br>
+输出结果：<br>
+1275<br>
+<br>
+分析：程序只计算了1+2+3+4+......+50的结果，后边的循环全部没有执行，即当i=51的时候，循环就结束了。<br>
+<br>
+另外，“break”语句可以与switch开关语句一起使用，下面一节将对此进行讲解。<br>
+<h2>
+“continue”语句</h2>
+<span style="color:#b22222;">“continue”语句用来结束当前循环，并进入下一次循环，即仅仅这一次循环结束了，不是所有循环结束了，后边的循环依旧进行。</span><br>
+<br>
+示例：计算1+2+3+4......+100的结果。<br>
+public class example1{<br>
+    public static void main(String[] args){<br>
+        int result=0;<br>
+        for(int i=1;i&lt;=100;i++){<br>
+            if(i&gt;50&amp;&amp;i&lt;=60) continue;<br>
+            result+=i;<br>
+        }<br>
+        System.out.println(result);<br>
+    }<br>
+}<br>
+输出结果：<br>
+4495<br>
+<br>
+分析：程序计算了1+2+3+......+48+49+50+61+62+63+......+100的结果，仅仅没有对i=51,52......60进行循环。<br>
+</div>
+
+http://www.weixueyuan.net/view/5961.html
+<h1>Java开关语句-switch</h1>
+<div id="art-body">在条件判断语句（if语句）过多时，可以使用开关语句来编写。开关语句的基本结构是：<br>
+<span style="color:#b22222;">switch(整数){<br>
+    case 整数值 1: 语句; break;<br>
+    case 整数值 2: 语句; break;<br>
+    case 整数值 3: 语句; break;<br>
+    ……………………..<br>
+    default: 语句;<br>
+}</span><br>
+<br>
+当“整数”的值等于“整数值1”、“整数值2”、“整数值3”......中的一个时，执行相应的语句，执行完成跳出开关语句；若没有相当的数值，则执行default后边的语句，执行完成跳出开关语句。<br>
+<br>
+<span style="color:#b22222;">注：break语句用于跳出开关语句。</span><br>
+<br>
+示例：输出当前月份。<br>
+public class control17{<br>
+    public static void main(String[] args){<br>
+        int i=8;<br>
+        switch(i){<br>
+            case 1: System.out.println("是一月份");break;<br>
+           case 2: System.out.println("是二月份");break;<br>
+           case 3: System.out.println("是三月份");break;<br>
+           case 4: System.out.println("是四月份");break;<br>
+           case 5: System.out.println("是五月份");break;<br>
+           case 6: System.out.println("是六月份");break;<br>
+           case 7: System.out.println("是七月份");break;<br>
+           case 8: System.out.println("是八月份");break;<br>
+           case 9: System.out.println("是九月份");break;<br>
+           case 10: System.out.println("是十月份");break;<br>
+           case 11: System.out.println("是十一月份");break;<br>
+           case 12:System.out.println("是十二月份");break;<br>
+<br>
+           default: System.out.println("fault");<br>
+        }<br>
+    }<br>
+}<br>
+运行结果：<br>
+是八月份<br>
+</div>
+
+http://www.weixueyuan.net/view/5962.html
+<h1>Java返回语句-return</h1>
+<div id="art-body">返回语句就是在执行程序的过程中，跳转到另一个程序。一般返回语句用在子程序或程序中的函数方法中。返回语句使用关键字“return”来表示。下面通过一个简单实例，了解返回语句的用法。<br>
+public void set(int a,int b){<br>
+    i=a*b<br>
+    return;<br>
+}<br>
+<br>
+以上是一个小程序段，在程序中出现了 return 关键字，说明这个小程序结束了，返回到主运行程序中去。还有一种情况，先看看下面的例子。<br>
+public int set(){<br>
+    return i=a*b<br>
+}<br>
+这种情况不但要返回到主运行程序，而且还要将“i=a*b”的值带回到主运行程序中，将其值赋给主运行程序中的“i”。<br>
+</div>
+
+http://www.weixueyuan.net/view/5963.html
+<h1>强调一下编程风格</h1>
+<div id="art-body">讲完了Java的基础语法，大家就可以编写简单的程序代码了，这里有必要强调一下编程风格。<br>
+<br>
+代码风格虽然不影响程序的运行，但对程序的可读性却非常重要。自己编写的程序要让别人看懂，首先在排版方面要非常注意。<br>
+<br>
+其实每个人的编程风格、每个软件开发公司的编程风格都不一样。一个人编写的程序代码，就应该能让别人看懂，甚至是过了很长时间，自己也要看的懂，否则这个程序就成了一个死程序。<br>
+<br>
+编程风格是指编程时的格式，让程序看上去就很有层次感。下面通过一些例子，说明编程风格的重要性：
+<pre class="java">
+public class math{
+    public static void main(String[] args){
+        int x=12;
+        double y=12.3d;
+        void print(){
+            char a='a';
+            System.out.println(a);
+        }
+        System.out.println(x+y);
+    }
+}</pre>
+上面程序段的整个排版看起来是否很舒服，并且层次感很强？是否一眼看上去就知道整个程序架构？这里的关键在于缩进，缩进也可以称为跳格。<br>
+<br>
+上面的代码采用的缩进："public class math" 是顶格的，接着 mian() 方法缩进 4 个空格，在 mian() 方法里面的代码一律缩进 8 个空格，而 print() 方法的主体代码又多缩进 4 个空格。这样整个程序的所属关系就很明显了。mian() 方法属于 math 类，其余的都属于main() 方法，而在 print() 方法内的代码段又属于此方法。规律就是空格多的代码从属于空格少的代码。<br>
+<br>
+我推荐大家使用 tab 键缩进，大部分编辑器（如Eclipse）都支持自定义 tab 键的空格数，一般为 4 个空格。<br>
+<br>
+除了缩进，空行也是必要的，先看下列程序代码：
+<pre class="java">
+public class math{
+    public static void main(String[] args){
+        int x=12;
+        int y=23;
+        void print(){
+            // .................
+        }
+
+        void view(){
+            // ....................
+        }
+    }
+}</pre>
+上面的程序段，在 print() 方法与 view() 方法之间有空行，用来区分不同的模块。print() 方法与 view() 方法所完成的功能不一样，所以使用空行将它们分开，这样更增加了程序的可读性。<br>
+<br>
+另外，需要注意的是方法或属性的命名。这些名字应该有含义，最好有规律，不要只使用"a"、"b"这种通用变量，适当可以根据变量或函数的功能为其命名。上面的"print"，其他程序员一看就知道这个方法，是有关打印或输出的函数。再如：变量名"name"，一看就知道是有关名字的变量。所以，一定要命名的有意义，否则程序的可读性不强。<br>
+<br>
+还有一点是有关注释的。在每个方法的方法名旁边，应该添加一些注释，同时在一段程序完成之后，也要对程序的功能及如何操作，做个简单的描述。<br>
+<br>
+只要做到以上几点，这个程序他人来读就很容易。即使自己在很长时间后，再来读程序也会一目了然。<br>
+</div>
+
+http://www.weixueyuan.net/view/5964.html
+<h1>Java一维数组的声明、初始化和引用</h1>
+<div id="art-body"><h2>
+一维数组的声明</h2>
+使用一个数据时，必须要对其进行声明，这个道理对于数组来说也一样，数组在使用之前也必须先声明。先看下面的代码，是如何声明一个变量的。<br>
+    int a;<br>
+仔细分析一下：int 是指变量的数据类型，a 是指变量名，由变量的声明可以联系到数组的声明。<br>
+    int a[];<br>
+仔细分析一下：int 是指数组中所有数据的数据类型，也可以说是这个数组的数据类型，a[]表示数组名。<br>
+<br>
+<span style="color:#b22222;">基本类型数组的声明有几种形式：<br>
+    int a[];<br>
+    int[] a;<br>
+这两种形式没有区别，使用效果完全一样，读者可根据自己的编程习惯选择。</span>
+<h2>
+一维数组的初始化</h2>
+<span style="color:#b22222;">数组的初始化分为静态初始化和动态初始化：静态初始化是在声明数组的同时进行赋值；动态初始化是在声明数组后在对其进行赋值。</span><br>
+<br>
+<strong>1.静态初始化</strong><br>
+    int intArray[]={1,2,3,4};<br>
+    String stringArray[]={"abc", "How", "you"};<br>
+<br>
+<strong>2.动态初始化</strong><br>
+    int intArray[];<br>
+    intArray = new int[5];<br>
+<br>
+    String stringArray[ ];<br>
+    String stringArray = new String[3];/*为数组中每个元素开辟引用空间(32位) */<br>
+    stringArray[0]= new String("How");//为第一个数组元素开辟空间<br>
+    stringArray[1]= new String("are");//为第二个数组元素开辟空间<br>
+    stringArray[2]= new String("you");// 为第三个数组元素开辟空间
+<h2>
+一维数组元素的引用</h2>
+<span style="color:#b22222;">一维数组元素的引用方式为：<br>
+    arrayName[index]</span><br>
+index为数组下标，它可以为整型常数或表达式，下标从0开始。每个数组都有一个属性length指明它的长度，例如：intArray.length指明数组intArray的长度。<br>
+<br>
+在编写程序的过程中，如果要引用数组的长度，一般是使用变量“length”，在程序中一般是使用下列格式：<br>
+    <span style="color:#b22222;">数组名.length</span><br>
+<br>
+示例：创建一个拥有 10 个元素的整数型数组 a，并通过 a[i]=i*i 为每个数组元素赋值，最后将结果输出。<br>
+public class arrary1{<br>
+    public static void main(String[] args){<br>
+        int[] a;<br>
+       a=new int[10];<br>
+       int i;<br>
+       for(i=0;i&lt;10;i++){<br>
+           System.out.println("a[i]="+(i*i));<br>
+       }<br>
+    }<br>
+}<br>
+运行结果：<br>
+a[0]=0<br>
+a[1]=1<br>
+a[2]=4<br>
+a[3]=9<br>
+a[4]=16<br>
+a[5]=25<br>
+a[6]=36<br>
+a[7]=49<br>
+a[8]=64<br>
+a[9]=81<br>
+程序先作了个数组声明“int[] a”，然后，创建了一个数组对象“a=new int[10]”，最后使用循环语句输出数组中所有数据。<br>
+<br>
+<strong>几点说明：</strong>
+<ul>
+<li>
+数组是对象类型数据，声明数组时注意new的使用。</li>
+<li>
+声明数组时，一定要考虑数组的最大容量，防止容量不够的现象。数组一旦被声明，它的容量就固定了，不容改变。如果想在运行程序时改变容量，就需要用到数组列表。数组列表不属于本章的内容，在数据结构一部分会详细讲述。</li>
+<li>
+其实数组有一个缺点，就是一旦声明，就不能改变容量，这个也是其使用频率不高的原因。一般存储数据会使用数组列表或 vector，这两种数据结构来存储数据。</li>
+</ul>
+</div>
+
+http://www.weixueyuan.net/view/5965.html
+<h1>Java二维数组的声明、初始化和引用</h1>
+<div id="art-body">二维数组的声明、初始化和引用与一维数组相似，这里不再详讲。
+<h2>
+二维数组的定义</h2>
+　　type arrayName[ ][ ];<br>
+　　type [ ][ ]arrayName;<br>
+只是形式上的差别，大家可以根据自己的习惯来选择。
+<h2>
+二维数组的初始化</h2>
+<strong>1.静态初始化</strong><br>
+    int intArray[ ][ ]={{1,2},{2,3},{3,4,5}};<br>
+<span style="color:#b22222;">Java语言中，由于把二维数组看作是数组的数组，数组空间不是连续分配的，所以不要求二维数组每一维的大小相同。</span><br>
+<br>
+<strong>2.动态初始化</strong><br>
+1) 直接为每一维分配空间，格式如下：<br>
+    arrayName = new type[arrayLength1][arrayLength2];<br>
+    int a[ ][ ] = new int[2][3]；<br>
+<br>
+2) 从最高维开始，分别为每一维分配空间：<br>
+    arrayName = new type[arrayLength1][ ];<br>
+    arrayName[0] = new type[arrayLength20];<br>
+    arrayName[1] = new type[arrayLength21];<br>
+    …<br>
+    arrayName[arrayLength1-1] = new type[arrayLength2n];<br>
+<br>
+3) 例：<br>
+二维简单数据类型数组的动态初始化如下：<br>
+    int a[ ][ ] = new int[2][ ]；<br>
+    a[0] = new int[3];<br>
+    a[1] = new int[5];<br>
+对二维复合数据类型的数组，必须首先为最高维分配引用空间，然后再顺次为低维分配空间。而且，必须为每个数组元素单独分配空间。例如：<br>
+    String s[ ][ ] = new String[2][ ];<br>
+    s[0]= new String[2];//为最高维分配引用空间<br>
+    s[1]= new String[2]; //为最高维分配引用空间<br>
+    s[0][0]= new String("Good");// 为每个数组元素单独分配空间<br>
+    s[0][1]= new String("Luck");// 为每个数组元素单独分配空间<br>
+    s[1][0]= new String("to");// 为每个数组元素单独分配空间<br>
+    s[1][1]= new String("You");// 为每个数组元素单独分配空间
+<h2>
+二维数组元素的引用</h2>
+对二维数组中的每个元素，引用方式为：<br>
+    arrayName[index1][index2]<br>
+例如：<br>
+    num[1][0];<br>
+<br>
+二维数组举例：两个矩阵相乘<br>
+public class MatrixMultiply{<br>
+    public static void main(String args[]){<br>
+　    int i,j,k;<br>
+　    int a[][]=new int [2][3]; //动态初始化一个二维数组<br>
+　　int b[][]={{1,5,2,8},{5,9,10,-3},{2,7,-5,-18}};//静态初始化一个二维数组<br>
+　　int c[][]=new int[2][4]; //动态初始化一个二维数组<br>
+　　for (i=0;i&lt;2;i++)<br>
+　　    for (j=0; j&lt;3 ;j++)<br>
+　　　    a[i][j]=(i+1)*(j+2);<br>
+        for (i=0;i&lt;2;i++){<br>
+　　    for (j=0;j&lt;4;j++){<br>
+　　　    c[i][j]=0;<br>
+　　        for(k=0;k&lt;3;k++)<br>
+　　            c[i][j]+=a[i][k]*b[k][j];<br>
+　　    }<br>
+        }<br>
+        System.out.println("*******Matrix C********");//打印Matrix C标记<br>
+　　for(i=0;i&lt;2;i++){<br>
+            for (j=0;j&lt;4;j++)<br>
+                System.out.println(c[i][j]+" ");<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+</div>
+
+http://www.weixueyuan.net/view/5966.html
+<h1>Java字符串概述</h1>
+<div id="art-body">字符串从表面上看，就是引号之间的数据，如“www.weixueyuan.net”、“微学苑”、“c++入门教程”等。在Java中，字符串处理类库使用最多的是两种：<span style="color:#b22222;">“String”类和“StringBuffer”类</span>。<br>
+<br>
+<span style="color:#b22222;">注意：如果是处理一些小的文本，建议使用“String”类，它会特别方便。如果使用 String 类来处理大型文本，会很消耗系统资源，所以 Java 程序语言特别引进了“StringBuffer”类。</span><br>
+<br>
+“String”字符串与上一章学过的数组有一个共同点。就是它们被初始化后，长度是不变的，并且内容也不变。如果要改变它的值，就会产生一个新的字符串，如下所示：<br>
+    String str1=“very”;<br>
+    Str1=str1+“good”;<br>
+这个赋值表达式看起来有点像简单的接龙。在“str1”后面直接加上一个“good”字符串，形成最后的字符串“very good”。其运行原理是这样的：程序首先产生了“str1”字符串对象，并在内存中申请了一段空间。此时要追加新的字符串是不可能的，因为字符串被初始化后，长度是固定的。如果要改变它，只有放弃原来的空间，重新申请能够容纳“very”和“good”两个字符串的内存空间，然后将“very good”字符串放到内存中。<br>
+<br>
+这里仅仅对字符串进行简单的介绍，以上是最简单的字符串声明方法。关于字符串的其他操作，在讲到“String”类和“StringBuffer”类的时候会详细讲解。</div>
+
+http://www.weixueyuan.net/view/5967.html

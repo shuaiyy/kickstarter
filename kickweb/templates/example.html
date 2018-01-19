@@ -1,0 +1,239 @@
+
+<div><style>
+body {
+	margin-bottom: 23px;
+	white-space: normal !important;
+}
+body {
+  white-space: pre;
+  font-family: monospace;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px 0px 0px 26px;
+}
+
+li {
+	position: relative;
+}
+
+.hoverable {
+	transition: background-color .2s ease-out 0s;
+	-webkit-transition: background-color .2s ease-out 0s;
+	display: inline-block;
+}
+
+.hovered {
+	transition-delay: .2s;
+	-webkit-transition-delay: .2s;
+}
+
+.selected {
+	outline-style: solid;
+	outline-width: 1px;
+	outline-style: dotted;
+}
+
+.collapsed>.collapsible {
+	display: none;
+}
+
+.ellipsis {
+	display: none;
+}
+
+.collapsed>.ellipsis {
+	display: inherit;
+}
+
+.collapser {
+	position: absolute;
+	top: 1px;
+	left: -1.5em;
+	cursor: default;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.status {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	min-width: 628px;
+	border-color: #c2c2c2;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-style: solid;
+	border-top-right-radius: 4px;
+	height: 16px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-right: 7px;
+	padding-left: 4px;
+	font-family: sans-serif;
+	font-size: 12px;	
+	opacity: 0;
+	background-color: #d2d2f6;
+	color: #696969;
+	transition: opacity .2s ease-out;	
+	-webkit-transition: opacity .2s ease-out;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.status:not(:empty ) {
+	opacity: 1;
+}
+
+.toolbox {
+	font-family: sans-serif;
+	font-size: 13px;
+	opacity: .25;
+	background-color: #d2d2f6;
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	border-color: #c2c2c2;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-style: solid;
+	border-bottom-left-radius: 4px;
+	padding-bottom: 3px;
+	transition: opacity .2s ease-out;
+	-webkit-transition: opacity .2s ease-out;
+	cursor: default;
+	user-select: none;
+	-webkit-user-select: none;
+	padding-left: 2px;
+}
+
+.toolbox:hover {
+	opacity: 1;
+}
+
+.toolbox>* {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.toolbox>a {
+	padding-left: 5px;
+}
+
+.toolbox>img {
+	height: 14px;
+	vertical-align: bottom;
+	cursor: pointer;
+}
+
+.property {
+  font-weight: bold;
+}
+
+.type-null {
+  color: gray;
+}
+
+.type-boolean {
+  color: firebrick;
+}
+
+.type-number {
+  color: blue;
+}
+
+.type-string {
+  color: green;
+}
+
+.callback-function {
+  color: gray;
+}
+
+.collapser:after {
+  content: "-";
+}
+
+.collapsed > .collapser:after {
+  content: "+";
+}
+
+.ellipsis:after {
+  content: " … ";
+}
+
+.collapsible {
+  margin-left: 2em;
+}
+
+.hoverable {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 2px;
+}
+
+.hovered {
+  background-color: rgba(235, 238, 249, 1);  
+}
+
+.collapser {
+  padding-right: 6px;
+  padding-left: 6px;
+}</style><div id="json"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">disable_communication</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">new_backers_count</span>: <span class="type-number">8</span>,</div></li><li><div class="hoverable"><span class="property">current_currency</span>: <span class="type-string">"USD"</span>,</div></li>
+<li><div class="hoverable"><span class="property">photo</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">med</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=272&amp;h=153&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=3019c2378deb99c5d93e559c45d1013a">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=272&amp;h=153&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=3019c2378deb99c5d93e559c45d1013a</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">little</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=208&amp;h=117&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=a37744ad58079a10aa4f555ef270df06">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=208&amp;h=117&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=a37744ad58079a10aa4f555ef270df06</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">full</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=560&amp;h=315&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=d4e5c44fbf5f3122bf75e300ca28d215">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=560&amp;h=315&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=d4e5c44fbf5f3122bf75e300ca28d215</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">thumb</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=48&amp;h=27&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=ced74f9614fe0758cfe702bf5b43910e">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=48&amp;h=27&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=ced74f9614fe0758cfe702bf5b43910e</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">ed</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=352&amp;h=198&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=96a2fff72f4a89118acda3dd40fd7c12">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=352&amp;h=198&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=96a2fff72f4a89118acda3dd40fd7c12</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">1024x576</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=1024&amp;h=576&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=fdb5cb686d5b1841b09b1498b4896048">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=1024&amp;h=576&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=fdb5cb686d5b1841b09b1498b4896048</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">1536x864</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=1552&amp;h=873&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=21b332e3568914eadf55a0d523cf3676">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=1552&amp;h=873&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=21b332e3568914eadf55a0d523cf3676</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">key</span>: <span class="type-string">"assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg"</span>,</div></li><li><div class="hoverable"><span class="property">small</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=160&amp;h=90&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=878d88e1c2e987c295909cb9749c0596">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=160&amp;h=90&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=878d88e1c2e987c295909cb9749c0596</a><span class="type-string">"</span></div></li>
+</ul>},</div></li><li><div class="hoverable"><span class="property">updates_count</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">currency</span>: <span class="type-string">"USD"</span>,</div></li>
+<li><div class="hoverable"><span class="property">is_first_creator</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">deadline</span>: <span class="type-number">1457247300</span>,</div></li>
+<li><div class="hoverable"><span class="property">currency_trailing_code</span>: <span class="type-boolean">true</span>,</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">1177534645</span>,</div></li>
+<li><div class="hoverable"><span class="property">state_changed_at</span>: <span class="type-number">1457247300</span>,</div></li><li><div class="hoverable"><span class="property">category</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">name</span>: <span class="type-string">"Performances"</span>,</div></li>
+<li><div class="hoverable"><span class="property">color</span>: <span class="type-number">10917369</span>,</div></li><li><div class="hoverable"><span class="property">slug</span>: <span class="type-string">"dance/performances"</span>,</div></li>
+<li><div class="hoverable"><span class="property">parent_id</span>: <span class="type-number">6</span>,</div></li><li><div class="hoverable"><span class="property">urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">web</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">discover</span>: <span class="type-string">"</span><a href="http://www.kickstarter.com/discover/categories/dance/performances">http://www.kickstarter.com/discover/categories/dance/performances</a><span class="type-string">"</span></div></li></ul>}</div></li></ul>},</div></li><li><div class="hoverable"><span class="property">position</span>: <span class="type-number">1</span>,</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">254</span></div></li></ul>},</div></li><li><div class="hoverable"><span class="property">goal</span>: <span class="type-number">1000</span>,</div></li>
+<li><div class="hoverable"><span class="property">staff_pick</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">pledged</span>: <span class="type-number">1110</span>,</div></li><li><div class="hoverable"><span class="property">creator</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">web</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">user</span>: <span class="type-string">"</span><a href="https://www.kickstarter.com/profile/vibe-in">https://www.kickstarter.com/profile/vibe-in</a><span class="type-string">"</span></div></li>
+</ul>},</div></li><li><div class="hoverable"><span class="property">api</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">user</span>: <span class="type-string">"</span><a href="https://api.kickstarter.com/v1/users/1178230780?signature=1514715731.d326e005b4e22e9c8157a0545a5ba0f9a5ff4216">https://api.kickstarter.com/v1/users/1178230780?signature=1514715731.d326e005b4e22e9c8157a0545a5ba0f9a5ff4216</a><span class="type-string">"</span></div></li>
+</ul>}</div></li></ul>},</div></li><li><div class="hoverable"><span class="property">name</span>: <span class="type-string">"Sonia Engman"</span>,</div></li><li><div class="hoverable"><span class="property">slug</span>: <span class="type-string">"vibe-in"</span>,</div></li>
+<li><div class="hoverable"><span class="property">chosen_currency</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">avatar</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">small</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/010/480/147/9b27180e491a398964b8528d76d3676b_original.jpeg?w=160&amp;h=160&amp;fit=crop&amp;v=1461692828&amp;auto=format&amp;q=92&amp;s=97d69e077562cef2a5e329fe3520596e">https://ksr-ugc.imgix.net/assets/010/480/147/9b27180e491a398964b8528d76d3676b_original.jpeg?w=160&amp;h=160&amp;fit=crop&amp;v=1461692828&amp;auto=format&amp;q=92&amp;s=97d69e077562cef2a5e329fe3520596e</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">medium</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/010/480/147/9b27180e491a398964b8528d76d3676b_original.jpeg?w=160&amp;h=160&amp;fit=crop&amp;v=1461692828&amp;auto=format&amp;q=92&amp;s=97d69e077562cef2a5e329fe3520596e">https://ksr-ugc.imgix.net/assets/010/480/147/9b27180e491a398964b8528d76d3676b_original.jpeg?w=160&amp;h=160&amp;fit=crop&amp;v=1461692828&amp;auto=format&amp;q=92&amp;s=97d69e077562cef2a5e329fe3520596e</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">thumb</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/010/480/147/9b27180e491a398964b8528d76d3676b_original.jpeg?w=40&amp;h=40&amp;fit=crop&amp;v=1461692828&amp;auto=format&amp;q=92&amp;s=6ad2c58d87eace71b6f0a6d89310d52c">https://ksr-ugc.imgix.net/assets/010/480/147/9b27180e491a398964b8528d76d3676b_original.jpeg?w=40&amp;h=40&amp;fit=crop&amp;v=1461692828&amp;auto=format&amp;q=92&amp;s=6ad2c58d87eace71b6f0a6d89310d52c</a><span class="type-string">"</span></div></li></ul>},</div></li><li><div class="hoverable"><span class="property">is_registered</span>: <span class="type-boolean">true</span>,</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">1178230780</span></div></li></ul>},</div></li><li><div class="hoverable"><span class="property">usd_type</span>: <span class="type-string">"international"</span>,</div></li><li><div class="hoverable"><span class="property">state</span>: <span class="type-string">"successful"</span>,</div></li><li><div class="hoverable"><span class="property">static_usd_rate</span>: <span class="type-number">1</span>,</div></li><li><div class="hoverable"><span class="property">location</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">localized_name</span>: <span class="type-string">"Albuquerque"</span>,</div></li>
+<li><div class="hoverable"><span class="property">name</span>: <span class="type-string">"Albuquerque"</span>,</div></li><li><div class="hoverable"><span class="property">short_name</span>: <span class="type-string">"Albuquerque, NM"</span>,</div></li><li><div class="hoverable"><span class="property">country</span>: <span class="type-string">"US"</span>,</div></li><li><div class="hoverable"><span class="property">slug</span>: <span class="type-string">"albuquerque-nm"</span>,</div></li><li><div class="hoverable"><span class="property">is_root</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">state</span>: <span class="type-string">"NM"</span>,</div></li><li><div class="hoverable"><span class="property">urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">web</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">discover</span>: <span class="type-string">"</span><a href="https://www.kickstarter.com/discover/places/albuquerque-nm">https://www.kickstarter.com/discover/places/albuquerque-nm</a><span class="type-string">"</span>,</div></li><li><div class="hoverable"><span class="property">location</span>: <span class="type-string">"</span><a href="https://www.kickstarter.com/locations/albuquerque-nm">https://www.kickstarter.com/locations/albuquerque-nm</a><span class="type-string">"</span></div></li>
+</ul>},</div></li><li><div class="hoverable"><span class="property">api</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">nearby_projects</span>: <span class="type-string">"</span><a href="https://api.kickstarter.com/v1/discover?signature=1514693077.d68c133ef0379b85dc6af4269b623b7ed52db343&amp;woe_id=2352824">https://api.kickstarter.com/v1/discover?signature=1514693077.d68c133ef0379b85dc6af4269b623b7ed52db343&amp;woe_id=2352824</a><span class="type-string">"</span></div></li>
+</ul>}</div></li></ul>},</div></li><li><div class="hoverable"><span class="property">type</span>: <span class="type-string">"Town"</span>,</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">2352824</span>,</div></li><li><div class="hoverable"><span class="property">displayable_name</span>: <span class="type-string">"Albuquerque, NM"</span></div></li></ul>},</div></li><li><div class="hoverable"><span class="property">launched_at</span>: <span class="type-number">1454524149</span>,</div></li><li><div class="hoverable"><span class="property">blurb</span>: <span class="type-string">"This is a research project and choreographic endeavor that will explore how dance intersects with social issues of race and class."</span>,</div></li><li><div class="hoverable"><span class="property">profile</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">link_text_color</span>: <span class="type-null">null</span>,</div></li>
+<li><div class="hoverable"><span class="property">feature_image_attributes</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">image_urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">default</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=1552&amp;h=873&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=21b332e3568914eadf55a0d523cf3676">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=1552&amp;h=873&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=21b332e3568914eadf55a0d523cf3676</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">baseball_card</span>: <span class="type-string">"</span><a href="https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=560&amp;h=315&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=d4e5c44fbf5f3122bf75e300ca28d215">https://ksr-ugc.imgix.net/assets/012/290/348/8c2ffb095a225b926353fd25ac5e61ab_original.jpg?crop=faces&amp;w=560&amp;h=315&amp;fit=crop&amp;v=1463751798&amp;auto=format&amp;q=92&amp;s=d4e5c44fbf5f3122bf75e300ca28d215</a><span class="type-string">"</span></div></li></ul>}</div></li></ul>},</div></li><li><div class="hoverable"><span class="property">name</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">blurb</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">link_url</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">link_text</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">text_color</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">show_feature_image</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">state</span>: <span class="type-string">"inactive"</span>,</div></li><li><div class="hoverable"><span class="property">link_background_color</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">should_show_feature_image_section</span>: <span class="type-boolean">true</span>,</div></li><li><div class="hoverable"><span class="property">background_image_opacity</span>: <span class="type-number">0.8</span>,</div></li>
+<li><div class="hoverable"><span class="property">project_id</span>: <span class="type-number">2195391</span>,</div></li><li><div class="hoverable"><span class="property">background_color</span>: <span class="type-null">null</span>,</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">2195391</span>,</div></li>
+<li><div class="hoverable"><span class="property">state_changed_at</span>: <span class="type-number">1445922596</span></div></li></ul>},</div></li><li><div class="hoverable"><span class="property">rewards</span>: <div class="collapser"></div>[<span class="ellipsis"></span><ul class="array collapsible"><li><div class="hoverable"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">reward</span>: <span class="type-string">"No Reward"</span>,</div></li><li><div class="hoverable"><span class="property">minimum</span>: <span class="type-number">1</span>,</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">description</span>: <span class="type-string">"No Reward"</span></div></li></ul>},</div></li><li><div class="hoverable"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">ends_at</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">reward</span>: <span class="type-string">"With a pledge of $20 you receive...\r\nA special mention and thank you note in the program."</span>,</div></li><li><div class="hoverable"><span class="property">description</span>: <span class="type-string">"With a pledge of $20 you receive...\r\nA special mention and thank you note in the program."</span>,</div></li><li><div class="hoverable"><span class="property">title_for_backing_tier</span>: <span class="type-string">"$20 reward"</span>,</div></li>
+<li><div class="hoverable"><span class="property">updated_at</span>: <span class="type-number">1487271457</span>,</div></li><li><div class="hoverable"><span class="property">minimum</span>: <span class="type-number">20</span>,</div></li><li><div class="hoverable"><span class="property">shipping_enabled</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">backers_count</span>: <span class="type-number">6</span>,</div></li><li><div class="hoverable"><span class="property">urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">api</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">reward</span>: <span class="type-string">"</span><a href="https://api.kickstarter.com/v1/projects/1177534645/rewards/4589926?signature=1515905303.0591ce1b4a2d66c2bedff3d4d548cdf9014a6c52">https://api.kickstarter.com/v1/projects/1177534645/rewards/4589926?signature=1515905303.0591ce1b4a2d66c2bedff3d4d548cdf9014a6c52</a><span class="type-string">"</span></div></li></ul>}</div></li></ul>},</div></li><li><div class="hoverable"><span class="property">starts_at</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">estimated_delivery_on</span>: <span class="type-number">1459468800</span>,</div></li><li><div class="hoverable"><span class="property">project_id</span>: <span class="type-number">1177534645</span>,</div></li><li><div class="hoverable"><span class="property">rewards_items</span>: [ ],</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">4589926</span></div></li></ul>},</div></li>
+<li><div class="hoverable"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">ends_at</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">reward</span>: <span class="type-string">"With a pledge of $50 or more you receive...\r\n1) A special mention and thank you note in the program.\r\n2) A signed action photo from the performance."</span>,</div></li>
+<li><div class="hoverable"><span class="property">description</span>: <span class="type-string">"With a pledge of $50 or more you receive...\r\n1) A special mention and thank you note in the program.\r\n2) A signed action photo from the performance."</span>,</div></li><li><div class="hoverable"><span class="property">title_for_backing_tier</span>: <span class="type-string">"$50 reward"</span>,</div></li><li><div class="hoverable"><span class="property">shipping_summary</span>: <span class="type-string">"Only United States"</span>,</div></li><li><div class="hoverable"><span class="property">shipping_preference</span>: <span class="type-string">"restricted"</span>,</div></li><li><div class="hoverable"><span class="property">updated_at</span>: <span class="type-number">1487259556</span>,</div></li><li><div class="hoverable"><span class="property">minimum</span>: <span class="type-number">50</span>,</div></li><li><div class="hoverable"><span class="property">shipping_enabled</span>: <span class="type-boolean">true</span>,</div></li><li><div class="hoverable"><span class="property">backers_count</span>: <span class="type-number">2</span>,</div></li><li><div class="hoverable"><span class="property">urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">api</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">reward</span>: <span class="type-string">"</span><a href="https://api.kickstarter.com/v1/projects/1177534645/rewards/4589927?signature=1515905303.526f34b66985ea17cea519a4e6294728bec49338">https://api.kickstarter.com/v1/projects/1177534645/rewards/4589927?signature=1515905303.526f34b66985ea17cea519a4e6294728bec49338</a><span class="type-string">"</span></div></li></ul>}</div></li></ul>},</div></li><li><div class="hoverable"><span class="property">starts_at</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">estimated_delivery_on</span>: <span class="type-number">1464739200</span>,</div></li>
+<li><div class="hoverable"><span class="property">project_id</span>: <span class="type-number">1177534645</span>,</div></li><li><div class="hoverable"><span class="property">rewards_items</span>: [ ],</div></li><li><div class="hoverable"><span class="property">id</span>: <span class="type-number">4589927</span></div></li></ul>},</div></li><li><div class="hoverable"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">ends_at</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">reward</span>: <span class="type-string">"With a pledge of $75 or more you receive...\r\n1) A special mention and thank you note in the program.\r\n2) Two signed action photos from the performance.\r\n3) A digital download of original remixes and tracks from Dj/Producer Alexis Garza."</span>,</div></li><li><div class="hoverable"><span class="property">description</span>: <span class="type-string">"With a pledge of $75 or more you receive...\r\n1) A special mention and thank you note in the program.\r\n2) Two signed action photos from the performance.\r\n3) A digital download of original remixes and tracks from Dj/Producer Alexis Garza."</span>,</div></li><li><div class="hoverable"><span class="property">title_for_backing_tier</span>: <span class="type-string">"$75 reward"</span>,</div></li><li><div class="hoverable"><span class="property">shipping_summary</span>: <span class="type-string">"Only United States"</span>,</div></li><li><div class="hoverable"><span class="property">shipping_preference</span>: <span class="type-string">"restricted"</span>,</div></li><li><div class="hoverable"><span class="property">updated_at</span>: <span class="type-number">1487230509</span>,</div></li><li><div class="hoverable"><span class="property">minimum</span>: <span class="type-number">75</span>,</div></li><li><div class="hoverable"><span class="property">shipping_enabled</span>: <span class="type-boolean">true</span>,</div></li><li><div class="hoverable"><span class="property">backers_count</span>: <span class="type-number">5</span>,</div></li>
+<li><div class="hoverable"><span class="property">urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">api</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">reward</span>: <span class="type-string">"</span><a href="https://api.kickstarter.com/v1/projects/1177534645/rewards/4589928?signature=1515905303.a61cad688dbecd3e7083e5fe234256cb40606fd7">https://api.kickstarter.com/v1/projects/1177534645/rewards/4589928?signature=1515905303.a61cad688dbecd3e7083e5fe234256cb40606fd7</a><span class="type-string">"</span></div></li></ul>}</div></li></ul>},</div></li><li><div class="hoverable"><span class="property">starts_at</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">estimated_delivery_on</span>: <span class="type-number">1464739200</span>,</div></li>
+<li><div class="hoverable"><span class="property">project_id</span>: <span class="type-number">1177534645</span>,</div></li><li><div class="hoverable"><span class="property">rewards_items</span>: [ ],</div></li>
+<li><div class="hoverable"><span class="property">id</span>: <span class="type-number">4589928</span></div></li></ul>}</div></li></ul>],</div></li><li><div class="hoverable"><span class="property">fx_rate</span>: <span class="type-number">1</span>,</div></li><li><div class="hoverable"><span class="property">backers_count</span>: <span class="type-number">16</span>,</div></li><li><div class="hoverable"><span class="property">rewards_level</span>: <span class="type-number">3</span>,</div></li><li><div class="hoverable"><span class="property">usd_pledged</span>: <span class="type-string">"1110.0"</span>,</div></li><li><div class="hoverable"><span class="property">hyperlink_count</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">percent_funded</span>: <span class="type-number">111.00000000000001</span>,</div></li><li><div class="hoverable"><span class="property">converted_pledged_amount</span>: <span class="type-number">1110</span>,</div></li><li><div class="hoverable"><span class="property">gif_count</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">slug</span>: <span class="type-string">"vibe-in"</span>,</div></li><li><div class="hoverable"><span class="property">name</span>: <span class="type-string">"VIBE/IN"</span>,</div></li><li><div class="hoverable"><span class="property">hyperlink</span>: [ ],</div></li><li><div class="hoverable"><span class="property">country</span>: <span class="type-string">"US"</span>,</div></li><li><div class="hoverable"><span class="property">created_at</span>: <span class="type-number">1445922596</span>,</div></li><li><div class="hoverable"><span class="property">pics</span>: [ ],</div></li><li>
+
+<div class="hoverable"><span class="property">return_backers_count</span>: <span class="type-number">8</span>,</div>
+</li><li>
+<div class="hoverable"><span class="property">comments_count</span>: <span class="type-number">0</span>,</div></li>
+<li><div class="hoverable"><span class="property">pic_count</span>: <span class="type-number">0</span>,</div></li>
+<li><div class="hoverable"><span class="property">urls</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">web</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">project</span>: <span class="type-string">"</span><a href="https://www.kickstarter.com/projects/vibe-in/vibe-in">https://www.kickstarter.com/projects/vibe-in/vibe-in</a><span class="type-string">"</span>,</div></li><li><div class="hoverable"><span class="property">rewards</span>: <span class="type-string">"</span><a href="https://www.kickstarter.com/projects/vibe-in/vibe-in/rewards">https://www.kickstarter.com/projects/vibe-in/vibe-in/rewards</a><span class="type-string">"</span></div></li></ul>}</div></li></ul>},</div></li>
+<li><div class="hoverable"><span class="property">currency_symbol</span>: <span class="type-string">"$"</span>,</div></li>
+<li><div class="hoverable"><span class="property">video</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">status</span>: <span class="type-string">"successful"</span>,</div></li><li><div class="hoverable"><span class="property">frame</span>: <span class="type-string">"</span><a href="https://d15chbti7ht62o.cloudfront.net/projects/2155817/video-632488-h264_high.jpg?2016">https://d15chbti7ht62o.cloudfront.net/projects/2155817/video-632488-h264_high.jpg?2016</a><span class="type-string">"</span>,</div></li><li><div class="hoverable"><span class="property">webm</span>: <span class="type-string">"</span><a href="https://ksr-video.imgix.net/projects/2155817/video-632488-webm.webm">https://ksr-video.imgix.net/projects/2155817/video-632488-webm.webm</a><span class="type-string">"</span>,</div></li><li><div class="hoverable"><span class="property">high</span>: <span class="type-string">"</span><a href="https://ksr-video.imgix.net/projects/2155817/video-632488-h264_high.mp4">https://ksr-video.imgix.net/projects/2155817/video-632488-h264_high.mp4</a><span class="type-string">"</span>,</div></li>
+<li><div class="hoverable"><span class="property">width</span>: <span class="type-number">640</span>,</div></li><li><div class="hoverable"><span class="property">base</span>: <span class="type-string">"</span><a href="https://ksr-video.imgix.net/projects/2155817/video-632488-h264_base.mp4">https://ksr-video.imgix.net/projects/2155817/video-632488-h264_base.mp4</a><span class="type-string">"</span>,</div></li><li><div class="hoverable"><span class="property">height</span>: <span class="type-number">360</span>,</div></li>
+<li><div class="hoverable"><span class="property">id</span>: <span class="type-number">632488</span></div></li></ul>},</div></li>
+<li><div class="hoverable"><span class="property">spotlight</span>: <span class="type-boolean">true</span>,</div></li>
+<li><div class="hoverable"><span class="property">is_starrable</span>: <span class="type-boolean">false</span></div></li>
+</ul>}</div>
+</div>
+
